@@ -1,2 +1,4 @@
 knodenv
 knode/env_setting*
+.vscode
+*.pyc
