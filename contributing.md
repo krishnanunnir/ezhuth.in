@@ -8,6 +8,6 @@ We will be using the angular style of commits, modified accordingly for our proj
 
 # Resources followed
 
-[Philosophy](https://www.b-list.org/weblog/2008/mar/15/slides/)
-[Server installation details](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)
-[Angular Commit Details](https://github.com/angular/angular/blob/master/CONTRIBUTING.md)
+[Philosophy](https://www.b-list.org/weblog/2008/mar/15/slides/)  
+[Server installation details](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)  
+[Angular Commit Details](https://github.com/angular/angular/blob/master/CONTRIBUTING.md)  
