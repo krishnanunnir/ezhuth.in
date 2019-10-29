@@ -24,7 +24,6 @@ SECRET_KEY = '*vul$9+^oao+-c)iv75q(urt*-_^olp2)&8r0gvg$7xfw4px+g'
 
 # SECURITY WARNING: don't run with debug turned on in production
 
-ALLOWED_HOSTS = ['localhost','178.128.149.6']
 
 
 # Application definition
@@ -36,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'texteditor',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,7 @@ ROOT_URLCONF = 'knode.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
