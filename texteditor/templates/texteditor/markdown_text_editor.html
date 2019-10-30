@@ -1,10 +1,26 @@
 {% extends base_template %}
 {% block title %} {{ page_title }} {% endblock %}
 {% block content %}
+<h1 id="title">Texteditor</h1>
 <div class="content container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h1>Hello</h1>
+            {{ markdownform.post_title }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            {{ markdownform.post_author }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            {{ markdownform.post_content }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <button type="button" class="form-control btn btn-default">Submit</button>
         </div>
     </div>
 </div>
