@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .forms import MarkdownForm
 
 # Create your views here.
-def render_markdown_editor_template( request, template_name="texteditor/markdown_text_editor.html", page_title="Texteditor", base_template="base.html"):
+def render_markdown_editor_template( request, template_name="texteditor/markdown_text_editor.html"):
 	""" Renders the text editor template for markdown view"""
 	markdownform = MarkdownForm()
-	template_render_data = {'page_title': page_title,'base_template': base_template,'markdownform':markdownform}
+	template_render_data = {'markdownform':markdownform}
 	return render(request, template_name, template_render_data)
