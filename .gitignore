@@ -1,5 +1,7 @@
 #This is the virtual environment used in my local installation
 knodenv
+#This is the settings that is used in the development setup workspace
+knode/settings/development.py
 #This is the workspace details for Visual studio code
 .vscode
 #This is python byte code, this varies with architecture to architecture, therefore no sense in including it

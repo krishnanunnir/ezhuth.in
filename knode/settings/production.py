@@ -1,5 +1,6 @@
 from .base import *
-# Set the values for the variable as required in your local development environment setup
+
+# Set the values for the variable as required in your production development environment setup
 
 SECRET_KEY = ''
 ALLOWED_HOSTS = []
