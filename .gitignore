@@ -1,7 +1,5 @@
 #This is the virtual environment used in my local installation
 knodenv
-#This is the settings that is imported by settings.py and specific to my local development setup
-knode/env_setting*
 #This is the workspace details for Visual studio code
 .vscode
 #This is python byte code, this varies with architecture to architecture, therefore no sense in including it
@@ -10,3 +8,4 @@ knode/env_setting*
 static/*
 #This is a file created by finder in Mac OS that stores attributes of the folder
 .DS_Store
+__pycache__
