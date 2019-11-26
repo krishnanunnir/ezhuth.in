@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'texteditor',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,7 @@ WSGI_APPLICATION = 'knode.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
