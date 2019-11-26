@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title%} Login{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Login here :</h1>
+            <form method="post" action="{% url 'authentication:render_login_page' %}">
+                {% csrf_token %}
+                {# A more "HTML" way of creating the login form#}
+                {{ loginform.as_p }}
+                <input type="submit" name="" value="Login">
+            </form>
+            <h4>Are you trying to sign up? Click <a href="{% url 'authentication:render_signup_page' %}">here</a></h1>
+        </div>
+    </div>
+{% endblock %}
