@@ -1,4 +1,25 @@
 {% extends "base.html" %}
-{% block title%} Add Post{% endblock %}
+{% load static %}
+{% block title %} Texteditor {% endblock %}
 {% block content %}
+<div class="content container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                {{ addpostform.title }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                {{ addpostform.content }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <button type="submit" class="form-control btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}
