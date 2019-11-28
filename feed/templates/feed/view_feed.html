@@ -1,4 +1,9 @@
 {% extends "base.html" %}
 {% block title%} Feed{% endblock %}
 {% block content %}
+{% for post in allposts %}
+    <p>{{ post.title }}</p>
+    <p> {{ post.author }}</p>
+    <p> {{ post.content }}</p>
+{% endfor %}
 {% endblock %}
