@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title%} Feed{% endblock %}
 {% block content %}
-{% for post in publishedposts %}
+{% for post in draftposts %}
     <p>{{ post.title }}</p>
     <p> {{ post.author }}</p>
     <p> {{ post.content }}</p>

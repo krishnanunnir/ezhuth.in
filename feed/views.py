@@ -11,8 +11,12 @@ def add_post(request, template_name= "feed/add_post.html"):
     if request.method == 'POST':
         title = request.POST.get('title')
         content = request.POST.get('content')
+        status = request.POST.get('status')
         user = request.user
-        Post(title= title, content= content, author= user).save()
+        status = 0
+        if 'publish' in request.POST:
+            status = 1
+        Post(title= title, content= content, author= user, status= status).save()
         return HttpResponse('Value added successfully')
     else:
         addpostform = AddPostForm()
@@ -32,6 +36,11 @@ def view_post(request, post_id, template_name= "feed/view_post.html"):
 
 @login_required
 def view_feed(request, template_name= "feed/view_feed.html"):
-    allposts = Post.objects.all()
-    template_data = {'allposts': allposts}
+    publishedposts = Post.objects.filter(status= 1)
+    template_data = {'publishedposts': publishedposts}
+    return render(request, template_name, template_data)
+
+def view_drafts(request, template_name= "feed/view_drafts.html"):
+    draftposts = Post.objects.filter(status= 0)
+    template_data = {'draftposts': draftposts}
     return render(request, template_name, template_data)
