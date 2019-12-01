@@ -30,26 +30,24 @@ def delete_post(request, post_id, template_name= "feed/delete_post.html"):
 
 @login_required
 def view_post(request, post_id, template_name= "feed/view_post.html"):
-    post = Post.objects.get(id = post_id)
+    post = Post.objects.get(id= post_id,author= request.user)
     template_data = {'post': post}
     return render(request, template_name, template_data)
 
 @login_required
 def view_feed(request, template_name= "feed/view_feed.html"):
-    publishedposts = Post.objects.filter(status= 1)
+    publishedposts = Post.objects.filter(status= 1, author= request.user)
     template_data = {'publishedposts': publishedposts}
     return render(request, template_name, template_data)
 
 def view_drafts(request, template_name= "feed/view_drafts.html"):
-    draftposts = Post.objects.filter(status= 0)
+    draftposts = Post.objects.filter(status= 0, author= request.user)
     template_data = {'draftposts': draftposts}
     return render(request, template_name, template_data)
 
 def edit_draft(request, post_id, template_name= "feed/edit_draft.html"):
     if request.method == 'POST':
         editpost = Post.objects.get(id= post_id)
-        if(editpost.author != request.user):
-            raise Http404
         editpost.title = request.POST.get('title')
         editpost.content = request.POST.get('content')
         editpost.status = 0
