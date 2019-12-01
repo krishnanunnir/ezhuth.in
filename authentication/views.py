@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
-from authentication.forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm
+from .redirects import *
 
 def render_login_page(request, template_name= "authentication/login_page.html"):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(user_authenticated_redirect)
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -21,6 +25,8 @@ def render_login_page(request, template_name= "authentication/login_page.html"):
         return render(request, template_name, template_data)
 
 def render_signup_page(request, template_name= "authentication/signup_page.html"):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(user_authenticated_redirect)
     if request.method == "POST":
         signupform = SignupForm(data= request.POST)
         if signupform.is_valid():
