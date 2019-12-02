@@ -9,14 +9,14 @@ from .redirects import *
 
 def render_login_page(request, template_name= "authentication/login_page.html"):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(user_authenticated_redirect)
+        return HttpResponseRedirect(login_success)
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username= username, password= password)
         if user:
             login(request, user)
-            return HttpResponse("you are logged in")
+            return HttpResponseRedirect(login_success)
         else:
             return HttpResponse("sorry, no such user")
     else:
@@ -26,7 +26,7 @@ def render_login_page(request, template_name= "authentication/login_page.html"):
 
 def render_signup_page(request, template_name= "authentication/signup_page.html"):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(user_authenticated_redirect)
+        return HttpResponseRedirect(login_success)
     if request.method == "POST":
         signupform = SignupForm(data= request.POST)
         if signupform.is_valid():
@@ -36,8 +36,8 @@ def render_signup_page(request, template_name= "authentication/signup_page.html"
             return HttpResponse("user signed up")
     else:
         signupform = SignupForm()
-        template_render_data = {'signupform': signupform}
-        return render(request, template_name, template_render_data)
+        template_data = {'signupform': signupform}
+        return render(request, template_name, template_data)
 
 @login_required
 def logout_user(request):
@@ -47,5 +47,5 @@ def logout_user(request):
 @login_required
 def render_user_profile(request, template_name= "authentication/user_profile.html"):
     currentuser = request.user
-    template_render_data = {'currentuser': currentuser}
-    return render(request, template_name, template_render_data)
+    template_data = {'currentuser': currentuser}
+    return render(request, template_name, template_data)

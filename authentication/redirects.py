@@ -1,1 +1,1 @@
-user_authenticated_redirect = '/'
+login_success = '/'
