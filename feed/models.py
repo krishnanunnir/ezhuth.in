@@ -8,7 +8,7 @@ STATUS = (
     (1, 'Publish')
 )
 class Post(models.Model):
-    title = models.CharField(max_length= 255, unique= True)
+    title = models.CharField(max_length= 255)
     slug = models.SlugField(max_length= 255, unique= True)
     author = models.ForeignKey(User, on_delete= models.CASCADE)
     content = models.TextField()
