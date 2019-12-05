@@ -1,0 +1,36 @@
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  display: inline;
+}
+</style>
+<ul>
+    {% if user.is_authenticated %}
+    <li>
+        <a href="{% url 'feed:view_feed' %}">Feed</a>
+    </li>
+    <li>
+        <a href="{% url 'feed:add_post' %}">New Post</a>
+    </li>
+    <li>
+        <a href="{% url 'feed:view_drafts' %}">Drafts</a>
+    </li>
+    <li>
+        <a href="{% url 'authentication:logout_user' %}">Logout</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="#">Login</a>
+    </li>
+    <li>
+        <a href="#">Signup</a>
+    </li>
+    {% endif %}
+</ul>
