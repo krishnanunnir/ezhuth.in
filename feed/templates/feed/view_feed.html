@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% block title%} Feed{% endblock %}
 {% block content %}
-{% for post in published_posts %}
-    <p>{{ post.title }}</p>
-    <p> {{ post.author }}</p>
-    <p> {{ post.content }}</p>
-{% endfor %}
+<div class="container">
+    {% for post in published_posts %}
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <h2>{{ post.title }}</h2>
+                <h5>--{{ post.author }} | {{ post.created_on }}</h5><br>
+                <p> {{ post.content }}</p><br><br>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
