@@ -1,1 +1,2 @@
-login_success = '/'
+login_success = '/feed/'
+logout_success = '/accounts/login'

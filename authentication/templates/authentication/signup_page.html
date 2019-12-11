@@ -11,7 +11,7 @@
         <h3>Just fill out the form.</h3>
         <form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
-          {{ signupform.as_p }}
+          {{ form.as_p }}
           <input type="submit" name="" value="Register">
         </form>
       {% endif %}
