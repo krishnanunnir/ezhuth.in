@@ -3,6 +3,7 @@
 {% block content %}
     <div class="container">
         <div class="jumbotron">
+        {% include "message.html" %}
             <h1>Login here :</h1>
             <form method="post" action="{% url 'authentication:render_login_page' %}">
                 {% csrf_token %}
