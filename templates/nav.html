@@ -27,10 +27,10 @@ li {
     </li>
     {% else %}
     <li>
-        <a href="#">Login</a>
+        <a href="{% url 'authentication:render_login_page' %}">Login</a>
     </li>
     <li>
-        <a href="#">Signup</a>
+        <a href="{% url 'authentication:render_signup_page' %}">Signup</a>
     </li>
     {% endif %}
 </ul>
