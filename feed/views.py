@@ -11,11 +11,12 @@ from .forms import AddPostForm
 # Create your views here.
 @login_required
 def add_post(request, template_name= "feed/add_post.html"):
+    form = AddPostForm()
     if request.method == 'POST':
-        addpostform = AddPostForm(request.POST)
-        if addpostform.is_valid():
-            title = addpostform.cleaned_data.get('title')
-            content = addpostform.cleaned_data.get('content')
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data.get('title')
+            content = form.cleaned_data.get('content')
             user = request.user
             if 'publish' in request.POST:
                 status = 1
@@ -23,12 +24,8 @@ def add_post(request, template_name= "feed/add_post.html"):
                 status = 0
             Post(title= title, content= content, author= user, status= status).save()
             return HttpResponse('Value added successfully')
-        else:
-            return HttpResponse('There was an error with the program')
-    else:
-        addpostform = AddPostForm()
-        template_data = {'addpostform':addpostform}
-        return render(request, template_name, template_data)
+    template_data = {'form':form}
+    return render(request, template_name, template_data)
 
 @login_required
 def delete_post(request, post_id, template_name= "feed/delete_post.html"):
@@ -43,38 +40,34 @@ def view_post(request, post_id, template_name= "feed/view_post.html"):
 
 @login_required
 def view_feed(request, template_name= "feed/view_feed.html"):
-    publishedposts = Post.objects.filter(status= 1, author= request.user)
-    if not publishedposts.exists():
+    published_posts = Post.objects.filter(status= 1, author= request.user)
+    if not published_posts.exists():
         raise Http404("Sorry, this page doesn't exist")
-    template_data = {'publishedposts': publishedposts}
+    template_data = {'published_posts': published_posts}
     return render(request, template_name, template_data)
 
 @login_required
 def view_drafts(request, template_name= "feed/view_drafts.html"):
-    draftposts = Post.objects.filter(status= 0, author= request.user)
-    if not draftposts.exists():
+    draft_posts = Post.objects.filter(status= 0, author= request.user)
+    if not draft_posts.exists():
         raise Http404("Sorry, this page doesn't exist")
-    template_data = {'draftposts': draftposts}
+    template_data = {'draft_posts': draft_posts}
     return render(request, template_name, template_data)
+
 @login_required
 def edit_draft(request, post_id, template_name= "feed/edit_draft.html"):
+    editpost = get_object_or_404(Post, id= post_id, author= request.user, status= 0)
     if request.method == 'POST':
-        editpost = get_object_or_404(Post, id= post_id, author= request.user, status= 0)
-        editpostform = AddPostForm(request.POST) #Sanitizing data using AddPostForm since both of them use the same data
-        if editpostform.is_valid():           
-            editpost.title = editpostform.cleaned_data.get('title')
-            editpost.content = editpostform.cleaned_data.get('content')
+        form = AddPostForm(request.POST) #Sanitizing data using AddPostForm since both of them use the same data
+        if form.is_valid():           
+            editpost.title = form.cleaned_data.get('title')
+            editpost.content = form.cleaned_data.get('content')
             if 'publish' in request.POST:
                 editpost.status = 1
             else:
                 editpost.status = 0
             editpost.save()
             return HttpResponse('Value added successfully')
-        else:
-            print(editpostform.errors)
-            return HttpResponse("There was an error with the data")
-    else:
-        draftpost = get_object_or_404(Post, id= post_id, author= request.user, status= 0)
-        editdraftpost= AddPostForm(initial= {'title':draftpost.title, 'content':draftpost.content })
-        template_data = {'editdraftpost': editdraftpost}
-        return render(request, template_name, template_data)
+    form = AddPostForm(initial= {'title':editpost.title, 'content':editpost.content })
+    template_data = {'form': form}
+    return render(request, template_name, template_data)
