@@ -28,8 +28,8 @@ def add_post(request, template_name= "feed/add_post.html"):
     return render(request, template_name, template_data)
 
 @login_required
-def delete_post(request, post_id, template_name= "feed/delete_post.html"):
-    get_object_or_404(Post, id= post_id, author= request.user, status= 1).delete()
+def delete(request, post_id):
+    get_object_or_404(Post, id= post_id, author= request.user).delete()
     return HttpResponse("The value has been deleted successfully")
 
 @login_required
@@ -55,8 +55,8 @@ def view_drafts(request, template_name= "feed/view_drafts.html"):
     return render(request, template_name, template_data)
 
 @login_required
-def edit_draft(request, post_id, template_name= "feed/edit_draft.html"):
-    editpost = get_object_or_404(Post, id= post_id, author= request.user, status= 0)
+def edit(request, post_id, template_name= "feed/edit_draft.html"):
+    editpost = get_object_or_404(Post, id= post_id, author= request.user)
     if request.method == 'POST':
         form = AddPostForm(request.POST) #Sanitizing data using AddPostForm since both of them use the same data
         if form.is_valid():           
