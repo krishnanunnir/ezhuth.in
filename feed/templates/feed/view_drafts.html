@@ -4,9 +4,11 @@
 <div class="container">
     {% for post in draft_posts %}
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <h2>{{ post.title }}</h2>
-                <h5>--{{ post.author }} | {{ post.created_on }}</h5><br>
+            <div class="col-md-8 col-md-offset-2">
+                <h2>{{ post.title }} </h2>
+                <h5>--{{ post.author }} | {{ post.created_on }}</h5>
+                <a href="{% url 'feed:edit_draft' post.id %}">Edit</a>
+                <a href="{% url 'feed:delete_draft' post.id %}">Delete</a><br><br>
                 <p> {{ post.content }}</p><br><br>
             </div>
         </div>
