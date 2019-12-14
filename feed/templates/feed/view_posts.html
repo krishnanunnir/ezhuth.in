@@ -2,13 +2,15 @@
 {% block title%} Feed{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-        {% include "message.html" %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            {% include "message.html" %}
+        </div>
     </div>
-    {% for post in draft_posts %}
+    {% for post in posts %}
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2><a href="{% url 'feed:view_draft' post.id %}">{{ post.title }}</a> </h2>
+                <h2><a href="{% url 'feed:view_post' post.id %}">{{ post.title }}</a></h2>
                 <h5>--{{ post.author }} | {{ post.created_on }}</h5>
                 <p> {{ post.content }}</p><br><br>
             </div>
