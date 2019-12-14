@@ -48,8 +48,8 @@ def delete(request, post_id):
     return HttpResponseRedirect(redirect_url)
 
 @login_required
-def view_post(request, post_id, template_name= "feed/view_post.html"):
-    post = get_object_or_404(Post, id= post_id, author= request.user, status= 1)
+def view(request, post_id, template_name= "feed/view_post.html"):
+    post = get_object_or_404(Post, id= post_id, author= request.user)
     template_data = {'post': post}
     return render(request, template_name, template_data)
 
