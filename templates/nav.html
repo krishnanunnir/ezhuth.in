@@ -12,6 +12,9 @@ li {
 }
 </style>
 <ul>
+    <li>
+        <a href="{% url 'feed:view_all' %}">All</a>
+    </li>
     {% if user.is_authenticated %}
     <li>
         <a href="{% url 'feed:view_feed' %}">Feed</a>
