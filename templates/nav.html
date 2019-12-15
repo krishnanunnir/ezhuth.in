@@ -1,38 +1,38 @@
 
 <style>
-ul {
+#nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
 }
-li {
+.nav-li{
   display: inline;
 }
 </style>
-<ul>
-    <li>
+<ul id="nav">
+    <li class="nav-li">
         <a href="{% url 'feed:view_all' %}">All</a>
     </li>
     {% if user.is_authenticated %}
-    <li>
+    <li class="nav-li">
         <a href="{% url 'feed:view_feed' %}">Feed</a>
     </li>
-    <li>
+    <li class="nav-li">
         <a href="{% url 'feed:add_post' %}">New Post</a>
     </li>
-    <li>
+    <li class="nav-li">
         <a href="{% url 'feed:view_drafts' %}">Drafts</a>
     </li>
-    <li>
+    <li class="nav-li">
         <a href="{% url 'authentication:logout_user' %}">Logout</a>
     </li>
     {% else %}
-    <li>
+    <li class="nav-li">
         <a href="{% url 'authentication:render_login_page' %}">Login</a>
     </li>
-    <li>
+    <li class="nav-li">
         <a href="{% url 'authentication:render_signup_page' %}">Signup</a>
     </li>
     {% endif %}
