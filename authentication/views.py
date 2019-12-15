@@ -34,7 +34,7 @@ def render_signup_page(request, template_name= "authentication/signup_page.html"
             user = form.save()
             user.set_password(user.password)
             user.save()
-            return HttpResponse("user signed up")
+            return HttpResponseRedirect(signup_success)
     #case for error occurence or get request to the page
     template_data = {'form': form}
     return render(request, template_name, template_data)
