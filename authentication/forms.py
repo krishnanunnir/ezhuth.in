@@ -3,14 +3,17 @@ from django.contrib.auth.models import User
 
 
 class LoginForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     class Meta:
         model = User
         fields = ('username','password')
 
 class SignupForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-    confirm_password=forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    confirm_password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     class Meta():
         model = User
         fields = ('username', 'password', 'confirm_password','email')
