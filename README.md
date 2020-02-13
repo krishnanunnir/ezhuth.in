@@ -8,9 +8,9 @@
 4. <del>Permission for user to access various urls</del>  
 5. <del>Navigation Bar</del>  
 6. <del>Cleaning data</del>  
-7. Add error fields in templates  
-8. Adding rich text editors  
-9. Improving the UI for the html pages  
+7. <del>Add error fields in templates</del>  
+8. <del>Improving the UI for the html pages</del>  
+9. Adding markdown js
 10. Adding python docstring  
 11. Add logging  
 12. Dockerize  
