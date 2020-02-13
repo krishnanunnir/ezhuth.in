@@ -1,7 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title%} Login{% endblock %}
 {% block content %}
-    <div class="container">
+<link rel='stylesheet' href="{% static 'css/auth.css' %}">
+<div class="login">
+  <h1>Login to Web App</h1>
+  <form method="post" action="{% url 'authentication:render_login_page' %}">
+    {% include "message.html" %}
+    {% csrf_token %}
+    <div class="fieldWrapper">
+        {{ loginform.username }}
+    </div>
+    <div class="fieldWrapper">
+        {{ loginform.password }}
+    </div>
+    <p class="remember_me">
+      <label>
+        Trying to <a href="{% url 'authentication:render_signup_page' %}">signup?</a>
+      </label>
+    </p>
+    <p class="submit"><input type="submit" name="commit" value="Login"></p>
+  </form>
+</div>
+    {% comment %} <div class="container">
         <div class="jumbotron">
         {% include "message.html" %}
             <h1>Login here :</h1>
@@ -13,5 +34,5 @@
             </form>
             <h4>Are you trying to sign up? Click <a href="{% url 'authentication:render_signup_page' %}">here</a></h1>
         </div>
-    </div>
+    </div> {% endcomment %}
 {% endblock %}

@@ -19,7 +19,7 @@ def render_login_page(request, template_name= "authentication/login_page.html"):
             login(request, user)
             return HttpResponseRedirect(login_success)
         else:
-            messages.warning(request, 'Invalid username or password')
+            messages.info(request, 'Invalid username or password')
     loginform = LoginForm()
     template_data = {'loginform': loginform}
     return render(request, template_name, template_data)
@@ -42,6 +42,7 @@ def render_signup_page(request, template_name= "authentication/signup_page.html"
 
 @login_required
 def logout_user(request):
+    messages.info(request, 'Logged out successfully')
     logout(request)
     return HttpResponseRedirect(logout_success)
 

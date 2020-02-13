@@ -1,8 +1,37 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
 {% block title %} Signup {% endblock %}
 {% block content %}
-  <div class="container">
+<link rel='stylesheet' href="{% static 'css/auth.css' %}">
+
+<div class="login">
+  <h1>Sign Up for Web App</h1>
+  <form method="post" action="">
+    {% include "formerrors.html" %}
+    {% csrf_token %}
+    <div class="fieldWrapper">
+        {{ form.username }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.password }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.confirm_password }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.email }}
+    </div>
+    
+    <p class="remember_me">
+      <label>
+      Trying to <a href="{% url 'authentication:render_login_page' %}">login?</a>
+      </label>
+    </p>
+    <p class="submit"><input type="submit" name="commit" value="Signup"></p>
+  </form>
+</div>
+
+  {% comment %} <div class="container">
     <div class="jumbotron">
       {% if registered %}
         <h1>Thank you for registering!</h1>
@@ -16,5 +45,5 @@
         </form>
       {% endif %}
     </div>
-  </div>
+  </div> {% endcomment %}
 {% endblock %}
