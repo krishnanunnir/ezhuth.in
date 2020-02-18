@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 STATUS = (
@@ -11,7 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length= 255)
     slug = models.SlugField(max_length= 255, unique= True)
     author = models.ForeignKey(User, on_delete= models.SET_NULL, null= True)
-    content = models.TextField()
+    content = RichTextField()
     status = models.IntegerField(choices= STATUS, default= 0)
     created_on = models.DateTimeField(auto_now_add= True)
     updated_on = models.DateTimeField(auto_now= True)

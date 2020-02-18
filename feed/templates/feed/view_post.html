@@ -11,7 +11,7 @@
             <h5>--{{ post.author }} | {{ post.created_on }}</h5>
             <a href="{% url 'feed:edit_post' post.id %}">Edit</a>
             <a href="{% url 'feed:delete_post' post.id %}">Delete</a><br><br>
-            <p> {{ post.content }}</p><br><br>
+            <p> {{ post.content | safe }}</p><br><br>
         </div>
     </div>
 </div>
