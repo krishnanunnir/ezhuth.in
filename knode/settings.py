@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'feed',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': 'auto',
+    },
+}

@@ -5,21 +5,23 @@
 <div class="content container">
     <form action="" method="POST">
         {% csrf_token %}
+        {{ form.media }}
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-8 col-md-offset-2">
                 {{ form.title }}
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-8 col-md-offset-2">
                 {{ form.content }}
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-md-2 col-md-offset-4">
+            <div class="col-md-4 col-md-offset-2">
                 <button type="submit" name="save" class="form-control btn btn-default">Save</button>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <button type="submit" name="publish" class="form-control btn btn-default">Publish</button>
             </div>
         </div>
