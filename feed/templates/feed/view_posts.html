@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title%} Feed{% endblock %}
 {% block content %}
+<link rel='stylesheet' href="{% static 'css/content.css' %}">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -12,7 +14,9 @@
             <div class="col-md-8 col-md-offset-2">
                 <h2><a href="{% url 'feed:view_post' post.id %}">{{ post.title }}</a></h2>
                 <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
-                <p> {{ post.content | safe}}</p><br><br>
+                <div class="content">
+                    <p> {{ post.content | safe }}</p><br><br>
+                </div>
             </div>
         </div>
     {% endfor %}
