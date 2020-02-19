@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title%} View Post{% endblock %}
 {% block content %}
+<link rel='stylesheet' href="{% static 'css/content.css' %}">
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         {% include "message.html" %}
@@ -11,7 +13,9 @@
             <h5>--{{ post.author }} | {{ post.created_on }}</h5>
             <a href="{% url 'feed:edit_post' post.id %}">Edit</a>
             <a href="{% url 'feed:delete_post' post.id %}">Delete</a><br><br>
-            <p> {{ post.content | safe }}</p><br><br>
+            <div class="content">
+                <p> {{ post.content | safe }}</p><br><br>
+            </div
         </div>
     </div>
 </div>
