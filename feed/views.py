@@ -66,15 +66,16 @@ def view_post(request, post_id, template_name= "feed/view_post.html"):
     comments = Comment.objects.filter(post= post_id)
     form = AddCommentForm()
     post = get_object_or_404(Post, Q(id= post_id), Q(author= request.user) | Q(status= 1)) # Makes a post visible if you are the owner or if the post status is set to published
+    display_comment_form = post.status==1
     if request.method=="POST":
         form = AddCommentForm(request.POST)
         if form.is_valid():
             content = form.cleaned_data.get('content')
-            messages.info(request, 'Comment added for')
+            messages.info(request, 'Comment added for '+post.title)
             Comment(author= request.user,content= content,post= post).save()
             return HttpResponseRedirect('/view/' + str(post_id))
     modify_status = post.author==request.user
-    template_data = {'post': post,'modify_status': modify_status,'comments':comments,'form':form}
+    template_data = {'post': post,'modify_status': modify_status,'comments':comments,'form':form,'display_comment_form':display_comment_form}
     return render(request, template_name, template_data)
 
 
