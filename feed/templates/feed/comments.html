@@ -1,0 +1,27 @@
+
+    <div class="col-md-8 col-md-offset-2">    
+        <hr>
+    </div>
+    {% for comment in comments %}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 comment">
+            <span class="comment-author">
+                {{ comment.author }}
+            </span>
+            <br>
+            <span class="comment-content">
+                {{ comment.content | safe }} 
+            </span>
+            <hr>
+            </div>
+        </div>
+    {% endfor %}
+    <br>
+    <div class="col-md-8 col-md-offset-2">
+        <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.media }}
+        {{form.content}}
+        <input type="submit" value="Add Comment" class="form-control submit-comment">
+    </div>
+</div>

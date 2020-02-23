@@ -4,8 +4,10 @@
 {% block content %}
 <link rel='stylesheet' href="{% static 'css/content.css' %}">
 <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-        {% include "message.html" %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            {% include "message.html" %}
+        </div>
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -17,8 +19,9 @@
             {% endif %}
             <div class="content">
                 <p> {{ post.content | safe }}</p><br><br>
-            </div
+            </div>
         </div>
     </div>
+    {% include "feed/comments.html" %}
 </div>
 {% endblock %}

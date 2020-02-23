@@ -8,8 +8,8 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 
-from .models import Post
-from .forms import AddPostForm
+from .models import Post,Comment
+from .forms import AddPostForm,AddCommentForm
 from .redirects import *
 
 # Create your views here.
@@ -63,9 +63,18 @@ def edit_post(request, post_id, template_name= "feed/edit_post.html"):
 
 @login_required
 def view_post(request, post_id, template_name= "feed/view_post.html"):
+    comments = Comment.objects.filter(post= post_id)
+    form = AddCommentForm()
     post = get_object_or_404(Post, Q(id= post_id), Q(author= request.user) | Q(status= 1)) # Makes a post visible if you are the owner or if the post status is set to published
+    if request.method=="POST":
+        form = AddCommentForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data.get('content')
+            messages.info(request, 'Comment added for')
+            Comment(author= request.user,content= content,post= post).save()
+            return HttpResponseRedirect('/view/' + str(post_id))
     modify_status = post.author==request.user
-    template_data = {'post': post,'modify_status': modify_status}
+    template_data = {'post': post,'modify_status': modify_status,'comments':comments,'form':form}
     return render(request, template_name, template_data)
 
 
@@ -108,3 +117,18 @@ def view_drafts(request, template_name= "feed/view_posts.html"):
         messages.info(request, "No content to display")
     template_data = {'posts': posts}
     return render(request, template_name, template_data)
+
+@login_required
+def render_comment( request, post_id, template_name= "feed/comments.html"):
+    comments = Comment.objects.filter(post= post_id)
+    form = AddCommentForm()
+    post =  get_object_or_404(Post, id= post_id, status= 1)
+    if request.method=="POST":
+        form = AddCommentForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data.get('content')
+            messages.info(request, 'Comment added for')
+            Comment(author= request.user,content= content,post= post).save()
+            return HttpResponseRedirect('/view/' + str(post_id))
+    template_data = {'comments': comments, 'form': form}
+    return render(request,template_name,template_data)

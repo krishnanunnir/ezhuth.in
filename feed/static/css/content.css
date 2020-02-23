@@ -9,3 +9,21 @@
     font-size: 14px;
     margin-top: 15px;
 }
+.comment{
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.comment-author{
+    font-family: Helvetica, Courier, monospace;
+    font-size: 22px;
+}
+
+.comment-content{
+    font-family:  Helvetica, sans-serif;
+    font-size: 14px;
+    padding-top: 10px;
+}
+.submit-comment {
+    margin-top: 5px;
+}
