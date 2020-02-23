@@ -8,7 +8,7 @@
             <span class="comment-author">
                 {{ comment.author }}
             </span>
-            <br>
+            <br><br>
             <span class="comment-content">
                 {{ comment.content | safe }} 
             </span>
@@ -17,6 +17,7 @@
         </div>
     {% endfor %}
     <br>
+    {% if display_comment_form %}
     <div class="col-md-8 col-md-offset-2">
         <form action="" method="POST">
         {% csrf_token %}
@@ -24,4 +25,5 @@
         {{form.content}}
         <input type="submit" value="Add Comment" class="form-control submit-comment">
     </div>
+    {% endif %}
 </div>
