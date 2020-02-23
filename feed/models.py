@@ -11,7 +11,7 @@ STATUS = (
 class Post(models.Model):
     title = models.CharField(max_length= 255)
     slug = models.SlugField(max_length= 255, unique= True)
-    author = models.ForeignKey(User, on_delete= models.SET_NULL, null= True)
+    author = models.ForeignKey(User, on_delete= models.SET("[deleted]"), null= True)
     description = models.CharField(max_length= 510,default=  "No description provided")
     content = RichTextField()
     status = models.IntegerField(choices= STATUS, default= 0)
@@ -27,3 +27,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title;
+
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete= models.SET("[deleted]"), null= True)
+    content = RichTextField()
+    post = models.ForeignKey(Post, on_delete= models.CASCADE, null= True)
+    created_on = models.DateTimeField(auto_now_add= True)
+    updated_on = models.DateTimeField(auto_now= True)
+    def __str__(self):
+        return self.content + ".... " ;
