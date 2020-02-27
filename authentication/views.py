@@ -9,6 +9,8 @@ from .forms import SignupForm, LoginForm
 from .redirects import *
 
 def render_login_page(request, template_name= "authentication/login_page.html"):
+    """ Renders the login page and processes signup requests """
+    # If user is already logged in then redirect to another html
     if request.user.is_authenticated:
         return HttpResponseRedirect(login_success)
     if request.method == "POST":
@@ -25,6 +27,7 @@ def render_login_page(request, template_name= "authentication/login_page.html"):
     return render(request, template_name, template_data)
 
 def render_signup_page(request, template_name= "authentication/signup_page.html"):
+    """ Render signup page signup requests"""
     if request.user.is_authenticated:
         return HttpResponseRedirect(login_success)
     form = SignupForm()
@@ -36,18 +39,20 @@ def render_signup_page(request, template_name= "authentication/signup_page.html"
             user.save()
             messages.info(request, 'Account created successfully');
             return HttpResponseRedirect(signup_success)
-    #case for error occurence or get request to the page
+    # case for error occurence or get request to the page
     template_data = {'form': form}
     return render(request, template_name, template_data)
 
 @login_required
 def logout_user(request):
+    """ User requests logout """
     messages.info(request, 'Logged out successfully')
     logout(request)
     return HttpResponseRedirect(logout_success)
 
 @login_required
 def render_user_profile(request, template_name= "authentication/user_profile.html"):
+    """ Renders user profile """
     currentuser = request.user
     template_data = {'currentuser': currentuser}
     return render(request, template_name, template_data)

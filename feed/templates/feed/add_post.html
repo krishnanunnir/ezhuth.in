@@ -5,6 +5,7 @@
 <div class="container">
     <form action="" method="POST">
         {% csrf_token %}
+        {% comment %} form.media needs to be loaded for the ckeditor dependency used {% endcomment %}
         {{ form.media }}
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

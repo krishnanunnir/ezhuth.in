@@ -13,6 +13,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h2>{{ post.title }} </h2>
             <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
+            {% comment %} Displays edit and delete options if you are the owner {% endcomment %}
             {% if modify_status %}
             <a href="{% url 'feed:edit_post' post.id %}">Edit</a>
             <a href="{% url 'feed:delete_post' post.id %}">Delete</a><br><br>
