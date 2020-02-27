@@ -17,6 +17,7 @@
         </div>
     {% endfor %}
     <br>
+    {% comment %} Displays comment only if the status for the post is published {% endcomment %}
     {% if display_comment_form %}
     <div class="col-md-8 col-md-offset-2">
         <form action="" method="POST">
