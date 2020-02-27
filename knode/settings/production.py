@@ -11,10 +11,19 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from .env_setting import *
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS',['127.0.0.1'])
+DEBUG = os.getenv('DEBUG',False)
+DATABASE_ENGINE = os.getenv('DATABASE_ENGINE','django.db.backends.postgresql_psycopg2')
+DATABASE_NAME = os.getenv('DATABASE_NAME','knode')
+DATABASE_USER = os.getenv('DATABASE_USER','krishnanunni')
+DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD','123456789')
+DATABASE_HOST = os.getenv('DATABASE_HOST','localhost')
+DATABASE_PORT = os.getenv('DATABASE_PORT','')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'..')
 
 # Define these values for your local setting by importing from this setting
 
@@ -52,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'knode.urls'
+ROOT_URLCONF = 'knode.urls.production'
 
 TEMPLATES = [
     {
