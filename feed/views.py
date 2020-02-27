@@ -129,19 +129,3 @@ def view_drafts(request, template_name= "feed/view_posts.html"):
         messages.info(request, "No content to display")
     template_data = {'posts': posts}
     return render(request, template_name, template_data)
-
-@login_required
-def render_comment( request, post_id, template_name= "feed/comments.html"):
-    """ Renders the comments for a post given the post_id"""
-    comments = Comment.objects.filter(post= post_id)
-    form = AddCommentForm()
-    post =  get_object_or_404(Post, id= post_id, status= 1)
-    if request.method=="POST":
-        form = AddCommentForm(request.POST)
-        if form.is_valid():
-            content = form.cleaned_data.get('content')
-            messages.info(request, 'Comment added for')
-            Comment(author= request.user,content= content,post= post).save()
-            return HttpResponseRedirect('/view/' + str(post_id))
-    template_data = {'comments': comments, 'form': form}
-    return render(request,template_name,template_data)
