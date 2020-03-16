@@ -10,12 +10,12 @@
 6. <del>Cleaning data</del>  
 7. <del>Add error fields in templates</del>  
 8. <del>Improving the UI for the html pages</del>  
-9. Adding markdown js
-10. Adding python docstring  
-11. Add logging  
-12. Dockerize  
-13. Home Page  
-14. Comments  
-15. Edit Profile  
+9. <del>Add Rich text editing</del>
+10. <del>Dockerize</del>  
+11. <del>Home Page</del>    
+12. <del>Comments</del>  
+13. Edit Profile  
+14. Add logging  
+13. Adding python docstring  
 16. Password reset  
 17. Email Verification  
