@@ -15,8 +15,8 @@
             <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
             {% comment %} Displays edit and delete options if you are the owner {% endcomment %}
             {% if modify_status %}
-            <a href="{% url 'feed:edit_post' post.id %}">Edit</a>
-            <a href="{% url 'feed:delete_post' post.id %}">Delete</a><br><br>
+            <a href="{% url 'feed:edit_post' post.slug %}">Edit</a>
+            <a href="{% url 'feed:delete_post' post.slug %}">Delete</a><br><br>
             {% endif %}
             <div class="content">
                 <p> {{ post.content | safe }}</p><br><br>

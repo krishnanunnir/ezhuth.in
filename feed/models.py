@@ -30,7 +30,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.title;
+        return self.title
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete= models.SET("[deleted]"), null= True)
@@ -39,4 +39,4 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add= True)
     updated_on = models.DateTimeField(auto_now= True)
     def __str__(self):
-        return self.content + ".... " ;
+        return self.content + ".... " 

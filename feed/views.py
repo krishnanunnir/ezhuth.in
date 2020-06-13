@@ -41,9 +41,9 @@ def add_post(request, template_name= "feed/add_post.html"):
 
 
 @login_required
-def edit_post(request, post_id, template_name= "feed/edit_post.html"):
+def edit_post(request, post_slug, template_name= "feed/edit_post.html"):
     """ Edit already saved posts or drafts """
-    post = get_object_or_404(Post, id= post_id, author= request.user)
+    post = get_object_or_404(Post, slug= post_slug, author= request.user)
     if request.method == 'POST':
         #Sanitizing data using AddPostForm since both of them use the same data
         form = AddPostForm(request.POST)
@@ -66,21 +66,28 @@ def edit_post(request, post_id, template_name= "feed/edit_post.html"):
     return render(request, template_name, template_data)
 
 
-@login_required
-def view_post(request, post_id, template_name= "feed/view_post.html"):
-    comments = Comment.objects.filter(post= post_id)
-    form = AddCommentForm()
+
+def view_post(request, post_slug, template_name= "feed/view_post.html"):
     # Makes a post visible if you are the owner or if the post status is set to published
-    post = get_object_or_404(Post, Q(id= post_id), Q(author= request.user) | Q(status= 1))
+    display_comment_form = True
+    try:
+        post = get_object_or_404(Post, Q(slug= post_slug) & (Q(author= request.user) | Q(status= 1)))
+    except TypeError:
+        # Condition of trying to access a post while not logged in
+        # Comments are turned off since only logged in user can comment
+        post = get_object_or_404(Post, Q(slug= post_slug) & Q(status= 1))
+        display_comment_form = False
+    comments = Comment.objects.filter(post= post)
+    form = AddCommentForm()
     # Comments can only be added if the post is published
-    display_comment_form = post.status==1
+    display_comment_form = display_comment_form and (post.status==1)
     if request.method=="POST":
         form = AddCommentForm(request.POST)
         if form.is_valid():
             content = form.cleaned_data.get('content')
             messages.info(request, 'Comment added for '+post.title)
             Comment(author= request.user,content= content,post= post).save()
-            return HttpResponseRedirect('/view/' + str(post_id))
+            return HttpResponseRedirect('/view/' + str(post_slug))
     # Options for modifying post is only visible to the author of the post
     modify_status = post.author==request.user
     template_data = {'post': post,'modify_status': modify_status,'comments':comments,'form':form,'display_comment_form':display_comment_form}
@@ -88,9 +95,9 @@ def view_post(request, post_id, template_name= "feed/view_post.html"):
 
 
 @login_required
-def delete_post(request, post_id):
+def delete_post(request, post_slug):
     """ Delete a post given the post_id """
-    post = get_object_or_404(Post, id= post_id, author= request.user)
+    post = get_object_or_404(Post, id= post_slug, author= request.user)
     post_status = post.status
     post.delete()
     # A different message is displayed if it is post or Draft and set redirect url
