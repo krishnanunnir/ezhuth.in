@@ -1,55 +1,37 @@
 # KNODE	
 
-## How to run local version?
-
-A local copy of the website can be very easily run. For this create a virtual environment using python3, and install the dependencies for the site using the requirements.txt file. Add an environment settings file from which database data, allowed hosts, secret key and debug value is imported by the settings file. These steps are explained in further detail below.
-
 ## Commiting
 
 We will be using the angular style of commits <sup>[3](https://github.com/angular/angular/blob/master/CONTRIBUTING.md)</sup>, modified accordingly for our project. Please refer past commits to get an idea
 
+## Running a build on your machine
 
-## Setting up local environment settings and running local build	We will be using the angular style of commits, modified accordingly for our project. 
-
-
-This will walk you through setting up the local environment settings file(env_setting.py) and setting up the local build of the website.	# Resources followed
-
-
-#### Generating secret key for your local environment settings files
-  
-The security key for a project is used for encrypting the project, therefore it is important to keep it a secret. Therefore each user should generate and add their own secret key which is to be added to the environment settings file. For more info check [here](https://stackoverflow.com/questions/4664724/distributing-django-projects-with-unique-secret-keys)	 
+This will walk you through the process of running this website locally on your machine. For ease of usage we have two settings file settings/local.py and settings/production.py, we will be using the local.py file for running our local build. We need to configure our machine details mainly databse in the local.py
 
 #### Configuring the database	
 
-This project uses PostgreSQL as its database management system. We will be using the psycopg database adapter for connecting the Django models to the database. Create your own user and database in postgres for running the project <sup>[2](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)</sup>.Copy the following code to your environment setting file  (env_setting.py).	
+This project uses PostgreSQL as its database management system. We will be using the psycopg database adapter for connecting the Django models to the database. Create your own user and database in postgres for running the project <sup>[2](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)</sup>. Set the values for the various database parameters in the local/settings.py.
 
 ```	
-DATABASES = {	
-    'default': {	
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',	
-        'NAME': 'myproject',	
-        'USER': 'myprojectuser',	
-        'PASSWORD': 'password',	
-        'HOST': 'localhost',	
-        'PORT': '',	
-    }	
-}	
+SECRET_KEY = '*vul$9+^oao+-c)iv75q(urt*-_^olp2)&8r0gvg$7xfw4px+g'
+ALLOWED_HOSTS = ['127.0.0.1','herokapp.com']
+DEBUG = True
+DATABASE_ENGINE = 'django.db.backends.postgresql_psycopg2'
+DATABASE_NAME = 'knodev'
+DATABASE_USER = 'postgres'
+DATABASE_PASSWORD = '123456789'
+DATABASE_HOST = 'localhost'
+DATABASE_PORT = ''
 ```	
-Replace the different values with values of user and db created by you. After replacing the values, migrate your code by running.	
+Replace the default values with values of user and db created by you.
 
-```	
-python manage.py migrate	
-```	
+#### Other changes in local settings file	
 
-#### Further changes in local environment settings file	
-
-Since we will be running the python on our local machine add localhost to 'ALLOWED_HOSTS'. Furthermore set debug to true as we will be debugging it here. The final environment settings file should have the following.	
+By default the æALLOWED_HOSTS' is set to the local host value and 'DEBUG' is set to True, these parameters can be changed
 
 ```	
 ALLOWED_HOSTS = ['127.0.0.1']	
 DEBUG = True	
-DATABASES = {<database-settings>}	
-SECRET_KEY = '<secret-key-value>'	
 ```	
 
 #### Setting up local installation of the Project	
