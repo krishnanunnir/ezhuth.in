@@ -1,8 +1,8 @@
 # KNODE	
 
-## django forum builder or KNODE
+## django KNODE cms
 
-KNODE is an easy to install forum builder where users can easily setup a new forum in less than 5 minutes. Future releases will include an option to use this as a blog.
+KNODE is an easy to install cms tool where users can easily setup a new site in less than 5 minutes.
 
 ## Commiting
 
