@@ -22,7 +22,7 @@ DEBUG = True
 DATABASE_ENGINE = 'django.db.backends.postgresql_psycopg2'
 DATABASE_NAME = 'knodev'
 DATABASE_USER = 'postgres'
-DATABASE_PASSWORD = '123456789'
+DATABASE_PASSWORD = ''
 DATABASE_HOST = 'localhost'
 DATABASE_PORT = ''
 
