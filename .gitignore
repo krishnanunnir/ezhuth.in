@@ -11,3 +11,5 @@ static/*
 #This is a file created by finder in Mac OS that stores attributes of the folder
 .DS_Store
 __pycache__
+.env
+.knode/
