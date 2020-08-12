@@ -15,7 +15,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','localhost').split(',')
 DEBUG = os.getenv('DEBUG',False)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'..')
+BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'.')
 
 # Define these values for your local setting by importing from this setting
 
