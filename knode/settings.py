@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
+import django_heroku
+
 SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','localhost').split(',')
 DEBUG = os.getenv('DEBUG',False)
@@ -126,3 +128,4 @@ CKEDITOR_CONFIGS = {
         'width': 'auto',
     },
 }
+django_heroku.settings(locals())
