@@ -9,20 +9,26 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-import django_heroku
-import dj_database_url
-
 import os
 SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','localhost').split(',')
 DEBUG = os.getenv('DEBUG',False)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'..')
+BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'.')
 
 # Define these values for your local setting by importing from this setting
 
-DATABASES['default'] =  dj_database_url.config()
+DATABASES = {
+    'default': {
+        'ENGINE': "django.db.backends.postgresql_psycopg2",
+        'NAME': os.getenv('DATABASE_NAME','knode'),
+        'USER': os.getenv('DATABASE_USER','krishnanunni'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD',''),
+        'HOST': os.getenv('DATABASE_HOST','localhost'),
+        'PORT': os.getenv('DATABASE_PORT','5432'),
+    }
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,7 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'knode.urls.production'
@@ -121,4 +126,3 @@ CKEDITOR_CONFIGS = {
         'width': 'auto',
     },
 }
-django_heroku.settings(locals())

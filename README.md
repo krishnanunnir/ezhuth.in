@@ -10,34 +10,22 @@ We will be using the angular style of commits <sup>[3](https://github.com/angula
 
 ## Running a build on your machine
 
-This will walk you through the process of running this website locally on your machine. For ease of usage we have two settings file settings/local.py and settings/production.py, we will be using the local.py file for running our local build. We need to configure our machine details mainly databse in the local.py
+This will walk you through the process of running this website locally on your machine. For ease of usage we have two settings file settings/local.py and settings/production.py, we will be using the local.py file for running our local build. We need to configure the environemnt variables.
 
-#### Configuring the database	
+#### Configuring the environment variables	
 
-This project uses PostgreSQL as its database management system. We will be using the psycopg database adapter for connecting the Django models to the database. Create your own user and database in postgres for running the project <sup>[2](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)</sup>. Set the values for the various database parameters in the local/settings.py.
-
-```	
-SECRET_KEY = '*vul$9+^oao+-c)iv75q(urt*-_^olp2)&8r0gvg$7xfw4px+g'
-ALLOWED_HOSTS = ['127.0.0.1','herokapp.com']
-DEBUG = True
-DATABASE_ENGINE = 'django.db.backends.postgresql_psycopg2'
-DATABASE_NAME = 'knodev'
-DATABASE_USER = 'postgres'
-DATABASE_PASSWORD = '123456789'
-DATABASE_HOST = 'localhost'
-DATABASE_PORT = ''
-```	
-Replace the default values with values of user and db created by you.
-
-#### Other changes in local settings file	
-
-By default the æALLOWED_HOSTS' is set to the local host value and 'DEBUG' is set to True, these parameters can be changed
-
-```	
-ALLOWED_HOSTS = ['127.0.0.1']	
-DEBUG = True	
-```	
-
+This project uses PostgreSQL as its database management system. We will be using the psycopg database adapter for connecting the Django models to the database. Create your own user and database in postgres for running the project <sup>[2](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)</sup>. Run the initenv.py file to intialize the all environment variables. This can be done as follows.  
+```
+python initenv.py
+```
+Activate the .env file by sourcing it  
+```
+source .env
+```
+Test if it is working by running in bash  
+```
+echo $SECRET_KEY
+```
 #### Setting up local installation of the Project	
  After the above changes have been made, we will setup the local environment for the project. Create a python virtual environment to deal with dependencies. 	
 
