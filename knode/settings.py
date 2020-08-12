@@ -14,7 +14,7 @@ import django_heroku
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','localhost').split(',')
-DEBUG = os.getenv('DEBUG',False)
+DEBUG = os.getenv('DEBUG',False) and "True"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'.')
