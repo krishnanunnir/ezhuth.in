@@ -10,11 +10,26 @@ We will be using the angular style of commits <sup>[3](https://github.com/angula
 
 ## Running a build on your machine
 
-This will walk you through the process of running this website locally on your machine. For ease of usage we have two settings file settings/local.py and settings/production.py, we will be using the local.py file for running our local build. We need to configure the environemnt variables.
+This will walk you through the process of running this website locally on your machine.
 
+#### Setting up local installation of the Project	
+Create local copy of the source code using the git clone command. In order to handle the dependencies we setup a virtual environment. 
+ ```	
+ git clone https://github.com/krishnanunnir/django-knode-cms.git
+ python3 -m venv .envs/knode	
+ ```	
+After creating the virtual environment we need to activate it.	
+
+```	
+source ./<venv-folder-name>/bin/activate	
+```	
+After activating the virtual environment we need to install the dependencies for the project, which can be done as follows.	
+```	
+pip install -r requirements.txt	
+```	
 #### Configuring the environment variables	
 
-This project uses PostgreSQL as its database management system. We will be using the psycopg database adapter for connecting the Django models to the database. Create your own user and database in postgres for running the project <sup>[2](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)</sup>. Run the initenv.py file to intialize the all environment variables. This can be done as follows.  
+This project uses PostgreSQL as its database management system. We will be using the psycopg database adapter for connecting the Django models to the database. Create your own user and database in postgres for running the project <sup>[2](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)</sup>. Set a local instance of postgres and configure a user, db and password. Run the initenv.py file to intialize the all environment variables which includes these db values. This is done as follows.  
 ```
 python initenv.py
 ```
@@ -26,24 +41,9 @@ Test if it is working by running in bash
 ```
 echo $SECRET_KEY
 ```
-#### Setting up local installation of the Project	
- After the above changes have been made, we will setup the local environment for the project. Create a python virtual environment to deal with dependencies. 	
 
- ```	
- cd /path-to-projectdir/	
- python3 -m venv <venv-folder-name>	
- ```	
-After creating the virtual environment we need to activate it.	
-
-```	
-source ./<venv-folder-name>/bin/activate	
-```	
-After activating the virtual environment we need to install the dependencies for the project, which can be done as follows.	
-```	
-pip install -r requirements.txt	
-```	
 #### Migrating the database for your local setup	
-In order to create all the tables and other structures in your project database, we should run a migration in the virtualenv local installation.	
+In order to create all the tables and other structures in your project database, we should run a migration in the virtualenv local installation.	For this the user should have a local instance of postgres on their machine, he should have configured the user, db and password in this instance and the values should be added to the .env file.
 
 ```	
 python manage.py migrate	
