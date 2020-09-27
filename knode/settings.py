@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'authentication',
     'feed',
     'ckeditor',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
@@ -120,8 +121,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'width': 'auto',
-    },
+
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
+TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
+TINYMCE_DEFAULT_CONFIG = {
+    'branding': False,
+    'plugins' : 'advlist autolink link image lists charmap print preview autosave',
+    'toolbar' : 'undo redo | styleselect | forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | code restoredraft'
 }

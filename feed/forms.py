@@ -1,11 +1,12 @@
 from django import forms
-from .models import Post,Comment
+from .models import Post
+from tinymce.widgets import TinyMCE
 
 class AddPostForm(forms.ModelForm):
+    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
     class Meta:
         model = Post
-        fields = ('title','description','content')
-
+        fields = ('title', 'content')
     def __init__(self, *args, **kwargs):
         super(AddPostForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
@@ -14,7 +15,7 @@ class AddPostForm(forms.ModelForm):
 
 class AddCommentForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = Post
         fields = ('content',)
 
     def __init__(self, *args, **kwargs):

@@ -8,8 +8,8 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 
-from .models import Post,Comment
-from .forms import AddPostForm,AddCommentForm
+from .models import Post
+from .forms import AddPostForm, AddCommentForm
 from .redirects import *
 
 # Create your views here.
@@ -22,8 +22,6 @@ def add_post(request, template_name= "feed/add_post.html"):
         if form.is_valid():
             title = form.cleaned_data.get('title')
             content = form.cleaned_data.get('content')
-            description = form.cleaned_data.get('description')
-            user = request.user
             # save post in feed or draft depending on the button present in request.POST
             if 'publish' in request.POST:
                 status = 1
@@ -34,7 +32,7 @@ def add_post(request, template_name= "feed/add_post.html"):
                 status = 0
                 messages.info(request, 'New Draft added successfully')
                 redirect_url = drafts_home
-            Post(title= title, content= content, description= description, author= user, status= status).save()
+            Post(title= title, content= content, author= request.user, status= status).save()
             return HttpResponseRedirect(redirect_url)
     template_data = {'form':form}
     return render(request, template_name, template_data)
@@ -50,7 +48,6 @@ def edit_post(request, post_slug, template_name= "feed/edit_post.html"):
         if form.is_valid():           
             post.title = form.cleaned_data.get('title')
             post.content = form.cleaned_data.get('content')
-            post.description = form.cleaned_data.get('description')
             if 'publish' in request.POST:
                 post.status = 1
                 messages.info(request, 'Post added to feed')
@@ -61,7 +58,7 @@ def edit_post(request, post_slug, template_name= "feed/edit_post.html"):
                 redirect_url = drafts_home
             post.save()
             return HttpResponseRedirect(redirect_url)
-    form = AddPostForm(initial= {'title':post.title, 'content':post.content, 'description':post.description })
+    form = AddPostForm(initial= {'title':post.title, 'content':post.content})
     template_data = {'form': form}
     return render(request, template_name, template_data)
 
@@ -69,15 +66,16 @@ def edit_post(request, post_slug, template_name= "feed/edit_post.html"):
 
 def view_post(request, post_slug, template_name= "feed/view_post.html"):
     # Makes a post visible if you are the owner or if the post status is set to published
-    display_comment_form = True
+    display_comment_form = False
     try:
         post = get_object_or_404(Post, Q(slug= post_slug) & (Q(author= request.user) | Q(status= 1)))
+        if post.comments_enabled:
+            display_comment_form = True
     except TypeError:
         # Condition of trying to access a post while not logged in
         # Comments are turned off since only logged in user can comment
         post = get_object_or_404(Post, Q(slug= post_slug) & Q(status= 1))
-        display_comment_form = False
-    comments = Comment.objects.filter(post= post)
+    comments = Post.objects.filter(parent = post)
     form = AddCommentForm()
     # Comments can only be added if the post is published
     display_comment_form = display_comment_form and (post.status==1)
@@ -86,7 +84,8 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
         if form.is_valid():
             content = form.cleaned_data.get('content')
             messages.info(request, 'Comment added for '+post.title)
-            Comment(author= request.user,content= content,post= post).save()
+            title = "Replied to '%s'" %(post.title)
+            Post(parent= post, title= title, content= content, author= request.user, status= 1, comments_enabled= False).save()
             return HttpResponseRedirect('/view/' + str(post_slug))
     # Options for modifying post is only visible to the author of the post
     modify_status = post.author==request.user
@@ -97,7 +96,7 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
 @login_required
 def delete_post(request, post_slug):
     """ Delete a post given the post_id """
-    post = get_object_or_404(Post, id= post_slug, author= request.user)
+    post = get_object_or_404(Post, slug= post_slug, author= request.user)
     post_status = post.status
     post.delete()
     # A different message is displayed if it is post or Draft and set redirect url
@@ -112,7 +111,7 @@ def delete_post(request, post_slug):
 
 def view_all(request, template_name= "feed/view_posts.html"):
     """ Print all the publicly visible posts """
-    posts = Post.objects.filter(status= 1)
+    posts = Post.objects.filter(status= 1, parent__isnull = True)
     if not posts.exists():
         messages.info(request, "No content to display")
     template_data = {'posts': posts}

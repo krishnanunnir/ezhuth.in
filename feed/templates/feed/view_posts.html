@@ -15,9 +15,6 @@
             <div class="col-md-8 col-md-offset-2">
                 <h2><a href="{% url 'feed:view_post' post.slug %}">{{ post.title }}</a></h2>
                 <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
-                <div class="description">
-                    <p> {{ post.description | safe }}</p><br><br>
-                </div>
             </div>
         </div>
     {% endfor %}

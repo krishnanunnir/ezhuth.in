@@ -59,7 +59,7 @@ $(window).scroll(function() {
         </li>
         {% if user.is_authenticated %}
         <li class="nav-li">
-            <a href="{% url 'feed:view_feed' %}">Feed</a>
+            <a href="{% url 'feed:view_feed' %}">Activity</a>
         </li>
         <li class="nav-li">
             <a href="{% url 'feed:add_post' %}">New Post</a>
