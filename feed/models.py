@@ -1,3 +1,4 @@
+import unidecode 
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -12,7 +13,7 @@ STATUS = (
 class Post(models.Model):
     parent = models.ForeignKey("Post", blank= True, null= True, on_delete=models.SET("[deleted]"))
     title = models.CharField(max_length= 255)
-    slug = models.SlugField(max_length= 255, unique= True)
+    slug = models.SlugField(max_length= 255, unique= True, allow_unicode=True)
     # If user is deleted the default value for author becomes "[deleted]"
     author = models.ForeignKey(User, on_delete= models.SET("[deleted]"), null= True)
     description = models.CharField(max_length= 510,default=  "No description provided")
@@ -31,7 +32,7 @@ class Post(models.Model):
         # creates a slug for the post on calling the save command
         now = datetime.now()
         self.created_on = now
-        self.slug = "%s_%s" %(slugify(self.title),now.strftime("%m_%d_%Y_%H_%M_%S"))
+        self.slug = "%s_%s" %(slugify(unidecode.unidecode(self.title)),now.strftime("%m_%d_%Y_%H_%M_%S"))
         super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
