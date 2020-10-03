@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title%} Feed{% endblock %}
+
+{% block headers %}
+<script src="{% static 'js/infinitescroll.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let bottomSentinel = document.querySelector("#sentinel");
+      let scrollElement = document.querySelector("#all_posts");
+      attachInfiniteScroll(bottomSentinel, scrollElement);
+    })
+  </script>
+{% endblock%}
 {% block content %}
 <link rel='stylesheet' href="{% static 'css/content.css' %}">
 <div class="container">
@@ -10,13 +21,17 @@
             {% include "message.html" %}
         </div>
     </div>
-    {% for post in posts %}
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h2><a href="{% url 'feed:view_post' post.slug %}">{{ post.title }}</a></h2>
-                <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
+    <div id="all_posts">
+        {% for post in posts %}
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2><a href="{% url 'feed:view_post' post.slug %}">{{ post.title }}</a></h2>
+                    <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
+
+<div id="sentinel"></div>
 {% endblock %}

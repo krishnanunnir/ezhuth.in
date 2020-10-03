@@ -6,11 +6,14 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
+from django.views.decorators.http import require_GET, require_POST
 from django.db.models import Q
 
 from .models import Post
 from .forms import AddPostForm, AddCommentForm
 from .redirects import *
+from .utils import is_ajax, paginate_posts
 
 # Create your views here.
 @login_required
@@ -108,30 +111,35 @@ def delete_post(request, post_slug):
         redirect_url = feed_home
     return HttpResponseRedirect(redirect_url)
 
-
+@require_GET
 def view_all(request, template_name= "feed/view_posts.html"):
     """ Print all the publicly visible posts """
-    posts = Post.objects.filter(status= 1, parent__isnull = True)
-    if not posts.exists():
-        messages.info(request, "No content to display")
+    all_posts = Post.objects.filter(status= 1, parent__isnull = True)
+    posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
+    if is_ajax(request):
+        return render(request, '__posts.html', template_data)
     return render(request, template_name, template_data)
 
 
 @login_required
+@require_GET
 def view_feed(request, template_name= "feed/view_posts.html"):
     """ Print the users feed """
-    posts = Post.objects.filter(status= 1, author= request.user)
-    if not posts.exists():
-        messages.info(request, "No content to display")
+    all_posts = Post.objects.filter(status= 1, author= request.user)
+    posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
+    if is_ajax(request):
+        return render(request, '__posts.html', template_data)
     return render(request, template_name, template_data)
 
+@require_GET
 @login_required
 def view_drafts(request, template_name= "feed/view_posts.html"):
     """ Renders all drafts """
-    posts = Post.objects.filter(status= 0, author= request.user)
-    if not posts.exists():
-        messages.info(request, "No content to display")
+    all_posts = Post.objects.filter(status= 0, author= request.user)
+    posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
+    if is_ajax(request):
+        return render(request, '__posts.html', template_data)
     return render(request, template_name, template_data)
