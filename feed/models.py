@@ -2,8 +2,6 @@ import unidecode
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
-from ckeditor.fields import RichTextField
-from tinymce.models import HTMLField
 from datetime import datetime
 # Defines the status as published or draft
 STATUS = (
@@ -18,7 +16,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete= models.SET("[deleted]"), null= True)
     description = models.CharField(max_length= 510,default=  "No description provided")
     # RichTextField() is the field for ckeditor
-    content = HTMLField()
+    content = models.TextField()
     status = models.IntegerField(choices= STATUS, default= 0)
     created_on = models.DateTimeField()
     updated_on = models.DateTimeField(auto_now= True)

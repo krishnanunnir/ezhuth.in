@@ -1,12 +1,11 @@
 from django import forms
 from .models import Post
-from tinymce.widgets import TinyMCE
 
 class AddPostForm(forms.ModelForm):
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
     class Meta:
         model = Post
         fields = ('title', 'content')
+        widgets = {'content': forms.HiddenInput()}
     def __init__(self, *args, **kwargs):
         super(AddPostForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():

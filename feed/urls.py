@@ -10,5 +10,4 @@ urlpatterns = [
     path('edit/<slug:post_slug>', views.edit_post, name= 'edit_post'),
     path('delete/<slug:post_slug>', views.delete_post, name= 'delete_post'),
     path('drafts/',views.view_drafts, name= 'view_drafts'),
-    path('tinymce/', include('tinymce.urls')),
 ]

@@ -22,7 +22,7 @@ DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql_psycopg2",
         'NAME': os.getenv('DATABASE_NAME','knode'),
-        'USER': os.getenv('DATABASE_USER','krishnanunni'),
+        'USER': os.getenv('DATABASE_USER','postgres'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD',''),
         'HOST': os.getenv('DATABASE_HOST','localhost'),
         'PORT': os.getenv('DATABASE_PORT','5432'),
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'feed',
-    'tinymce'
 ]
 
 MIDDLEWARE = [
@@ -119,12 +118,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
-
-
-TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/tinymce.min.js")
-TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
-TINYMCE_DEFAULT_CONFIG = {
-    'branding': False,
-    'plugins' : 'advlist autolink link image lists charmap print preview autosave',
-    'toolbar' : 'undo redo | styleselect | forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | code restoredraft'
-}
