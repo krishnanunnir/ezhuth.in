@@ -7,30 +7,24 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
       let bottomSentinel = document.querySelector("#sentinel");
-      let scrollElement = document.querySelector("#all_posts");
+      let scrollElement = document.querySelector("#posts");
       attachInfiniteScroll(bottomSentinel, scrollElement);
     })
   </script>
+<link rel='stylesheet' href="{% static 'css/post.css' %}">
 {% endblock%}
 {% block content %}
-<link rel='stylesheet' href="{% static 'css/content.css' %}">
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            {% comment %} Prints any message passed to template {% endcomment %}
-            {% include "message.html" %}
-        </div>
+
+<div id="posts">
+    {% for post in posts %}
+    <div class="post">
+        <div class="post-byline">Posted by {{ post.author |default_if_none:"[deleted]" }} on {{ post.created_on }}</div>
+        <div class="post-title">{{ post.title }}</div>
+        <!-- <div class="post-content">This is the content.This is the contentThis is the contentThis is the contentThis is the contentThis is the contentThis is the content</div> -->
+        <hr class="inner-separator">
+        <span class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></span>
     </div>
-    <div id="all_posts">
-        {% for post in posts %}
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2><a href="{% url 'feed:view_post' post.slug %}">{{ post.title }}</a></h2>
-                    <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
 </div>
 
 <div id="sentinel"></div>

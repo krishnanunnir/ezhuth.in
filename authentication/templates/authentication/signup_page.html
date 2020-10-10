@@ -3,47 +3,18 @@
 {% block title %} Signup {% endblock %}
 {% block content %}
 <link rel='stylesheet' href="{% static 'css/auth.css' %}">
-
-<div class="login">
-  <h1>Sign Up for Web App</h1>
+<div id="auth">
   <form method="post" action="">
-    {% include "formerrors.html" %}
     {% csrf_token %}
-    <div class="fieldWrapper">
-        {{ form.username }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.password }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.confirm_password }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.email }}
-    </div>
-    
-    <p class="remember_me">
-      <label>
-      Trying to <a href="{% url 'authentication:render_login_page' %}">login?</a>
-      </label>
-    </p>
-    <p class="submit"><input type="submit" name="commit" value="Signup"></p>
+    {{ form.username }}
+    {{ form.password }}
+    {{ form.confirm_password }}
+    {{ form.email }}
+      <button id="action" type="submit">Sign up</button>
+      <hr class="inner-separator">
+      <span id="forgotpsw"><a href="{% url 'authentication:render_login_page' %}">Trying to signin?</a></span>
+      
   </form>
 </div>
-
-  {% comment %} <div class="container">
-    <div class="jumbotron">
-      {% if registered %}
-        <h1>Thank you for registering!</h1>
-      {% else %}
-        <h1>Register Here</h1>
-        <h3>Just fill out the form.</h3>
-        <form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit" name="" value="Register">
-        </form>
-      {% endif %}
-    </div>
-  </div> {% endcomment %}
+</div>
 {% endblock %}

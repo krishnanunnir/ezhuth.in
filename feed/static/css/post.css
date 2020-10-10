@@ -1,0 +1,64 @@
+#posts{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post{
+    background-color: white;
+    width: 50%; /* Can be in percentage also. */
+    height: auto;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
+    border: 1px solid #efefef;
+    border-radius: 6px;
+    margin-top:20px;
+    box-shadow: 1px 1px grey;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.post-title{
+    font-size: 24px;
+    line-height: 36px;
+}
+
+ .post-byline{
+    line-height: 32px;
+    color: grey;
+    font-size: 15px;
+}
+.post-content{
+    font-size: 17px;
+    margin-top:10px;
+    color: grey;
+}
+
+.read-more{
+    display: inline-block;
+    position: relative;
+    padding:10px;
+    margin-top: 10px;
+    border: 1px solid grey;
+    border-radius: 3px;
+}
+
+.read-more a{
+    text-decoration: none;
+    float: right;
+    color: grey;
+}
+
+body{
+    background-color: #e5ded8;
+}
+.inner-separator{
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: grey; /* old IE */
+    background-color: grey; /* Modern Browsers */
+    margin-top: 20px;
+}

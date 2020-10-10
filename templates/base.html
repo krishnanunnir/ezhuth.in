@@ -7,7 +7,9 @@
         {% endblock %}
     </head>
     <body>
-        {% include "nav.html" %}
+        {% if user.is_authenticated %}
+            {% include "nav.html" %}
+        {% endif %}
         {% block content %}
         {% endblock %}
     </body>

@@ -3,36 +3,18 @@
 {% block title%} Login{% endblock %}
 {% block content %}
 <link rel='stylesheet' href="{% static 'css/auth.css' %}">
-<div class="login">
-  <h1>Login to Web App</h1>
-  <form method="post" action="{% url 'authentication:render_login_page' %}">
-    {% include "message.html" %}
-    {% csrf_token %}
-    <div class="fieldWrapper">
+<div id="auth">
+  <div id="form-signin">
+      <form method="post" action="{% url 'authentication:render_login_page' %}">
+        {% csrf_token %}
         {{ loginform.username }}
-    </div>
-    <div class="fieldWrapper">
         {{ loginform.password }}
-    </div>
-    <p class="remember_me">
-      <label>
-        Trying to <a href="{% url 'authentication:render_signup_page' %}">signup?</a>
-      </label>
-    </p>
-    <p class="submit"><input type="submit" name="commit" value="Login"></p>
-  </form>
+          <button id="action" type="submit">Sign In</button>
+          <hr class="inner-separator">
+          <span id="forgotpsw"><a href="#">Forgot password?</a></span>
+          <span id="forgotpsw"><a href="{% url 'authentication:render_signup_page' %}">Trying to signup?</a></span>
+      </form>
+  </div>
 </div>
-    {% comment %} <div class="container">
-        <div class="jumbotron">
-        {% include "message.html" %}
-            <h1>Login here :</h1>
-            <form method="post" action="{% url 'authentication:render_login_page' %}">
-                {% csrf_token %}
-                {# A more "HTML" way of creating the login form#}
-                {{ loginform.as_p }}
-                <input type="submit" name="" value="Login">
-            </form>
-            <h4>Are you trying to sign up? Click <a href="{% url 'authentication:render_signup_page' %}">here</a></h1>
-        </div>
-    </div> {% endcomment %}
+
 {% endblock %}
