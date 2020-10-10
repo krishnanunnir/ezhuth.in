@@ -25,6 +25,7 @@ def add_post(request, template_name= "feed/add_post.html"):
         if form.is_valid():
             title = form.cleaned_data.get('title')
             content = form.cleaned_data.get('content')
+            description = form.cleaned_data.get('description')
             # save post in feed or draft depending on the button present in request.POST
             if 'publish' in request.POST:
                 status = 1
@@ -35,7 +36,7 @@ def add_post(request, template_name= "feed/add_post.html"):
                 status = 0
                 messages.info(request, 'New Draft added successfully')
                 redirect_url = drafts_home
-            Post(title= title, content= content, author= request.user, status= status).save()
+            Post(title= title, content= content,description = description, author= request.user, status= status).save()
             return HttpResponseRedirect(redirect_url)
     template_data = {'form':form}
     return render(request, template_name, template_data)
