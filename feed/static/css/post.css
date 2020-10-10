@@ -57,8 +57,8 @@ body{
 .inner-separator{
     border: none;
     height: 1px;
-    /* Set the hr color */
-    color: grey; /* old IE */
-    background-color: grey; /* Modern Browsers */
+    color: grey; 
+    background-color: grey;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
