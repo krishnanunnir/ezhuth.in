@@ -15,6 +15,7 @@
     position: relative;
     border: 1px solid #efefef;
     border-radius: 6px;
+    overflow: auto;
     margin-top:20px;
     box-shadow: 1px 1px grey;
     font-family:Arial, Helvetica, sans-serif;

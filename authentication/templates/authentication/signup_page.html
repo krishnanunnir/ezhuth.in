@@ -4,17 +4,17 @@
 {% block content %}
 <link rel='stylesheet' href="{% static 'css/auth.css' %}">
 <div id="auth">
-  <form method="post" action="">
-    {% csrf_token %}
-    {{ form.username }}
-    {{ form.password }}
-    {{ form.confirm_password }}
-    {{ form.email }}
+  <div id="form-signup">
+    <form method="post" action="">
+      {% csrf_token %}
+      {{ form.username }}
+      {{ form.password }}
+      {{ form.confirm_password }}
+      {{ form.email }}
       <button id="action" type="submit">Sign up</button>
       <hr class="inner-separator">
       <span id="forgotpsw"><a href="{% url 'authentication:render_login_page' %}">Trying to signin?</a></span>
-      
-  </form>
-</div>
+    </form>
+  </div>
 </div>
 {% endblock %}
