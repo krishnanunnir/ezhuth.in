@@ -51,6 +51,7 @@ def edit_post(request, post_slug, template_name= "feed/edit_post.html"):
         form = AddPostForm(request.POST)
         if form.is_valid():           
             post.title = form.cleaned_data.get('title')
+            post.description = form.cleaned_data.get('description')
             post.content = form.cleaned_data.get('content')
             if 'publish' in request.POST:
                 post.status = 1
@@ -62,7 +63,7 @@ def edit_post(request, post_slug, template_name= "feed/edit_post.html"):
                 redirect_url = drafts_home
             post.save()
             return HttpResponseRedirect(redirect_url)
-    form = AddPostForm(initial= {'title':post.title, 'content':post.content})
+    form = AddPostForm(initial= {'title':post.title,'description':post.description, 'content':post.content})
     template_data = {'form': form}
     return render(request, template_name, template_data)
 
