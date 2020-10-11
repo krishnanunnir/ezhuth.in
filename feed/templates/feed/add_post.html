@@ -16,37 +16,20 @@
         });
     </script>
 {% endblock%}
+
 {% block content %}
-<div class="container">
-    <form action="" method="POST">
-        {% csrf_token %}
-        {% comment %} form.media needs to be loaded for the ckeditor dependency used {% endcomment %}
-        {{ form.media }}
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                {{ form.title }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                {{ form.description }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                {{ form.content }}
-                <trix-editor id="editor" input="id_content"></trix-editor>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-2">
-                <button type="submit" name="save" class="form-control btn btn-default">Save</button>
-            </div>
-            <div class="col-md-4">
-                <button type="submit" name="publish" class="form-control btn btn-default">Publish</button>
-            </div>
-        </div>
-    </form>
+
+<div id="postform-wrapper">
+    <div id="postform">
+        <form action="{% url 'feed:add_post' %}" method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.title }}
+            {{ form.description }}
+            {{ form.content }}
+            <trix-editor id="editor" input="id_content"></trix-editor>
+            <button type="submit" id="publish-button" name="publish">Publish</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

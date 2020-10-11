@@ -1,9 +1,68 @@
-
 #id_title{
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
     border: none;
-    font-size: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    /* border-bottom: 1px solid black; */
+    box-sizing: border-box;
+    font-size: 30px;
+}
+
+#id_description{
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: grey;
+}
+
+input:focus{
+    outline: none;
+}
+body {
+    background-color: #e5ded8;
+}
+
+#postform-wrapper{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 1px 1px grey;
+    overflow: auto;
+    height: 90vh;
+}
+
+#postform{
+    padding: 10px;
+}
+#publish-button{
+
+    display: inline-block;
+    background-color: white;
+    color: grey;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid gray;
+    cursor: pointer;
+    width: 90%;
+}
+
+#editor{
+    margin: 0 auto;
+    max-height: 800px;
+    text-align: left;
+    width: 90%;
+    height: 550px;
+    overflow-y: auto;
+    max-height: 700px;
+}
+trix-toolbar {
+    margin: 0 auto;
+    width: 90%;
 }
