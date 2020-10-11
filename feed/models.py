@@ -14,7 +14,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length= 500, unique= True, allow_unicode=True)
     # If user is deleted the default value for author becomes "[deleted]"
     author = models.ForeignKey(User, on_delete= models.SET("[deleted]"), null= True)
-    description = models.CharField(max_length= 510,required= True)
+    description = models.CharField(max_length= 510)
     # RichTextField() is the field for ckeditor
     content = models.TextField()
     status = models.IntegerField(choices= STATUS, default= 0)
