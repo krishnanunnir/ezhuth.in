@@ -63,3 +63,9 @@ body{
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
+#sentinel{
+    /* There is a bug in firefox, mac where the intersection api doesn't work properly for elements with 0 height. So setting it to 1 */
+    /* https://bugzilla.mozilla.org/show_bug.cgi?id=1492155 */
+    height: 1px;
+}
