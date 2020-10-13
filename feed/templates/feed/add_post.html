@@ -21,7 +21,7 @@
 
 <div id="postform-wrapper">
     <div id="postform">
-        <form action="{% url 'feed:add_post' %}" method="POST" autocomplete="off">
+        <form action="" method="POST" autocomplete="off">
             {% csrf_token %}
             {{ form.media }}
             {{ form.title }}

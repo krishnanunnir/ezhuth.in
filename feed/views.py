@@ -43,7 +43,7 @@ def add_post(request, template_name= "feed/add_post.html"):
 
 
 @login_required
-def edit_post(request, post_slug, template_name= "feed/edit_post.html"):
+def edit_post(request, post_slug, template_name= "feed/add_post.html"):
     """ Edit already saved posts or drafts """
     post = get_object_or_404(Post, slug= post_slug, author= request.user)
     if request.method == 'POST':
