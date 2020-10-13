@@ -1,0 +1,66 @@
+#title-text{
+    text-align: left;
+    width: 90%;
+    display: block;
+    border: none;
+    /* border-bottom: 1px solid black; */
+    box-sizing: border-box;
+    font-size: 30px;
+}
+
+#operations{
+    display: inline;
+    border:  1px solid gray;
+    padding: 6px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+#operations a{
+    color: grey;
+    text-decoration: none;
+}
+#parent-line{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#title-description{
+    text-align: left;
+    width: 90%;
+    margin: 8px 0;
+    display: block;
+    border: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: grey;
+    margin-bottom: 20px;
+}
+.post-byline{
+    display: inline;
+    text-align: left;
+    color: grey;
+    font-size: 15px;
+
+}
+
+
+#post-content{
+    text-align: left;
+    color: black;
+    font-size: 18px;
+}
+body {
+    background-color: #e5ded8;
+}
+
+#postform-wrapper{
+    padding: 30px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 1px 1px grey;
+    overflow: auto;
+}

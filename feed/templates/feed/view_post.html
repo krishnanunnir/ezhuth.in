@@ -1,28 +1,26 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title%} View Post{% endblock %}
+{% block title%} {{ post.title }}{% endblock %}
+{% block headers %}
+    <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
+{% endblock %}
 {% block content %}
-<link rel='stylesheet' href="{% static 'css/content.css' %}">
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            {% include "message.html" %}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h2 class="content-title">{{ post.title }} </h2>
-            <h5>--{{ post.author |default_if_none:"[deleted]" }} | {{ post.created_on }}</h5>
-            {% comment %} Displays edit and delete options if you are the owner {% endcomment %}
-            {% if modify_status %}
-            <a href="{% url 'feed:edit_post' post.slug %}">Edit</a>
-            <a href="{% url 'feed:delete_post' post.slug %}">Delete</a><br><br>
-            {% endif %}
-            <div class="content">
-                <p> {{ post.content | safe }}</p><br><br>
+<div id="postform-wrapper">
+    <div id="postform">
+        <form>
+            <div id="parent-line">
+                <div class="post-byline">Posted by {{ post.author |default_if_none:"[deleted]" }} on {{ post.created_on }}</div>
+                <div id="parent-operations">
+                    <div id="operations"><a href="{% url 'feed:edit_post' post.slug %}" onclick="return confirm('Are you sure you want to edit this item?');">Edit</a></div>
+                    <div id="operations"><a href="{% url 'feed:delete_post' post.slug %}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></div>
+                </div>
             </div>
-        </div>
+            <span id="title-text">{{ post.title }}</span>
+            <span id="title-description">{{ post.description }}</span>
+            <div id="post-content">
+                {{ post.content | safe }}
+            </div>
+        </form>
     </div>
-    {% include "feed/comments.html" %}
 </div>
 {% endblock %}
