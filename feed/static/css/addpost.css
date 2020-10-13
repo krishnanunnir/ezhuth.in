@@ -1,8 +1,6 @@
 #id_title{
     width: 90%;
-    padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: none;
     /* border-bottom: 1px solid black; */
     box-sizing: border-box;
@@ -11,13 +9,12 @@
 
 #id_description{
     width: 90%;
-    padding: 12px 20px;
-    margin: 8px 0;
     display: inline-block;
     border: none;
     box-sizing: border-box;
     font-size: 16px;
     color: grey;
+    margin-bottom: 20px;
 }
 
 input:focus{
@@ -37,10 +34,6 @@ body {
     overflow: auto;
     height: 90vh;
 }
-
-#postform{
-    padding: 10px;
-}
 #publish-button{
 
     display: inline-block;
@@ -55,7 +48,6 @@ body {
 
 #editor{
     margin: 0 auto;
-    max-height: 800px;
     text-align: left;
     width: 90%;
     height: 550px;
