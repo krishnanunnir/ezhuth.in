@@ -29,7 +29,6 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         # creates a slug for the post on calling the save command
         now = datetime.now()
-        self.created_on = now
         self.slug = "%s_%s" %(slugify(unidecode.unidecode(self.title)),now.strftime("%m_%d_%Y_%H_%M_%S"))
         super(Post, self).save(*args, **kwargs)
 
