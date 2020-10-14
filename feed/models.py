@@ -18,7 +18,7 @@ class Post(models.Model):
     # RichTextField() is the field for ckeditor
     content = models.TextField()
     status = models.IntegerField(choices= STATUS, default= 0)
-    created_on = models.DateTimeField()
+    created_on = models.DateTimeField(auto_now= True)
     updated_on = models.DateTimeField(auto_now= True)
     comments_enabled = models.BooleanField(default=True)
 
