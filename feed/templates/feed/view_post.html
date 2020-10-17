@@ -7,22 +7,33 @@
 {% block content %}
 <div id="postform-wrapper">
     <div id="postform">
-        <form>
-            <div id="parent-line">
-                <div class="post-byline">Posted by {{ post.author |default_if_none:"[deleted]" }} on {{ post.created_on }}</div>
-                {% if modify_status %}
-                    <div id="parent-operations">
-                        <div id="operations"><a href="{% url 'feed:edit_post' post.slug %}" onclick="return confirm('Are you sure you want to edit this item?');">Edit</a></div>
-                        <div id="operations"><a href="{% url 'feed:delete_post' post.slug %}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></div>
-                    </div>
-                {% endif %}
-            </div>
-            <span id="title-text">{{ post.title }}</span>
-            <span id="title-description">{{ post.description }}</span>
-            <div id="post-content">
-                {{ post.content | safe }}
-            </div>
-        </form>
+        <div id="parent-line">
+            <div class="post-byline">Posted by {{ post.author |default_if_none:"[deleted]" }} on {{ post.created_on }}</div>
+            {% if modify_status %}
+                <div id="parent-operations">
+                    <div id="operations"><a href="{% url 'feed:edit_post' post.slug %}" onclick="return confirm('Are you sure you want to edit this item?');">Edit</a></div>
+                    <div id="operations"><a href="{% url 'feed:delete_post' post.slug %}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></div>
+                </div>
+            {% endif %}
+        </div>
+        <span id="title-text">{{ post.title }}</span>
+        <span id="title-description">{{ post.description }}</span>
+        <div id="post-content">
+            {{ post.content | safe }}
+        </div>
     </div>
+    {% if display_comment_form %}
+        <div id="comment-editor">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.media }}
+                {{form.content}}
+                <input type="submit" value="Add Comment" id="submit-comment">
+            </form>
+        </div>
+    {% endif %}
 </div>
+
+{% include "feed/comments.html" %}
+
 {% endblock %}

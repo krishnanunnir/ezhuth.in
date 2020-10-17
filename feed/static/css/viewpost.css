@@ -61,6 +61,43 @@ body {
     margin: 0 auto;
     background-color: white;
     border-radius: 4px;
-    box-shadow: 1px 1px grey;
     overflow: auto;
+}
+#comment-editor{
+    margin-top: 30px;
+}
+
+#id_content{
+    width: 100%;
+    border: solid 1px grey;
+    border-radius: 3px;
+}
+
+#submit-comment{
+    font-family: "helvetica","Times New Roman", Times, serif;
+    background-color: white;
+    color: grey;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid gray;
+    float: right;
+}
+.comment{
+    padding: 30px;
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+    overflow: auto;
+    background-color: white;
+    margin-top:10px;
+    border-radius: 4px;
+    box-shadow: 1px 1px grey;
+}
+.comment-byline{
+    color: grey;
+    font-size: 15px;
+}
+.comment-content{
+    font-size: 17px;
+    margin-top:15px;
 }

@@ -1,30 +1,10 @@
 
-    <div class="col-md-8 col-md-offset-2">    
-        <hr>
-    </div>
+
+<div id="comments">
     {% for comment in comments %}
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 comment">
-            <span class="comment-author">
-                {{ comment.author }}
-            </span>
-            <br><br>
-            <span class="comment-content">
-                {{ comment.content | safe }} 
-            </span>
-            <hr>
-            </div>
-        </div>
-    {% endfor %}
-    <br>
-    {% comment %} Displays comment only if the status for the post is published {% endcomment %}
-    {% if display_comment_form %}
-    <div class="col-md-8 col-md-offset-2">
-        <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.media }}
-        {{form.content}}
-        <input type="submit" value="Add Comment" class="form-control submit-comment">
+    <div class="comment">
+        <div class="comment-byline">Posted by {{ comment.author |default_if_none:"[deleted]" }} on {{ comment.created_on }}</div>
+        <div class="comment-content">{{ comment.content | linebreaks }}</div>
     </div>
-    {% endif %}
+    {% endfor %}
 </div>
