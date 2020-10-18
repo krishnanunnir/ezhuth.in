@@ -2,12 +2,10 @@ from django import forms
 from django.contrib.auth.models import User
 
 
-class LoginForm(forms.ModelForm):
+class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    class Meta:
-        model = User
-        fields = ('username','password')
+    fields = ('username','password')
 
 class SignupForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
