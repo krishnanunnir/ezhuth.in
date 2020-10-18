@@ -13,17 +13,19 @@ def render_login_page(request, template_name= "authentication/login_page.html"):
     # If user is already logged in then redirect to another html
     if request.user.is_authenticated:
         return HttpResponseRedirect(login_success)
+    form = LoginForm()
     if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username= username, password= password)
-        if user:
-            login(request, user)
-            return HttpResponseRedirect(login_success)
-        else:
-            messages.info(request, 'Invalid username or password')
-    loginform = LoginForm()
-    template_data = {'loginform': loginform}
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username= username, password= password)
+            if user:
+                login(request, user)
+                return HttpResponseRedirect(login_success)
+            else:
+                messages.error(request, 'Invalid username or password')
+    template_data = {'form': form}
     return render(request, template_name, template_data)
 
 def render_signup_page(request, template_name= "authentication/signup_page.html"):
