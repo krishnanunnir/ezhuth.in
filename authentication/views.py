@@ -39,7 +39,7 @@ def render_signup_page(request, template_name= "authentication/signup_page.html"
             user = form.save()
             user.set_password(user.password)
             user.save()
-            messages.info(request, 'Account created successfully');
+            # messages.info(request, 'Account created successfully');
             return HttpResponseRedirect(signup_success)
     # case for error occurence or get request to the page
     template_data = {'form': form}
@@ -48,7 +48,7 @@ def render_signup_page(request, template_name= "authentication/signup_page.html"
 @login_required
 def logout_user(request):
     """ User requests logout """
-    messages.info(request, 'Logged out successfully')
+    # messages.info(request, 'Logged out successfully')
     logout(request)
     return HttpResponseRedirect(logout_success)
 

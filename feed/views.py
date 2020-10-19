@@ -29,12 +29,12 @@ def add_post(request, template_name= "feed/add_post.html"):
             # save post in feed or draft depending on the button present in request.POST
             if 'publish' in request.POST:
                 status = 1
-                messages.info(request, 'New Post added successfully')
+                # messages.info(request, 'New Post added successfully')
                 # setting redirect_url to feed page or draft page
                 redirect_url = feed_home
             else:
                 status = 0
-                messages.info(request, 'New Draft added successfully')
+                # messages.info(request, 'New Draft added successfully')
                 redirect_url = drafts_home
             Post(title= title, content= content,description = description, author= request.user, status= status).save()
             return HttpResponseRedirect(redirect_url)
@@ -55,11 +55,11 @@ def edit_post(request, post_slug, template_name= "feed/add_post.html"):
             post.content = form.cleaned_data.get('content')
             if 'publish' in request.POST:
                 post.status = 1
-                messages.info(request, 'Post added to feed')
+                # messages.info(request, 'Post added to feed')
                 redirect_url = feed_home
             else:
                 post.status = 0
-                messages.info(request, 'Post updated in Drafts')
+                # messages.info(request, 'Post updated in Drafts')
                 redirect_url = drafts_home
             post.save()
             return HttpResponseRedirect(redirect_url)
@@ -88,7 +88,7 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
         form = AddCommentForm(request.POST)
         if form.is_valid():
             content = form.cleaned_data.get('content')
-            messages.info(request, 'Comment added for '+post.title)
+            # messages.info(request, 'Comment added for '+post.title)
             title = "Replied to '%s'" %(post.title)
             Post(parent= post, title= title, content= content, author= request.user, status= 1, comments_enabled= False).save()
             return HttpResponseRedirect('/view/' + str(post_slug))
@@ -106,10 +106,10 @@ def delete_post(request, post_slug):
     post.delete()
     # A different message is displayed if it is post or Draft and set redirect url
     if post_status == 0:
-        messages.info(request, 'Draft deleted successfully')
+        # messages.info(request, 'Draft deleted successfully')
         redirect_url = drafts_home
     else:
-        messages.info(request, 'Post deleted successfully')
+        # messages.info(request, 'Post deleted successfully')
         redirect_url = feed_home
     return HttpResponseRedirect(redirect_url)
 
