@@ -4,6 +4,10 @@
 {% block content %}
 <link rel='stylesheet' href="{% static 'css/auth.css' %}">
 <div id="auth">
+  <div id="errors">
+    {% include "formerrors.html" %}
+    {% include "message.html" %}
+  </div>
   <div id="form-signup">
     <form method="post" action="">
       {% csrf_token %}

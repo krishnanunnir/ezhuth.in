@@ -23,6 +23,4 @@ class SignupForm(forms.ModelForm):
 
         # Define an error if password and confirm password are not the same
         if password != confirm_password:
-            raise forms.ValidationError(
-                "password and confirm_password does not match"
-            )
+            self.add_error('confirm_password', "Passwords do not match")

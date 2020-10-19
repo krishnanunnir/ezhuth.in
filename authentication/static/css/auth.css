@@ -46,6 +46,7 @@ input[type=password] {
 }
 
 #form-signin {
+  margin-top: 10px;
   padding: 20px;
 }
 #form-signup {
@@ -68,4 +69,10 @@ input[type=password] {
 
 .showFields {
   visibility: visible;
+}
+#errors{
+  padding: 10px;
+}
+#alert-error{
+  color: red;
 }
