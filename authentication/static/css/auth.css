@@ -14,7 +14,6 @@ body {
 @media screen and (min-width: 1300px) { 
   #auth {
     width: 30%;
-    color: yellow;
   }
 }
 
