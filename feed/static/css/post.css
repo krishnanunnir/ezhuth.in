@@ -27,10 +27,14 @@
 }
 
  .post-byline{
-    line-height: 32px;
     color: grey;
     font-size: 15px;
 }
+
+.post-byline a{
+    text-decoration: none;
+}
+
 .post-content{
     font-size: 17px;
     margin-top:10px;
