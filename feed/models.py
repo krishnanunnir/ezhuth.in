@@ -12,7 +12,7 @@ STATUS = (
     (1, 'Publish')
 )
 class Post(models.Model):
-    parent = models.ForeignKey("Post", blank= True, null= True, on_delete=models.SET("[deleted]"))
+    parent = models.ForeignKey("Post", blank= True, null= True, on_delete=models.CASCADE)
     title = models.CharField(max_length= 200)
     slug = models.SlugField(max_length= 500, unique= True, allow_unicode=True)
     # If user is deleted the default value for author becomes "[deleted]"
