@@ -4,6 +4,7 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
@@ -14,6 +15,7 @@ from .models import Post
 from .forms import AddPostForm, AddCommentForm
 from .redirects import *
 from .utils import is_ajax, paginate_posts
+
 
 # Create your views here.
 @login_required
@@ -130,7 +132,7 @@ def view_feed(request, template_name= "feed/view_posts.html"):
     """ Print the users feed """
     all_posts = Post.objects.filter(status= 1, author= request.user)
     posts = paginate_posts(request, all_posts, 10)
-    template_data = {'posts': posts}
+    template_data = {'posts': posts,'show_current_user': True} 
     if is_ajax(request):
         return render(request, '__posts.html', template_data)
     return render(request, template_name, template_data)
@@ -142,6 +144,16 @@ def view_drafts(request, template_name= "feed/view_posts.html"):
     all_posts = Post.objects.filter(status= 0, author= request.user)
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
+    if is_ajax(request):
+        return render(request, '__posts.html', template_data)
+    return render(request, template_name, template_data)
+
+def view_user(request, username, template_name= "feed/view_posts.html"):
+    """ Print the users feed """
+    user = get_object_or_404(User, username= username)
+    all_posts = Post.objects.filter(status= 1, author= user, parent__isnull = True)
+    posts = paginate_posts(request, all_posts, 10)
+    template_data = {'posts': posts,'show_current_user': True} 
     if is_ajax(request):
         return render(request, '__posts.html', template_data)
     return render(request, template_name, template_data)
