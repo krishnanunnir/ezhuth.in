@@ -12,8 +12,16 @@
     })
   </script>
 <link rel='stylesheet' href="{% static 'css/post.css' %}">
+<link rel='stylesheet' href="{% static 'css/profile.css' %}">
 {% endblock%}
 {% block content %}
+{% if show_current_user or False %}
+  <div id="user-details">
+    <div id="username">{{ user.username}}</div>
+    <hr class="inner-separator">
+    <div id="bio">I write blogs, probably, bio is not supported now.</div>
+  </div>
+{% endif %}
 
 <div id="posts">
     {% for post in posts %}
