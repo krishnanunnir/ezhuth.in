@@ -153,7 +153,7 @@ def view_user(request, username, template_name= "feed/view_posts.html"):
     user = get_object_or_404(User, username= username)
     all_posts = Post.objects.filter(status= 1, author= user, parent__isnull = True)
     posts = paginate_posts(request, all_posts, 10)
-    template_data = {'posts': posts,'show_current_user': True} 
+    template_data = {'posts': posts,'user': user, 'show_current_user': True} 
     if is_ajax(request):
         return render(request, '__posts.html', template_data)
     return render(request, template_name, template_data)
