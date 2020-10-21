@@ -5,7 +5,7 @@
 
 .post{
     background-color: white;
-    width: 50%; /* Can be in percentage also. */
+    width: 65%; /* Can be in percentage also. */
     height: auto;
     margin: 0 auto;
     padding-top: 20px;
@@ -20,6 +20,13 @@
     box-shadow: 1px 1px grey;
     font-family:Arial, Helvetica, sans-serif;
 }
+
+@media screen and (min-width: 1300px) { 
+    .post{
+        width: 50%; /* Can be in percentage also. */
+    }
+  }
+  
 
 .post-title{
     font-size: 24px;
