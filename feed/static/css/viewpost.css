@@ -44,6 +44,14 @@
 
 }
 
+.post-byline a{
+    text-decoration: none;
+    color: grey;
+}
+.post-byline a:visited{
+    text-decoration: none;
+    color: grey;
+}
 
 #post-content{
     text-align: left;

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title%} {{ post.title }}{% endblock %}
+{% load relative_time %}
 {% block headers %}
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
 {% endblock %}
