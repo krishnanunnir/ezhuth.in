@@ -1,6 +1,6 @@
 {% for post in posts %}
 <div class="post">
-    <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a> on {{ post.created_on }}</div>
+    <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
     <div class="post-title">{{ post.title }}</div>
     <div class="post-content">{{ post.description }}</div>
     <hr class="inner-separator">

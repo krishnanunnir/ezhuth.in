@@ -8,7 +8,7 @@
 <div id="postform-wrapper">
     <div id="postform">
         <div id="parent-line">
-            <div class="post-byline">Posted by {{ post.author |default_if_none:"[deleted]" }} on {{ post.created_on }}</div>
+            <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
             {% if modify_status %}
                 <div id="parent-operations">
                     <div id="operations"><a href="{% url 'feed:edit_post' post.slug %}" onclick="return confirm('Are you sure you want to edit this item?');">Edit</a></div>
