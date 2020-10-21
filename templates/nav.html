@@ -7,6 +7,7 @@
 .navlink{
     display: inline;
     list-style-type: none;
+    
 }
 
 .navlink > a {
@@ -35,25 +36,50 @@
 #nav{
     margin: 0px;
 }
-
+#all-nav-links{
+    display: flex;
+    justify-content: space-between;
+}
 
 </style>
 
 <div id="nav">
 
     <ul id="navlist">
-        <li class="navlink">
-            <a href="{% url 'feed:view_all' %}">Home</a>
-        </li>
-        
-        <li class="navlink">
-            <a href="{% url 'feed:view_feed' %}">Activity</a>
-        </li>
-        <li class="navlink" style="float:right">
-            <a href="{% url 'authentication:logout_user' %}">Logout</a>
-        </li>
-        <li class="navlink" style="float:right">
-            <a href="{% url 'feed:add_post' %}">Create</a>
-        </li>
+        <div id="all-nav-links">
+            {% if user.is_authenticated %}
+            <div id="left">
+                <li class="navlink">
+                    <a href="{% url 'feed:view_all' %}">Home</a>
+                </li>
+                
+                <li class="navlink">
+                    <a href="{% url 'feed:view_feed' %}">Activity</a>
+                </li>
+            </div>
+            <div id="right">
+                <li class="navlink">
+                    <a href="{% url 'feed:add_post' %}">Create</a>
+                </li>
+                <li class="navlink">
+                    <a href="{% url 'authentication:logout_user' %}">Logout</a>
+                </li>
+            </div>
+            {% else %}
+                <div id="left">
+                    <li class="navlink">
+                        <a href="{% url 'feed:view_all' %}">Home</a>
+                    </li>
+                </div>
+                    <div id="right">
+                        <li class="navlink" >
+                        <a href="{% url 'authentication:render_login_page' %}">SignIn</a>
+                    </li>
+                    <li class="navlink" >
+                        <a href="{% url 'authentication:render_signup_page' %}">Signup</a>
+                    </li>
+                </div>
+            {% endif %}
+        </div>
     </ul>
 </div>
