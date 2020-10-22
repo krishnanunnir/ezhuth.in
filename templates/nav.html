@@ -3,19 +3,37 @@
     padding: 0px;
     margin: 0px;
 }
-
+}
 .navlink{
     display: inline;
     list-style-type: none;
-    
+    text-align: left;
+}
+.hide-md a
+{
+    display: none;
+}
+.responsive a
+{
+    display: block;
+}
+#home{
+    text-align: left;
+    display: inline;
+}
+/* #icon{
+    display: inline;
+} */
+#mobile-navbar{
+    display: flex;
+    justify-content: space-between;
 }
 
 .navlink > a {
-
     text-decoration: none;
     font-size: 16px;
-    padding:20px;
     color: white;
+    margin-top: 15px;
 }
 
 .navlink > a:hover {
@@ -36,46 +54,86 @@
 #nav{
     margin: 0px;
 }
-#all-nav-links{
-    display: flex;
-    justify-content: space-between;
+
+@media screen and (min-width: 1300px) { 
+    #all-nav-links{
+        display: flex;
+        justify-content: space-between;
+    }
+    .navlink{
+        display: inline;
+        list-style-type: none;
+    } 
+    .hide-md a
+    {
+        display: inline;
+    }
+    #icon{
+        display: none;
+    }
+    #mobile-navbar{
+    display: inline;
+    }
 }
-
 </style>
-
+<script>
+    function myFunction(){
+        console.log("hey");
+        var els = document.getElementsByClassName("hide-md")
+        for(var i = 0, all = els.length; i < all; i++){   
+             els[i].classList.toggle('responsive');
+         }
+    }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div id="nav">
 
     <ul id="navlist">
         <div id="all-nav-links">
             {% if user.is_authenticated %}
             <div id="left">
-                <li class="navlink">
-                    <a href="{% url 'feed:view_all' %}">Home</a>
-                </li>
+                <div id="mobile-navbar">
+                    <li id="home" class="navlink">
+                        <a href="{% url 'feed:view_all' %}">Home</a>
+                    </li>
+                    <li class="navlink" id="icon">
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                </div>
                 
-                <li class="navlink">
+                <li class="hide-md navlink">
                     <a href="{% url 'feed:view_feed' %}">Activity</a>
                 </li>
             </div>
             <div id="right">
-                <li class="navlink">
+                <li class="hide-md navlink">
                     <a href="{% url 'feed:add_post' %}">Create</a>
                 </li>
-                <li class="navlink">
+                <li class="hide-md navlink">
                     <a href="{% url 'authentication:logout_user' %}">Logout</a>
                 </li>
+
             </div>
             {% else %}
                 <div id="left">
+                    <div id="mobile-navbar">
                     <li class="navlink">
                         <a href="{% url 'feed:view_all' %}">Home</a>
                     </li>
+                    <li class="navlink" id="icon">
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    </div>
                 </div>
                     <div id="right">
-                        <li class="navlink" >
+                        <li class="navlink hide-md" >
                         <a href="{% url 'authentication:render_login_page' %}">SignIn</a>
                     </li>
-                    <li class="navlink" >
+                    <li class="navlink hide-md" >
                         <a href="{% url 'authentication:render_signup_page' %}">Signup</a>
                     </li>
                 </div>
