@@ -26,13 +26,13 @@ body {
 
 #postform-wrapper{
     text-align: center;
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
     background-color: white;
     border-radius: 4px;
     box-shadow: 1px 1px grey;
     overflow: auto;
-    height: 90vh;
+    height: 100vh;
 }
 #publish-button{
 
