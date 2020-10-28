@@ -110,15 +110,15 @@
                 </div>
                 
                 <li class="hide-md navlink">
-                    <a href="{% url 'feed:view_feed' %}">Activity</a>
+                    <a href="{% url 'feed:view_feed' %}">activity</a>
                 </li>
             </div>
             <div id="right">
                 <li class="hide-md navlink">
-                    <a href="{% url 'feed:add_post' %}">Create</a>
+                    <a href="{% url 'feed:add_post' %}">create</a>
                 </li>
                 <li class="hide-md navlink">
-                    <a href="{% url 'authentication:logout_user' %}">Logout</a>
+                    <a href="{% url 'authentication:logout_user' %}">logout</a>
                 </li>
 
             </div>
@@ -137,10 +137,10 @@
                 </div>
                     <div id="right">
                         <li class="navlink hide-md" >
-                        <a href="{% url 'authentication:render_login_page' %}">SignIn</a>
+                        <a href="{% url 'authentication:render_login_page' %}">Sign in</a>
                     </li>
                     <li class="navlink hide-md" >
-                        <a href="{% url 'authentication:render_signup_page' %}">Signup</a>
+                        <a href="{% url 'authentication:render_signup_page' %}">Sign up</a>
                     </li>
                 </div>
             {% endif %}

@@ -2,19 +2,9 @@
 {% load static %}
 {% block title %} Texteditor {% endblock %}
 {% block headers %}
-    <script src="{% static 'js/editor_transliterate.js' %}"></script>
-    <script src="{% static 'js/tribute.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/trix.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/trix.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/tribute.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
-    <script>
-        window.addEventListener('load', function () {
-            var tributeComplete = new TributeComplete();
-            tributeComplete.tribute.attach(document.getElementById("editor"));
-            tributeComplete.tribute.attach(document.getElementById("id_title"));
-        });
-    </script>
 {% endblock%}
 
 {% block content %}

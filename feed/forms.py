@@ -7,8 +7,8 @@ class AddPostForm(forms.ModelForm):
         fields = ('title','description', 'content')
         widgets = {
             'content': forms.HiddenInput(),
-            'title': forms.TextInput(attrs={'placeholder': 'ടൈറ്റിൽ'}),
-            'description': forms.TextInput(attrs={'placeholder': 'ഡിസ്ക്രിപ്ഷൻ '}),
+            'title': forms.TextInput(attrs={'placeholder': 'Title'}),
+            'description': forms.TextInput(attrs={'placeholder': 'Description '}),
         }
 
 
