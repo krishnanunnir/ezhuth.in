@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('feed.urls', namespace='feed')),
     path('accounts/', include('authentication.urls', namespace='authentication')),
+    path('admin/', admin.site.urls),
 ]
