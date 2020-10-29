@@ -11,7 +11,7 @@ from django.core.paginator import Paginator
 from django.views.decorators.http import require_GET, require_POST
 from django.db.models import Q
 
-from .models import Post
+from .models import Post, Comment
 from .forms import AddPostForm, AddCommentForm
 from .redirects import *
 from .utils import is_ajax, paginate_posts
@@ -82,7 +82,7 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
         # Condition of trying to access a post while not logged in
         # Comments are turned off since only logged in user can comment
         post = get_object_or_404(Post, Q(slug= post_slug) & Q(status= 1))
-    comments = Post.objects.filter(parent = post)
+    comments = post.comment
     form = AddCommentForm()
     # Comments can only be added if the post is published
     display_comment_form = display_comment_form and (post.status==1)
@@ -92,7 +92,7 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
             content = form.cleaned_data.get('content')
             # messages.info(request, 'Comment added for '+post.title)
             title = "Replied to '%s'" %(post.title)
-            Post(parent= post, title= title, content= content, author= request.user, status= 1, comments_enabled= False).save()
+            Comment(content_object=post, content= content, author= request.user).save()
             return HttpResponseRedirect('/view/' + str(post_slug))
     # Options for modifying post is only visible to the author of the post
     modify_status = post.author==request.user
@@ -118,7 +118,7 @@ def delete_post(request, post_slug):
 @require_GET
 def view_all(request, template_name= "feed/view_posts.html"):
     """ Print all the publicly visible posts """
-    all_posts = Post.objects.filter(status= 1, parent__isnull = True)
+    all_posts = Post.objects.filter(status= 1)
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
     if is_ajax(request):
@@ -151,7 +151,7 @@ def view_drafts(request, template_name= "feed/view_posts.html"):
 def view_user(request, username, template_name= "feed/view_posts.html"):
     """ Print the users feed """
     user = get_object_or_404(User, username= username)
-    all_posts = Post.objects.filter(status= 1, author= user, parent__isnull = True)
+    all_posts = Post.objects.filter(status= 1, author= user)
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts,'user': user, 'show_current_user': True} 
     if is_ajax(request):
