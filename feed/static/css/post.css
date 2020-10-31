@@ -86,3 +86,22 @@ body{
     /* https://bugzilla.mozilla.org/show_bug.cgi?id=1492155 */
     height: 1px;
 }
+
+.post-like{
+    display: inline;
+    float: right;
+    font-size:15px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.like-number{
+    display:inline;
+    vertical-align : middle; 
+    color: grey;
+}
+.heart{
+    display:inline;
+    vertical-align : middle;
+    height: 26px;
+}

@@ -109,3 +109,21 @@ body {
     font-size: 17px;
     margin-top:15px;
 }
+.post-like{
+    display: inline;
+    float: left;
+    font-size:15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.like-number{
+    display:inline;
+    vertical-align : middle; 
+    color: grey;
+}
+.heart{
+    display:inline;
+    vertical-align : middle;
+    height: 26px;
+}

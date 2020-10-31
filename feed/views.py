@@ -11,7 +11,7 @@ from django.core.paginator import Paginator
 from django.views.decorators.http import require_GET, require_POST
 from django.db.models import Q
 
-from .models import Post, Comment
+from .models import Post, Comment, Like
 from .forms import AddPostForm, AddCommentForm
 from .redirects import *
 from .utils import is_ajax, paginate_posts
@@ -38,7 +38,9 @@ def add_post(request, template_name= "feed/add_post.html"):
                 status = 0
                 # messages.info(request, 'New Draft added successfully')
                 redirect_url = drafts_home
-            Post(title= title, content= content,description = description, author= request.user, status= status).save()
+            post = Post.objects.create(title= title, content= content,description = description, author= request.user, status= status)
+            liked_object = Like.objects.create(content_object=post)
+            liked_object.users.add(request.user)
             return HttpResponseRedirect(redirect_url)
     template_data = {'form':form}
     return render(request, template_name, template_data)
@@ -157,3 +159,16 @@ def view_user(request, username, template_name= "feed/view_posts.html"):
     if is_ajax(request):
         return render(request, '__posts.html', template_data)
     return render(request, template_name, template_data)
+
+@login_required
+def like_post(request, post_slug):
+    post = get_object_or_404(Post, slug= post_slug, status=1)
+    liked_object = Like.objects.get(like_for=post)
+    if request.user in liked_object.users.all():
+        liked_object.users.remove(request.user)
+        return HttpResponse("false")
+    else:
+        liked_object.users.add(request.user)
+        return HttpResponse("true")
+        
+

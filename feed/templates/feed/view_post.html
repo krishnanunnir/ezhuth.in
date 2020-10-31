@@ -2,8 +2,10 @@
 {% load static %}
 {% block title%} {{ post.title }}{% endblock %}
 {% load relative_time %}
+{% load like %}
 {% block headers %}
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
+    <script src="{% static 'js/like.js' %}"></script>
 {% endblock %}
 {% block content %}
 <div id="postform-wrapper">
@@ -17,10 +19,17 @@
                 </div>
             {% endif %}
         </div>
-        <span id="title-text">{{ post.title }}</span>
+        <span id="title-text">{{ post.title }} </span>
         <span id="title-description">{{ post.description }}</span>
         <div id="post-content">
             {{ post.content | safe }}
+        </div>
+    </div>
+    <div id="symbols">
+        <div class="post-like">
+            {% liked_by_user post as show_likes %}
+            <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %}onclick="likePost('posts-{{post.id}}','{{post.slug}}')">
+            <span id="posts-{{post.id}}-number" class="like-number">{{ post | like_count }}</span>
         </div>
     </div>
     {% if display_comment_form %}

@@ -16,6 +16,15 @@ STATUS = (
     (1, 'Publish')
 )
 
+class Like(models.Model):
+    users = models.ManyToManyField(User, related_name='requirement_comment_likes')
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    created_on = models.DateTimeField(auto_now= True)
+    class Meta:
+        unique_together = ("content_type", "object_id")
+
 class Comment(models.Model):
     author = models.ForeignKey(User,related_name="comments", on_delete=models.CASCADE)
     content = models.TextField()
@@ -23,6 +32,7 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     created_on = models.DateTimeField(auto_now= True)
+    like = GenericRelation(Like)
 
 class Post(models.Model):
     title = models.CharField(max_length= 200)
@@ -37,6 +47,7 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now= True)
     comments_enabled = models.BooleanField(default=True)
     comment = GenericRelation(Comment)
+    like = GenericRelation(Like,related_query_name="like_for")
 
     class Meta:
         # The newly made post will be visible at the top
