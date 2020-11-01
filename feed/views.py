@@ -27,7 +27,6 @@ def add_post(request, template_name= "feed/add_post.html"):
         if form.is_valid():
             title = form.cleaned_data.get('title')
             content = form.cleaned_data.get('content')
-            description = form.cleaned_data.get('description')
             # save post in feed or draft depending on the button present in request.POST
             if 'publish' in request.POST:
                 status = 1
@@ -38,7 +37,7 @@ def add_post(request, template_name= "feed/add_post.html"):
                 status = 0
                 # messages.info(request, 'New Draft added successfully')
                 redirect_url = drafts_home
-            post = Post.objects.create(title= title, content= content,description = description, author= request.user, status= status)
+            post = Post.objects.create(title= title, content= content, author= request.user, status= status)
             liked_object = Like.objects.create(content_object=post)
             liked_object.users.add(request.user)
             return HttpResponseRedirect(redirect_url)
@@ -55,7 +54,6 @@ def edit_post(request, post_slug, template_name= "feed/add_post.html"):
         form = AddPostForm(request.POST)
         if form.is_valid():           
             post.title = form.cleaned_data.get('title')
-            post.description = form.cleaned_data.get('description')
             post.content = form.cleaned_data.get('content')
             if 'publish' in request.POST:
                 post.status = 1
@@ -67,7 +65,7 @@ def edit_post(request, post_slug, template_name= "feed/add_post.html"):
                 redirect_url = drafts_home
             post.save()
             return HttpResponseRedirect(redirect_url)
-    form = AddPostForm(initial= {'title':post.title,'description':post.description, 'content':post.content})
+    form = AddPostForm(initial= {'title':post.title, 'content':post.content})
     template_data = {'form': form}
     return render(request, template_name, template_data)
 

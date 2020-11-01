@@ -3,6 +3,8 @@
 {% load relative_time %}
 {% load like %}
 {% load comment %}
+{% load post %}
+{% load bleach_tags %}
 {% block title%} Feed{% endblock %}
 
 {% block headers %}
@@ -31,7 +33,7 @@
     <div class="post">
         <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
         <div class="post-title">{{ post.title }}</div>
-        <div class="post-content">{{ post.description }}</div>
+        <div class="post-sneak-peak">{{ post| post_description | bleach }}</div>
         <div class="post-option">
             <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div>
             <div class="symbols">

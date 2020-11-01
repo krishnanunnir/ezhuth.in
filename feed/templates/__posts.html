@@ -4,7 +4,7 @@
 <div class="post">
     <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
     <div class="post-title">{{ post.title }}</div>
-    <div class="post-content">{{ post.description }}</div>
+    <div class="post-content">{{ post| post_description | bleach }}</div>
     <hr class="inner-separator">
     <span class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></span>
 </div>

@@ -25,7 +25,6 @@
             {% csrf_token %}
             {{ form.media }}
             {{ form.title }}
-            {{ form.description }}
             {{ form.content }}
             <trix-editor id="editor" input="id_content"></trix-editor>
             <button type="submit" id="publish-button" name="publish">Publish</button>
