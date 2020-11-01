@@ -1,10 +1,9 @@
+{% load static %}
 
 
-<div id="comments">
     {% for comment in comments.all %}
     <div class="comment">
         <div class="comment-byline">Posted by {{ comment.author |default_if_none:"[deleted]" }} on {{ comment.created_on }}</div>
         <div class="comment-content">{{ comment.content | linebreaks }}</div>
     </div>
     {% endfor %}
-</div>

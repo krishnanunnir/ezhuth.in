@@ -37,18 +37,19 @@
             <span id="posts-{{post.id}}-number" class="comment-number">{{ post | comment_count }}</span>
         </div>
     </div>
-    {% if display_comment_form %}
-        <div id="comment-editor">
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{ form.media }}
-                {{form.content}}
-                <input type="submit" value="Add Comment" id="submit-comment">
-            </form>
-        </div>
-    {% endif %}
+
 </div>
-
-{% include "feed/comments.html" %}
-
+<div id="comments">
+    {% if display_comment_form %}
+    <div id="comment-editor">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{form.content}}
+            <input type="submit" value="Add Comment" id="submit-comment">
+        </form>
+    </div>
+    {% endif %}
+    {% include "feed/comments.html" %}
+</div>
 {% endblock %}
