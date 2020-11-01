@@ -1,4 +1,4 @@
 const toggleCommentVisibility = function() {
-    var elem = document.getElementById("comments");
-    elem.classList.toggle("show-comments");
+    var elem = document.getElementById("comment-editor");
+    elem.classList.toggle("show-comment-editor");
 }

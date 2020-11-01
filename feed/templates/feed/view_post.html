@@ -35,14 +35,11 @@
         </div>
         <div class="post-comment">
             <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  onclick="toggleCommentVisibility()">
-            <span id="posts-{{post.id}}-number" class="comment-number">{{ post | comment_count }}</span>
+            <span id="posts-{{post.id}}-number" class="comment-number">Add a comment</span>
         </div>
     </div>
-
-</div>
-<div id="comments" class="show-comments">
     {% if display_comment_form %}
-    <div id="comment-editor">
+    <div id="comment-editor" class="show-comment-editor">
         <form action="" method="POST">
             {% csrf_token %}
             {{ form.media }}
@@ -51,6 +48,8 @@
         </form>
     </div>
     {% endif %}
+</div>
+<div id="comments" >
     {% include "feed/comments.html" %}
 </div>
 {% endblock %}

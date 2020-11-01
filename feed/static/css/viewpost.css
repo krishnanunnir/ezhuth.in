@@ -66,23 +66,23 @@ body {
 #postform-wrapper{
     padding: 30px;
     text-align: center;
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
     background-color: white;
     border-radius: 4px;
     overflow: auto;
+    padding-bottom: 0px;
+    border-bottom: 0.5px solid grey;
 }
 #comments{
-    margin-top:10px;
+
     border-radius: 4px;
 }
 #comment-editor{
-    padding: 30px;
     text-align: left;
-    width: 80%;
     margin: 0 auto;
-    overflow: auto;
     background-color: white;
+    margin-top: 50px;
 }
 
 #id_content{
@@ -103,10 +103,11 @@ body {
 .comment{
     padding: 30px;
     text-align: left;
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
     overflow: auto;
     background-color: white;
+    border-bottom: 0.5px solid gray
 }
 .comment-byline{
     color: grey;
@@ -118,7 +119,6 @@ body {
 }
 .post-like{
     display: inline;
-    float: left;
     font-size:15px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -137,7 +137,6 @@ body {
 
 .post-comment{
     display: inline;
-    float: right;
     font-size:15px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -156,8 +155,10 @@ body {
 .symbols{
     margin-top: 15px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.show-comments{
+.show-comment-editor{
     display: none;
 }

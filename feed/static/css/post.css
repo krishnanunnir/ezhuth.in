@@ -71,14 +71,6 @@
 body{
     background-color: #e5ded8;
 }
-.inner-separator{
-    border: none;
-    height: 1px;
-    color: grey; 
-    background-color: grey;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
 
 #sentinel{
     /* There is a bug in firefox, mac where the intersection api doesn't work properly for elements with 0 height. So setting it to 1 */
