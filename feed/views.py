@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET
 from django.db.models import Q
 
 from .models import Post, Comment, Like
@@ -160,13 +160,16 @@ def view_user(request, username, template_name= "feed/view_posts.html"):
 
 @login_required
 def like_post(request, post_slug):
-    post = get_object_or_404(Post, slug= post_slug, status=1)
-    liked_object = Like.objects.get(like_for=post)
-    if request.user in liked_object.users.all():
-        liked_object.users.remove(request.user)
-        return HttpResponse("false")
+    if is_ajax(request):
+        post = get_object_or_404(Post, slug= post_slug, status=1)
+        liked_object = Like.objects.get(like_for=post)
+        if request.user in liked_object.users.all():
+            liked_object.users.remove(request.user)
+            return HttpResponse("false")
+        else:
+            liked_object.users.add(request.user)
+            return HttpResponse("true")
     else:
-        liked_object.users.add(request.user)
-        return HttpResponse("true")
+        raise Http404("Page not found")
         
 
