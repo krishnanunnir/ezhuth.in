@@ -4,6 +4,7 @@
 {% load relative_time %}
 {% load like %}
 {% load comment %}
+{% load bleach_tags %}
 {% block headers %}
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
     <script src="{% static 'js/like.js' %}"></script>
@@ -24,7 +25,7 @@
         <span id="title-text">{{ post.title }} </span>
         <span id="title-description">{{ post.description }}</span>
         <div id="post-content">
-            {{ post.content | safe }}
+            {{ post.content | bleach }}
         </div>
     </div>
     <div class="symbols">

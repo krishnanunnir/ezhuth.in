@@ -1,4 +1,3 @@
-import bleach
 import unidecode 
 from datetime import datetime
 from django.db import models
@@ -10,7 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 # Defines the status as published or draft
 
-allowed_tags =['a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol', 'strong', 'ul', 'pre' ,'div','del','h1','br']
+
 STATUS = (
     (0, 'Draft'),
     (1, 'Publish')
@@ -56,7 +55,6 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         # creates a slug for the post on calling the save command
         now = datetime.now()
-        self.content = bleach.clean(self.content, tags= allowed_tags)
         self.slug = "%s_%s" %(slugify(unidecode.unidecode(self.title)),now.strftime("%m_%d_%Y_%H_%M_%S"))
         super(Post, self).save(*args, **kwargs)
 
