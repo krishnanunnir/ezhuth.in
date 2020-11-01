@@ -57,7 +57,7 @@
 .read-more{
     display: inline-block;
     position: relative;
-    padding:5px;
+    padding:7px;
     border: 1px solid grey;
     border-radius: 3px;
 }
