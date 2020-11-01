@@ -127,3 +127,26 @@ body {
     vertical-align : middle;
     height: 26px;
 }
+
+.post-comment{
+    display: inline;
+    float: right;
+    font-size:15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-number{
+    display:inline;
+    vertical-align : middle; 
+    color: grey;
+}
+.comment-icon{
+    display:inline;
+    vertical-align : middle;
+    height: 26px;
+}
+.symbols{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

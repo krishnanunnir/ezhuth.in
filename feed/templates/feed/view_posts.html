@@ -2,6 +2,7 @@
 {% load static %}
 {% load relative_time %}
 {% load like %}
+{% load comment %}
 {% block title%} Feed{% endblock %}
 
 {% block headers %}
@@ -31,13 +32,20 @@
         <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
         <div class="post-title">{{ post.title }}</div>
         <div class="post-content">{{ post.description }}</div>
-        <hr class="inner-separator">
-        <span class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></span>
-        <div class="post-like">
-          {% liked_by_user post as show_likes %}
-          <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %}onclick="likePost('posts-{{post.id}}','{{post.slug}}')">
-          <span id="posts-{{post.id}}-number" class="like-number">{{ post | like_count }}</span>
-      </div>
+        <div class="post-option">
+            <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div>
+            <div class="symbols">
+              <div class="post-like">
+                {% liked_by_user post as show_likes %}
+                <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %}onclick="likePost('posts-{{post.id}}','{{post.slug}}')">
+                <span id="posts-{{post.id}}-number" class="like-number">{{ post | like_count }}</span>
+              </div>
+              <div class="post-comment">
+                <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  onclick="showhide()">
+                <span id="posts-{{post.id}}-number" class="comment-number">{{ post | comment_count }}</span>
+              </div>
+            </div>
+          </div>
     </div>
     {% endfor %}
 </div>

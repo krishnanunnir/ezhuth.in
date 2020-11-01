@@ -57,8 +57,7 @@
 .read-more{
     display: inline-block;
     position: relative;
-    padding:10px;
-    margin-top: 10px;
+    padding:5px;
     border: 1px solid grey;
     border-radius: 3px;
 }
@@ -89,10 +88,8 @@ body{
 
 .post-like{
     display: inline;
-    float: right;
     font-size:15px;
-    margin-top: 10px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .like-number{
@@ -104,4 +101,26 @@ body{
     display:inline;
     vertical-align : middle;
     height: 26px;
+}
+
+.post-comment{
+    display: inline;
+    font-size:15px;
+    padding:5px;
+}
+
+.comment-number{
+    display:inline;
+    vertical-align : middle; 
+    color: grey;
+}
+.comment-icon{
+    display:inline;
+    vertical-align : middle;
+    height: 26px;
+}
+.post-option{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
