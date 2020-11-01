@@ -66,7 +66,7 @@ body {
 #postform-wrapper{
     padding: 30px;
     text-align: center;
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     background-color: white;
     border-radius: 4px;
@@ -74,6 +74,11 @@ body {
     padding-bottom: 0px;
     border-bottom: 0.5px solid grey;
 }
+@media screen and (min-width: 1300px) { 
+    #postform-wrapper{
+        width: 60%;
+    }
+  }
 #comments{
 
     border-radius: 4px;
