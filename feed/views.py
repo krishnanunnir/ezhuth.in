@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from datetime import datetime, timedelta
 from django.http import Http404
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -10,6 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.views.decorators.http import require_GET
 from django.db.models import Q
+from django.db.models import Count
 
 from .models import Post, Comment, Like
 from .forms import AddPostForm, AddCommentForm
@@ -118,7 +120,9 @@ def delete_post(request, post_slug):
 @require_GET
 def view_all(request, template_name= "feed/view_posts.html"):
     """ Print all the publicly visible posts """
-    all_posts = Post.objects.filter(status= 1)
+    all_posts = Post.objects.annotate(num_val=(Count('comment'))).order_by('-num_val')
+    # time_threshold = datetime.now() - timedelta(hours=24)
+    all_posts = all_posts.filter(status=1)
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
     if is_ajax(request):
