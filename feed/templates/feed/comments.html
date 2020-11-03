@@ -1,9 +1,11 @@
 {% load static %}
 
-
+<div id="comments"></div>
     {% for comment in comments.all %}
     <div class="comment">
         <div class="comment-byline">Posted by {{ comment.author |default_if_none:"[deleted]" }} on {{ comment.created_on }}</div>
         <div class="comment-content">{{ comment.content | linebreaks }}</div>
+        <img id="comments-{{comment.id}}" class="heart" src="{% static 'images/heart.svg' %}" onclick="likePost('comments-{{comment.id}}')">
     </div>
     {% endfor %}
+</div>
