@@ -126,7 +126,7 @@ def view_all(request, template_name= "feed/view_posts.html"):
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
     if is_ajax(request):
-        return render(request, '__posts.html', template_data)
+        return render(request, 'feed/__posts.html', template_data)
     return render(request, template_name, template_data)
 
 
@@ -138,7 +138,7 @@ def view_feed(request, template_name= "feed/view_posts.html"):
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts,'show_current_user': True} 
     if is_ajax(request):
-        return render(request, '__posts.html', template_data)
+        return render(request, 'feed/__posts.html', template_data)
     return render(request, template_name, template_data)
 
 @require_GET
@@ -149,7 +149,7 @@ def view_drafts(request, template_name= "feed/view_posts.html"):
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
     if is_ajax(request):
-        return render(request, '__posts.html', template_data)
+        return render(request, 'feed/__posts.html', template_data)
     return render(request, template_name, template_data)
 
 def view_user(request, username, template_name= "feed/view_posts.html"):
@@ -159,7 +159,7 @@ def view_user(request, username, template_name= "feed/view_posts.html"):
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts,'user': user, 'show_current_user': True} 
     if is_ajax(request):
-        return render(request, '__posts.html', template_data)
+        return render(request, 'feed/__posts.html', template_data)
     return render(request, template_name, template_data)
 
 @login_required
