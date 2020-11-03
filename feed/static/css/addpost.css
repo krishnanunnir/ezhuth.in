@@ -5,6 +5,8 @@
     /* border-bottom: 1px solid black; */
     box-sizing: border-box;
     font-size: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 #id_description{
@@ -47,15 +49,7 @@ body {
     width: 90%;
 }
 
-#editor{
+
+.tox-tinymce {
     margin: 0 auto;
-    text-align: left;
-    width: 90%;
-    height: 550px;
-    overflow-y: auto;
-    max-height: 700px;
-}
-trix-toolbar {
-    margin: 0 auto;
-    width: 90%;
 }

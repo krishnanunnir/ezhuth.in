@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'feed',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
+
+TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
+TINYMCE_DEFAULT_CONFIG = {
+    'selector':"#postform #id_content",
+    'branding': False,
+    'menubar': False,
+    'statusbar': False,
+    'toolbar_location': 'bottom',
+    'plugins' : 'advlist autolink link image lists charmap print preview autosave save',
+    'toolbar' : ' h1 | bold italic underline | code | link image |  alignleft aligncenter alignright alignjustify | outdent indent | undo redo restoredraft',
+    'width': '90%',
+    'height': '60vh',
+    'autosave_restore_when_empty': True
+}

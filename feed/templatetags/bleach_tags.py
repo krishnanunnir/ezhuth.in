@@ -4,7 +4,7 @@ from django import template
 from django.utils.safestring import mark_safe
 
 import bleach
-allowed_tags =['a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol', 'strong', 'ul', 'pre' ,'div','del','h1','br']
+allowed_tags =['a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol', 'pre' ,'div','del','h1','br','p','span']
 
 register = template.Library()
 
