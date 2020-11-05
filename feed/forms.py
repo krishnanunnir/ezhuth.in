@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import ImageTinymce, Post, Comment
 
 class AddPostForm(forms.ModelForm):
     class Meta:
@@ -12,5 +12,10 @@ class AddPostForm(forms.ModelForm):
 
 class AddCommentForm(forms.ModelForm):
     class Meta:
-        model = Post
+        model = Comment
         fields = ('content',)
+
+class ImageUploadForm(forms.ModelForm):
+    class Meta:
+        model = ImageTinymce
+        fields =('image',)

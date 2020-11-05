@@ -118,6 +118,7 @@ body {
 .comment-content{
     font-size: 17px;
     margin-top:15px;
+    line-height: 22px;
 }
 .post-like{
     display: inline;
@@ -181,3 +182,15 @@ body {
         justify-content: space-between;
     }
   }
+
+  #post-content img{
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+      height: auto;
+      width: auto;
+  }
+
+  #post-content p{
+      line-height: 22px;
+}

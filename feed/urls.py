@@ -1,6 +1,8 @@
 from django.urls import path, register_converter
 from feed import views
 from . import converters
+from django.conf import settings
+from django.conf.urls.static import static
 
 register_converter(converters.UsernameConverter, 'username')
 
@@ -14,4 +16,9 @@ urlpatterns = [
     path('like/<slug:post_slug>', views.like_post, name= 'like_post'),
     path('user/<username:username>', views.view_user, name= 'view_user'),
     path('delete/<slug:post_slug>', views.delete_post, name= 'delete_post'),
+    path('uploadfile/',views.handle_image, name="handle_image")
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

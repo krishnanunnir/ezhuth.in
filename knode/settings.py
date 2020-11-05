@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'feed',
-    'tinymce'
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +117,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
@@ -127,9 +127,14 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': False,
     'statusbar': False,
     'toolbar_location': 'bottom',
-    'plugins' : 'advlist autolink link image lists charmap print preview autosave save',
-    'toolbar' : ' h1 | bold italic underline | code | link image |  alignleft aligncenter alignright alignjustify | outdent indent | undo redo restoredraft',
+    'plugins' : 'advlist autolink link image lists code table autoresize autosave save',
+    'toolbar' : ' h1 | bold italic underline | table link image |  alignleft aligncenter alignright alignjustify | outdent indent | undo redo restoredraft',
     'width': '90%',
-    'height': '60vh',
-    'autosave_restore_when_empty': True
+    'autosave_restore_when_empty': True,
+    'images_upload_url': '/uploadfile/',
+    'images_upload_handler': 'example_image_upload_handler',
+    'content_css' : "/static/css/tinymce_content.css",
+    'min_height': 600,
+    'autoresize_on_init': False,
+    'object_resizing' : False,
 }

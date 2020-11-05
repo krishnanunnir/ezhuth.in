@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseServerError
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from datetime import datetime, timedelta
@@ -9,12 +10,13 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
-from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_GET, require_POST
 from django.db.models import Q
 from django.db.models import Count
+from django.http import JsonResponse
 
 from .models import Post, Comment, Like
-from .forms import AddPostForm, AddCommentForm
+from .forms import AddPostForm, AddCommentForm, ImageUploadForm
 from .redirects import *
 from .utils import is_ajax, paginate_posts
 
@@ -175,5 +177,16 @@ def like_post(request, post_slug):
             return HttpResponse("true")
     else:
         raise Http404("Page not found")
-        
-
+@login_required
+@require_POST
+def handle_image(request):
+    form = ImageUploadForm()
+    if request.method=="POST":
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save()
+            responseData = {
+                'location': item.image.url
+            }
+            return JsonResponse(responseData)
+    return HttpResponseServerError()
