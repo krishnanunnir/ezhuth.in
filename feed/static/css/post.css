@@ -51,8 +51,8 @@
     font-size: 17px;
     margin-top:10px;
     color: grey;
-    max-height: 100px;
-    overflow: clip;
+    max-height: 120px;
+    overflow: hidden;
 }
 .post-sneak-peak img{
     max-width: 90%;
