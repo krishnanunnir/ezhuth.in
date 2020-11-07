@@ -14,9 +14,9 @@
         <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div>
         <div class="symbols">
           <div class="post-like">
-            {% liked_by_user post as show_likes %}
+            {% post_liked_by_user post as show_likes %}
             <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %}onclick="likePost('posts-{{post.id}}','{{post.slug}}')">
-            <span id="posts-{{post.id}}-number" class="like-number">{{ post | like_count }}</span>
+            <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
           </div>
           <div class="post-comment">
             <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  onclick="showhide()">

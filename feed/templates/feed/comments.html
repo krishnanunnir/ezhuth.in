@@ -1,11 +1,14 @@
 {% load static %}
+{% load like %}
 
 <div id="comments"></div>
     {% for comment in comments.all %}
     <div class="comment">
         <div class="comment-byline">Posted by {{ comment.author |default_if_none:"[deleted]" }} on {{ comment.created_on }}</div>
         <div class="comment-content">{{ comment.content | linebreaks }}</div>
-        <img id="comments-{{comment.id}}" class="heart" src="{% static 'images/heart.svg' %}" onclick="likePost('comments-{{comment.id}}')">
+        {% comment_liked_by_user comment as show_likes %}
+        <img id="comments-{{comment.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %}onclick="likeComment('comments-{{comment.id}}','{{comment.id}}')">
+        <span id="comments-{{comment.id}}-number" class="like-number">{{ comment | comment_like_count }}</span>
     </div>
     {% endfor %}
 </div>

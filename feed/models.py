@@ -32,7 +32,7 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     created_on = models.DateTimeField(auto_now= True)
-    like = GenericRelation(Like)
+    like = GenericRelation(Like, related_query_name="like_for_comment")
 
 class Post(models.Model):
     title = models.CharField(max_length= 200)
@@ -46,7 +46,7 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now= True)
     comments_enabled = models.BooleanField(default=True)
     comment = GenericRelation(Comment)
-    like = GenericRelation(Like,related_query_name="like_for")
+    like = GenericRelation(Like,related_query_name="like_for_post")
 
     class Meta:
         # The newly made post will be visible at the top

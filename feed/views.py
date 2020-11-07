@@ -96,7 +96,9 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
             content = form.cleaned_data.get('content')
             # messages.info(request, 'Comment added for '+post.title)
             title = "Replied to '%s'" %(post.title)
-            Comment(content_object=post, content= content, author= request.user).save()
+            comment = Comment.objects.create(content_object=post, content= content, author= request.user)
+            liked_object = Like.objects.create(content_object=comment)
+            liked_object.users.add(request.user)
             return HttpResponseRedirect('/view/' + str(post_slug))
     # Options for modifying post is only visible to the author of the post
     modify_status = post.author==request.user
@@ -168,7 +170,7 @@ def view_user(request, username, template_name= "feed/view_posts.html"):
 def like_post(request, post_slug):
     if is_ajax(request):
         post = get_object_or_404(Post, slug= post_slug, status=1)
-        liked_object = Like.objects.get(like_for=post)
+        liked_object = Like.objects.get(like_for_post=post)
         if request.user in liked_object.users.all():
             liked_object.users.remove(request.user)
             return HttpResponse("false")
@@ -177,6 +179,21 @@ def like_post(request, post_slug):
             return HttpResponse("true")
     else:
         raise Http404("Page not found")
+
+@login_required
+def like_comment(request, id):
+    if is_ajax(request):
+        comment = get_object_or_404(Comment, id= id)
+        liked_object = Like.objects.get(like_for_comment=comment)
+        if request.user in liked_object.users.all():
+            liked_object.users.remove(request.user)
+            return HttpResponse("false")
+        else:
+            liked_object.users.add(request.user)
+            return HttpResponse("true")
+    else:
+        raise Http404("Page not found")
+
 @login_required
 @require_POST
 def handle_image(request):
