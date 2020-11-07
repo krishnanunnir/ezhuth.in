@@ -157,7 +157,7 @@ def view_drafts(request, template_name= "feed/view_posts.html"):
 def view_user(request, username, template_name= "feed/view_posts.html"):
     """ Print the users feed """
     user = get_object_or_404(User, username= username)
-    all_posts = Post.objects.filter(status= 1, author= user)
+    all_posts = Post.objects.filter(status= 1)
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts,'user': user, 'show_current_user': True} 
     if is_ajax(request):
