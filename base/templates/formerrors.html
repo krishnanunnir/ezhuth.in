@@ -1,14 +1,10 @@
-{% load static %}
-<script src="{% static 'js/error.js' %}"></script>
-<link rel='stylesheet' href="{% static 'css/error.css' %}">
-
 {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}
             <div
                 data-component="dismissible-item"
                 data-type="error"
-                data-value="{{ field.name }} - {{ error|escape }}"
+                data-value="{{ error|escape }}"
             ></div>
         {% endfor %}
     {% endfor %}
