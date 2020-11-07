@@ -1,98 +1,4 @@
-<style>
-  body {
-    padding: 0px;
-    margin: 0px;
-}
-}
-.navlink{
-    display: inline;
-    list-style-type: none;
-    text-align: left;
-}
-.hide-md a
-{
-    display: none;
-}
-.responsive a
-{
-    display: block;
-}
-#home{
-    text-align: left;
-    display: inline;
-}
-/* #icon{
-    display: inline;
-} */
-#mobile-navbar{
-    display: flex;
-    justify-content: space-between;
-}
-#mobile-navbar responsive {
-    background-color: #db6a6a;
-}
-
-.navlink > a {
-    text-decoration: none;
-    font-size: 16px;
-    color: white;
-    margin-top: 15px;
-}
-
-
-#navlist{
-    background-color: #393232;
-    list-style-type: none;
-    padding: 8px;
-    margin: 0px;
-    padding: 15px;
-    
-}
-
-#nav{
-    margin: 0px;
-}
-
-@media screen and (min-width: 1300px) { 
-    #all-nav-links{
-        display: flex;
-        justify-content: space-between;
-    }
-    .navlink{
-        display: inline;
-        list-style-type: none;
-    } 
-    .navlink a{
-        padding: 20px;
-    }
-    .hide-md a
-    {
-        display: inline;
-    }
-    #icon{
-        display: none;
-    }
-    #mobile-navbar{
-    display: inline;
-    }
-    .navlink > a:hover {
-    background-color: #db6a6a;
-    border-radius: 1px;
-}
-}
-</style>
-<script>
-    function myFunction(){
-        console.log("hey");
-        var els = document.getElementsByClassName("hide-md")
-        for(var i = 0, all = els.length; i < all; i++){   
-             els[i].classList.toggle('responsive');
-         }
-    }
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div id="nav">
-
     <ul id="navlist">
         <div id="all-nav-links">
             {% if user.is_authenticated %}
@@ -134,7 +40,7 @@
                     </li>
                     </div>
                 </div>
-                    <div id="right">
+                <div id="right">
                         <li class="navlink hide-md" >
                         <a href="{% url 'authentication:render_login_page' %}">SignIn</a>
                     </li>

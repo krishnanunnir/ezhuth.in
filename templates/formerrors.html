@@ -1,9 +1,0 @@
-{% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            <div id="alert-error">
-                {{ field.name }} - {{ error|escape }}
-            </div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}

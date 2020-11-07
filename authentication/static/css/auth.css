@@ -75,9 +75,7 @@ input[type=password] {
 .showFields {
   visibility: visible;
 }
-#errors{
-  padding: 10px;
-}
+
 #alert-error{
   color: red;
 }

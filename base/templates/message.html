@@ -1,0 +1,13 @@
+
+{% if messages %}
+    {% for message in messages %}
+    <div
+    data-component="dismissible-item"
+    data-type="{{ message.tags }}"
+    data-value="{{ message }}"
+></div>
+
+    {% endfor %}
+{% endif %}
+
+
