@@ -1,9 +1,13 @@
+#errors{
+	margin: 10px;
+}
 .dismissible {
 	color: #222;
 	font-size: 16px;
 	line-height: 22px;
 	position: relative;
 	overflow: hidden;
+	margin-top: 5px;
 }
 
  .dismissible span {
