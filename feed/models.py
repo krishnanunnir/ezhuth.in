@@ -2,7 +2,7 @@ import unidecode
 from datetime import datetime
 from django.db import models
 from django.db.models.base import Model
-from django.contrib.auth.models import User
+from authentication.models import User
 from django.template.defaultfilters import slugify
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType

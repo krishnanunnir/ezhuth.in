@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
+from .models import User
 from django.forms.widgets import EmailInput, PasswordInput, TextInput
 
 
