@@ -20,9 +20,9 @@
 <link rel='stylesheet' href="{% static 'css/profile.css' %}">
 {% endblock%}
 {% block content %}
-{% if show_current_user or False %}
+{% if show_selected_user or False %}
   <div id="user-details">
-    <div id="username">{{ user.username}}</div>
+    <div id="username">{{ selected_user.username}}</div>
     <hr class="inner-separator">
     <div id="bio">I write blogs, probably, bio is not supported now.</div>
   </div>

@@ -140,7 +140,7 @@ def view_feed(request, template_name= "feed/view_posts.html"):
     """ Print the users feed """
     all_posts = Post.objects.filter(status= 1, author= request.user)
     posts = paginate_posts(request, all_posts, 10)
-    template_data = {'posts': posts,'show_current_user': True} 
+    template_data = {'posts': posts,'show_selected_user': True} 
     if is_ajax(request):
         return render(request, 'feed/__posts.html', template_data)
     return render(request, template_name, template_data)
@@ -159,9 +159,9 @@ def view_drafts(request, template_name= "feed/view_posts.html"):
 def view_user(request, username, template_name= "feed/view_posts.html"):
     """ Print the users feed """
     user = get_object_or_404(User, username= username)
-    all_posts = Post.objects.filter(status= 1)
+    all_posts = Post.objects.filter(status= 1, author= user)
     posts = paginate_posts(request, all_posts, 10)
-    template_data = {'posts': posts,'user': user, 'show_current_user': True} 
+    template_data = {'posts': posts,'selected_user': user, 'show_selected_user': True} 
     if is_ajax(request):
         return render(request, 'feed/__posts.html', template_data)
     return render(request, template_name, template_data)
