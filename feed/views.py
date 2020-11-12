@@ -14,6 +14,7 @@ from django.views.decorators.http import require_GET, require_POST
 from django.db.models import Q
 from django.db.models import Count
 from django.http import JsonResponse
+import uuid
 
 from .models import Post, Comment, Like
 from .forms import AddPostForm, AddCommentForm, ImageUploadForm
@@ -140,7 +141,7 @@ def view_feed(request, template_name= "feed/view_posts.html"):
     """ Print the users feed """
     all_posts = Post.objects.filter(status= 1, author= request.user)
     posts = paginate_posts(request, all_posts, 10)
-    template_data = {'posts': posts,'show_selected_user': True} 
+    template_data = {'posts': posts,'selected_user':request.user, 'show_selected_user': True} 
     if is_ajax(request):
         return render(request, 'feed/__posts.html', template_data)
     return render(request, template_name, template_data)

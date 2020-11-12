@@ -4,9 +4,9 @@ from django.forms.widgets import EmailInput, PasswordInput, TextInput
 
 
 class LoginForm(forms.Form):
-    password = forms.CharField(label="password",widget=forms.PasswordInput( attrs={'placeholder': 'Password'}))
-    username = forms.CharField(label="username",widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    fields = ('username','password')
+    password = forms.CharField(label="password",widget=PasswordInput( attrs={'placeholder': 'Password'}))
+    email = forms.EmailField(label="email",widget= EmailInput(attrs={'placeholder':'Email'}))
+    fields = ('email','password')
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
@@ -15,14 +15,15 @@ class LoginForm(forms.Form):
             field.error_messages = {'required':'The field {fieldname} is required'.format(fieldname=field.label)}
 
 class SignupForm(forms.ModelForm):
-    confirm_password=forms.CharField(label="confirm password", widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))
+    confirm_password=forms.CharField(label="confirm password", required= True, widget= PasswordInput(attrs={'placeholder': 'Confirm Password'}))
+    first_name = forms.CharField(label="first name", required= True, widget= TextInput(attrs={'placeholder': 'First Name'}))
+    last_name = forms.CharField(label="last name", required= True, widget = TextInput(attrs={'placeholder': 'Last Name'}))
     class Meta():
         model = User
-        fields = ('username', 'password', 'confirm_password','email')
+        fields = ('first_name','last_name','email','password', 'confirm_password')
         widgets = {
-            'username': TextInput(attrs={'placeholder': 'Username'}),
+            'last_name': TextInput(attrs={'placeholder': 'Last Name'}),
             'password': PasswordInput(attrs={'placeholder': 'Password'}),
-            'confirm_password': PasswordInput(attrs={'placeholder': 'Confirm Password'}),
             'email': EmailInput(attrs={'placeholder':'Email'})
         }
     

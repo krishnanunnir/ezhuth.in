@@ -193,3 +193,12 @@ body {
   #post-content p{
       line-height: 22px;
 }
+
+.comment-byline a{
+    text-decoration: none;
+    color: grey;
+}
+.comment-byline a:visited{
+    text-decoration: none;
+    color: grey;
+}

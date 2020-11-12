@@ -4,7 +4,6 @@ from . import converters
 from django.conf import settings
 from django.conf.urls.static import static
 
-register_converter(converters.UsernameConverter, 'username')
 
 app_name = 'feed'
 urlpatterns = [
@@ -15,7 +14,7 @@ urlpatterns = [
     path('edit/<slug:post_slug>', views.edit_post, name= 'edit_post'),
     path('like/<slug:post_slug>', views.like_post, name= 'like_post'),
     path('like/comment/<int:id>', views.like_comment, name= 'like_comment'),
-    path('user/<username:username>', views.view_user, name= 'view_user'),
+    path('user/<uuid:username>', views.view_user, name= 'view_user'),
     path('delete/<slug:post_slug>', views.delete_post, name= 'delete_post'),
     path('uploadfile/',views.handle_image, name="handle_image")
 ]

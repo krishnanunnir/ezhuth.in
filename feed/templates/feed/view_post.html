@@ -4,6 +4,7 @@
 {% load relative_time %}
 {% load like %}
 {% load comment %}
+{% load user %}
 {% load bleach_tags %}
 {% block headers %}
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
@@ -14,7 +15,7 @@
 <div id="postform-wrapper">
     <div id="postform">
         <div id="parent-line">
-            <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
+            <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
             {% if modify_status %}
                 <div id="parent-operations">
                     <div id="operations"><a href="{% url 'feed:edit_post' post.slug %}" onclick="return confirm('Are you sure you want to edit this item?');">Edit</a></div>

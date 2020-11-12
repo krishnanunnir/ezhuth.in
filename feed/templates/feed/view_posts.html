@@ -5,6 +5,7 @@
 {% load comment %}
 {% load post %}
 {% load bleach_tags %}
+{% load user %}
 {% block title%} Feed{% endblock %}
 
 {% block headers %}
@@ -22,7 +23,7 @@
 {% block content %}
 {% if show_selected_user or False %}
   <div id="user-details">
-    <div id="username">{{ selected_user.username}}</div>
+    <div id="username">{{ selected_user | full_name }}</div>
     <hr class="inner-separator">
     <div id="bio">I write blogs, probably, bio is not supported now.</div>
   </div>

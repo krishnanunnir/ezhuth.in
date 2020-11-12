@@ -4,10 +4,11 @@
 {% load bleach_tags %}
 {% load like %}
 {% load static %}
+{% load user %}
 
 {% for post in posts %}
 <div class="post">
-    <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author %}">{{ post.author |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
+    <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
     <div class="post-title">{{ post.title }}</div>
     <div class="post-sneak-peak">{{ post.content | bleach }}</div>
     <div class="post-option">

@@ -6,6 +6,7 @@ const fetchPage = async (url) => {
   }
   
   const appendElements = async (scrollElement, counter) => {
+    end = false;
     let url = `?page=${counter + 1}`
   
     let req = await fetchPage(url);
@@ -16,6 +17,7 @@ const fetchPage = async (url) => {
     } else {
       end = true;
     }
+    return end;
   }
   
   
@@ -27,7 +29,7 @@ const fetchPage = async (url) => {
       let bottomEntry = entries[0];
   
       if (!end && bottomEntry.intersectionRatio > 0) {
-        await appendElements(scrollElement, counter);
+        end = await appendElements(scrollElement, counter);
         counter += 1;
       }
     })
