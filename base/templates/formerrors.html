@@ -9,3 +9,10 @@
         {% endfor %}
     {% endfor %}
 {% endif %}
+{% for error in form.non_field_errors %}
+    <div
+        data-component="dismissible-item"
+        data-type="error"
+        data-value="{{ error|escape }}"
+    ></div>
+{% endfor %}

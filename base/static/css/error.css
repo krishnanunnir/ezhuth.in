@@ -45,9 +45,9 @@
 }
 
 .dismissible-error span {
-	background-color: #FF5252;
-	border-color: #FF1744;
-	color: #fff;
+	background-color: #FFF;
+	border-color: #ba2121;
+	color: black;
 }
 
 .dismissible-error button {
@@ -56,9 +56,9 @@
 }
 
 .dismissible-info span {
-	background-color: #64B5F6;
+	background-color: #FFF;
 	border-color: #2196F3;
-	color: #fff;
+	color: black;
 }
 
 .dismissible-info button {
@@ -67,9 +67,9 @@
 }
 
 .dismissible-success span {
-	background-color: #9CCC65;
+	background-color: #FFF;
 	border-color: #7CB342;
-	color: #fff;
+	color: black;
 }
 
 .dismissible-success button {
