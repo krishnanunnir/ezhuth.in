@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'authentication',
     'feed',
     'tinymce',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +61,10 @@ ROOT_URLCONF = 'knode.urls.production'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'base','templates'),],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'base','templates'),
+            os.path.join(BASE_DIR, 'allauth','templates'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,7 +125,8 @@ AUTH_USER_MODEL = "authentication.User"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "base","static"),
-    ]
+    os.path.join(BASE_DIR, "allauth","static"),
+]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
 MAILER_EMAIL_BACKEND = EMAIL_BACKEND  
@@ -153,3 +161,20 @@ TINYMCE_DEFAULT_CONFIG = {
     'autoresize_on_init': False,
     'object_resizing' : False,
 }
+LOGIN_REDIRECT_URL="/"
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+DEFAULT_FROM_EMAIL= os.getenv('DEFAULT_FROM_EMAIL')
+
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
