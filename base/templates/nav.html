@@ -23,7 +23,7 @@
                     <a href="{% url 'feed:add_post' %}">Create</a>
                 </li>
                 <li class="hide-md navlink">
-                    <a href="{% url 'authentication:logout_user' %}">Logout</a>
+                    <a href="{% url 'account_logout' %}">Logout</a>
                 </li>
 
             </div>
@@ -42,10 +42,10 @@
                 </div>
                 <div id="right">
                         <li class="navlink hide-md" >
-                        <a href="{% url 'authentication:render_login_page' %}">SignIn</a>
+                        <a href="{% url 'account_login' %}">Log In</a>
                     </li>
                     <li class="navlink hide-md" >
-                        <a href="{% url 'authentication:render_signup_page' %}">Signup</a>
+                        <a href="{% url 'account_signup' %}">Create New Account</a>
                     </li>
                 </div>
             {% endif %}
