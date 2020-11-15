@@ -11,6 +11,10 @@
 
 <div id="postform-wrapper">
     <div id="postform">
+        <div id="errors-addpost">
+            {% include "formerrors.html" %}
+            {% include "message.html" %}
+          </div>
         <form action="" method="POST" autocomplete="off">
             {% csrf_token %}
             {{ form.media }}

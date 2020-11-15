@@ -125,3 +125,9 @@ body{
     justify-content: space-between;
     margin-top: 20px;
 }
+#errors-post{
+    margin: auto;
+    max-width: 50%;
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}

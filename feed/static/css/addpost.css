@@ -36,6 +36,7 @@ body {
     overflow: visible;
     min-height: 90vh;
     margin-top: 10px;
+    padding-top:10px;
 }
 #publish-button{
 
@@ -52,4 +53,9 @@ body {
 
 .tox-tinymce {
     margin: 0 auto;
+}
+#errors-addpost{
+    margin: auto;
+    width: 90%;
+    margin-top: 10px;
 }

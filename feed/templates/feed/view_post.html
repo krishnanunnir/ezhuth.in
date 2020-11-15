@@ -14,6 +14,10 @@
 {% block content %}
 <div id="postform-wrapper">
     <div id="postform">
+        <div id="errors-post">
+            {% include "formerrors.html" %}
+            {% include "message.html" %}
+          </div>
         <div id="parent-line">
             <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
             {% if modify_status %}
