@@ -8,6 +8,10 @@
 {% endblock %}
 {% block content %}
 <div id="auth">
+  <div id="errors">
+    {% include "formerrors.html" %}
+    {% include "message.html" %}
+  </div>
     <h1>{% trans "Verify Your E-mail Address" %}</h1>
 
     {% url 'account_email' as email_url %}
