@@ -21,6 +21,10 @@
 <link rel='stylesheet' href="{% static 'css/profile.css' %}">
 {% endblock%}
 {% block content %}
+  <div id="errors">
+    {% include "formerrors.html" %}
+    {% include "message.html" %}
+  </div>
 {% if show_selected_user or False %}
   <div id="user-details">
     <div id="username">{{ selected_user | full_name }}</div>

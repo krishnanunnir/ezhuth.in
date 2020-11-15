@@ -1,12 +1,11 @@
 
 {% if messages %}
     {% for message in messages %}
-    <div
-    data-component="dismissible-item"
-    data-type="{{ message.tags }}"
-    data-value="{{ message }}"
-></div>
-
+<div class="dismissible dismissible-{{ message.tags }}">
+    <span>
+        {{ message }}
+    </span>
+</div>
     {% endfor %}
 {% endif %}
 

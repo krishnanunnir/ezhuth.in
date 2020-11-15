@@ -20,70 +20,33 @@
 	margin: 0 auto 0px auto;
 	padding: 10px;
 	position: relative;
+	text-align: center;
 
  }
-
-.dismissible button {
-	background: rgba(0, 0, 0, .4);
-	border: 0;
-	border-radius: 100%;
-	color: #fff;
-	cursor: pointer;
-	font-size: 14px;
-	font-weight: bold;
-	height: 24px;
-	line-height: 20px;
-	margin-top: -12px;
-	right: 10px;
-	position: absolute;
-	top: 50%;
-	width: 24px;
-}
 
 .dismissible button:focus {
 	outline: none;
 }
 
 .dismissible-error span {
-	background-color: #FFF;
-	border-color: #ba2121;
+	background-color: rgba(186, 33, 33,0.2);
+	border-color: rgb(186, 33, 33);
 	color: black;
-}
-
-.dismissible-error button {
-	background-color: #D50000;
-	color: #FFCDD2;
 }
 
 .dismissible-info span {
-	background-color: #FFF;
-	border-color: #2196F3;
+	background-color:  rgba(33, 150, 243,0.2);
+	border-color: rgb(33, 150, 243);
 	color: black;
-}
-
-.dismissible-info button {
-	background-color: #2196F3;
-	color: #E3F2FD;
 }
 
 .dismissible-success span {
-	background-color: #FFF;
-	border-color: #7CB342;
+	background-color: rgba(124, 179, 66,0.2);
+	border-color: rgb(124, 179, 66);
 	color: black;
 }
-
-.dismissible-success button {
-	background-color: #7CB342;
-	color: #DCEDC8;
-}
-
 .dismissible-warning span {
-	background-color: #FFA726;
-	border-color: #FB8C00;
-	color: #fff;
-}
-
-.dismissible-warning button {
-	background-color: #FB8C00;
-	color: #FFE0B2;
+	background-color:rgba(251, 140, 0,0.2);
+	border-color: rgb(251, 140, 0);
+	color: black;
 }
