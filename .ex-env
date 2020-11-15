@@ -1,0 +1,13 @@
+export ALLOWED_HOSTS=127.0.0.1
+export DEBUG=True
+export SECRET_KEY=
+export DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+export DATABASE_NAME=
+export DATABASE_USER=postgres
+export DATABASE_PASSWORD=
+export DATABASE_HOST=localhost
+export EMAIL_HOST=
+export EMAIL_HOST_PASSWORD=
+export EMAIL_HOST_USER=
+export DEFAULT_FROM_EMAIL=krishnanunni@ezhuth.in
+export DJANGO_SETTINGS_MODULE=knode.settings.local
