@@ -1,0 +1,4 @@
+-r ./base.txt
+
+gunicorn==19.9.0
+django-google-analytics-app==4.4.2
