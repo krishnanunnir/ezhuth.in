@@ -1,3 +1,4 @@
+from django.db.models.deletion import SET_NULL
 import unidecode 
 from datetime import datetime
 from django.db import models
@@ -12,9 +13,13 @@ from tinymce.models import HTMLField
 
 
 STATUS = (
-    (0, 'Draft'),
-    (1, 'Publish')
+    (0, 'Hidden'),
+    (1, 'Visible'),
+    (2, 'Home')
 )
+class Tag(models.Model):
+    owner = models.ForeignKey(User,related_name="user_owned_tags", on_delete=models.SET_NULL,null=True)
+    tag_name = models.CharField(max_length= 200)
 
 class Like(models.Model):
     users = models.ManyToManyField(User, related_name='requirement_comment_likes')
@@ -47,7 +52,7 @@ class Post(models.Model):
     comments_enabled = models.BooleanField(default=True)
     comment = GenericRelation(Comment)
     like = GenericRelation(Like,related_query_name="like_for_post")
-
+    tag = models.ForeignKey(Tag, related_name="tag_posts", null=True, on_delete=models.SET_NULL)
     class Meta:
         # The newly made post will be visible at the top
         ordering = ['-created_on']
@@ -60,6 +65,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return "/view/%s" %(self.slug)
 
 class ImageTinymce(models.Model):
     image = models.ImageField()
