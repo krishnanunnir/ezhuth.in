@@ -2,7 +2,6 @@
 {% load like %}
 {% load relative_time %}
 {% load user %}
-<div id="comments"></div>
     {% for comment in comments.all %}
     <div class="comment">
         <div class="comment-byline">Posted by <a href="{% url 'feed:view_user' post.author.username %}">{{ comment.author | full_name |default_if_none:"[deleted]" }}</a> {{ comment.created_on | pretty_date}}</div>

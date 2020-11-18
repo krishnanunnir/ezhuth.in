@@ -40,7 +40,8 @@ input:focus{
     display: inline-block;
     background-color: white;
     color: grey;
-    padding: 14px 20px;
+    padding: 0.4em;
+    font-size: 1.2em;
     margin: 8px 0;
     border: 1px solid gray;
     cursor: pointer;
