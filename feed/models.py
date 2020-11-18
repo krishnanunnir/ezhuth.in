@@ -47,7 +47,7 @@ class Post(models.Model):
     # RichTextField() is the field for ckeditor
     content = content = HTMLField()
     status = models.IntegerField(choices= STATUS, default= 0)
-    created_on = models.DateTimeField(auto_now= True)
+    created_on = models.DateTimeField()
     updated_on = models.DateTimeField(auto_now= True)
     comments_enabled = models.BooleanField(default=True)
     comment = GenericRelation(Comment)
@@ -60,7 +60,9 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         # creates a slug for the post on calling the save command
         now = datetime.now()
-        self.slug = "%s_%s" %(slugify(unidecode.unidecode(self.title)),now.strftime("%m_%d_%Y_%H_%M_%S"))
+        if self.created_on == None:
+            self.slug = "%s_%s" %(slugify(unidecode.unidecode(self.title)),now.strftime("%m_%d_%Y_%H_%M_%S"))
+            self.created_on = now
         super(Post, self).save(*args, **kwargs)
 
     def __str__(self):

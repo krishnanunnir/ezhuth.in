@@ -125,10 +125,11 @@ def delete_post(request, post_slug):
 @require_GET
 def view_all(request, template_name= "feed/view_posts.html"):
     """ Print all the publicly visible posts """
-    all_posts = Post.objects.annotate(num_val=(Count('comment'))).order_by('-num_val')
+    # all_posts = Post.objects.annotate(num_val=(Count('comment'))).order_by('-num_val')
     # time_threshold = datetime.now() - timedelta(hours=24)
+    all_posts = Post.objects.all().order_by("-created_on")
     all_posts = all_posts.filter(status=1)
-    posts = paginate_posts(request, all_posts, 10)
+    posts = paginate_posts(request, all_posts, 5)
     template_data = {'posts': posts}
     if is_ajax(request):
         return render(request, 'feed/__posts.html', template_data)
