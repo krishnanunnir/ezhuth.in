@@ -35,7 +35,7 @@
     <div class="symbols">
         <div class="post-like">
             {% post_liked_by_user post as show_likes %}
-            <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} {% if display_comment_form %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
+            <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
             <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
         </div>
         <div class="post-comment">

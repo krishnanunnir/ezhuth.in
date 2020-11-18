@@ -44,7 +44,6 @@ def add_post(request, template_name= "feed/add_post.html"):
                 redirect_url = drafts_home
             post = Post.objects.create(title= title, content= content, author= request.user, status= status)
             liked_object = Like.objects.create(content_object=post)
-            liked_object.users.add(request.user)
             return HttpResponseRedirect(redirect_url)
     template_data = {'form':form}
     return render(request, template_name, template_data)
@@ -99,7 +98,6 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
             title = "Replied to '%s'" %(post.title)
             comment = Comment.objects.create(content_object=post, content= content, author= request.user)
             liked_object = Like.objects.create(content_object=comment)
-            liked_object.users.add(request.user)
             return HttpResponseRedirect('/view/' + str(post_slug))
     # Options for modifying post is only visible to the author of the post
     modify_status = post.author==request.user
