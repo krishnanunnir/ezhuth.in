@@ -5,26 +5,23 @@
 
 .post{
     background-color: white;
-    width: 65%; /* Can be in percentage also. */
     height: auto;
-    margin: 0 auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    position: relative;
+    padding: 2em;
+    margin-top: 2em;
     border: 1px solid #efefef;
     border-radius: 6px;
     overflow: auto;
-    margin-top:20px;
     box-shadow: 1px 1px grey;
 }
 
 .post-title{
-    font-size: 24px;
+    font-size: 1.5em;
     margin-top: 10px;
 }
-
+.post-title a{
+    text-decoration: none;
+    color: black;
+}
  .post-byline{
     color: grey;
     font-size: 15px;
@@ -41,10 +38,11 @@
 
 
 .post-sneak-peak{
-    font-size: 17px;
+    font-size: 1em;
     margin-top:10px;
     color: grey;
-    max-height: 120px;
+    max-height: 5em;
+    min-height: 2em;
     overflow: hidden;
 }
 .post-sneak-peak img{
@@ -54,24 +52,6 @@
     width: auto;
     display: block;
     
-}
-
-.read-more{
-    display: inline-block;
-    position: relative;
-    padding:7px;
-    border: 1px solid grey;
-    border-radius: 3px;
-}
-
-.read-more a{
-    text-decoration: none;
-    float: right;
-    color: grey;
-}
-
-body{
-    background-color: #e5ded8;
 }
 
 #sentinel{
@@ -126,9 +106,6 @@ body{
 }
 
 @media screen and (min-width: 1300px) { 
-    .post{
-        width: 50%; /* Can be in percentage also. */
-    }
     #errors-post{
         max-width: 50%;
     }

@@ -2,3 +2,7 @@ body{
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
 }
+html{
+    background-color: #e5ded8 !important;
+
+}

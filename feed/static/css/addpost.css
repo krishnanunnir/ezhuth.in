@@ -22,9 +22,6 @@
 input:focus{
     outline: none;
 }
-body {
-    background-color: #e5ded8;
-}
 
 #postform-wrapper{
     text-align: center;

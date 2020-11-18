@@ -1,54 +1,39 @@
-<div id="nav">
-    <ul id="navlist">
-        <div id="all-nav-links">
-            {% if user.is_authenticated %}
-            <div id="left">
-                <div id="mobile-navbar">
-                    <li id="home" class="navlink">
-                        <a href="{% url 'feed:view_all' %}">Home</a>
-                    </li>
-                    <li class="navlink" id="icon">
-                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </li>
-                </div>
-                
-                <li class="hide-md navlink">
-                    <a href="{% url 'feed:view_feed' %}">Activity</a>
-                </li>
-            </div>
-            <div id="right">
-                <li class="hide-md navlink">
-                    <a href="{% url 'feed:add_post' %}">Create</a>
-                </li>
-                <li class="hide-md navlink">
-                    <a href="{% url 'account_logout' %}">Logout</a>
-                </li>
 
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        ezhuth.in
+      </a>
+  
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+    {% if user.is_authenticated %}
+    <div class="navbar-end">
+          <a class="navbar-item" href="{% url 'feed:add_post' %}">
+            New Post
+          </a>
+          <a class="navbar-item" href="{% url 'account_logout' %}" >
+            Log out
+          </a>
+    </div>
+    {% else %}
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary" href="{% url 'account_signup' %}">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light" href="{% url 'account_login' %}" >
+                Log in
+              </a>
             </div>
-            {% else %}
-                <div id="left">
-                    <div id="mobile-navbar">
-                    <li class="navlink">
-                        <a href="{% url 'feed:view_all' %}">Home</a>
-                    </li>
-                    <li class="navlink" id="icon">
-                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </li>
-                    </div>
-                </div>
-                <div id="right">
-                        <li class="navlink hide-md" >
-                        <a href="{% url 'account_login' %}">Log In</a>
-                    </li>
-                    <li class="navlink hide-md" >
-                        <a href="{% url 'account_signup' %}">Create New Account</a>
-                    </li>
-                </div>
-            {% endif %}
+          </div>
         </div>
-    </ul>
-</div>
+    {% endif %}
+    </div>
+</nav>  

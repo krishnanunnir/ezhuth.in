@@ -5,14 +5,14 @@
 {% load like %}
 {% load static %}
 {% load user %}
-
 {% for post in posts %}
-<div class="post">
+<div class="columns is-centered is-desktop is-mobile">
+<div class="post column is-half-desktop is-four-fifths-mobile">
     <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
-    <div class="post-title">{{ post.title }}</div>
-    <div class="post-sneak-peak">{{ post.content | bleach }}</div>
+    <div class="post-title"><a href="{% url 'feed:view_post' post.slug %}">{{ post.title }}</a></div>
+    <div class="post-sneak-peak content">{{ post.content | bleach }}</div>
     <div class="post-option">
-        <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div>
+        <!-- <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div> -->
         <div class="symbols">
           <div class="post-like">
             {% post_liked_by_user post as show_likes %}
@@ -25,5 +25,6 @@
           </div>
         </div>
       </div>
+</div>  
 </div>
-{% endfor %}
+  {% endfor %}
