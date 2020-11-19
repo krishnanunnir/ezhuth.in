@@ -1,11 +1,9 @@
 #title-text{
-    text-align: left;
-    width: 90%;
-    display: block;
     border: none;
     /* border-bottom: 1px solid black; */
     box-sizing: border-box;
-    font-size: 30px;
+    font-size: 2.7em;
+    font-family: 'sans';
 }
 
 #operations{
@@ -19,30 +17,17 @@
     color: grey;
     text-decoration: none;
 }
-#parent-line{
-    margin-bottom: 10px;
-}
+
 #parent-operations{
     display: block;
     text-align: left;
     margin-top: 15px;
 }
 
-#title-description{
-    text-align: left;
-    width: 90%;
-    margin: 8px 0;
-    display: block;
-    border: none;
-    box-sizing: border-box;
-    font-size: 16px;
-    color: grey;
-    margin-bottom: 20px;
-}
 .post-byline{
     text-align: left;
     color: grey;
-    font-size: 15px;
+    font-size: 1em;
 
 }
 
@@ -67,12 +52,10 @@ body {
 
 #postform-wrapper{
     padding: 30px;
-    text-align: center;
-    width: 95%;
     margin: 0 auto;
     background-color: white;
     border-radius: 4px;
-    overflow: auto;
+    overflow: visible;
     padding-bottom: 0px;
     margin-top: 0.5em;
 }
@@ -84,8 +67,7 @@ body {
     text-align: left;
     margin: 0 auto;
     background-color: white;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    padding-bottom: 1.4em;
 }
 
 #id_content{
@@ -106,7 +88,6 @@ body {
 .comment{
     padding: 25px;
     text-align: left;
-    width: 95%;
     margin: 0 auto;
     overflow: auto;
     background-color: white;
@@ -148,6 +129,12 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.editdelete{
+    display: inline;
+    font-size:15px;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
 
 .comment-number{
     display:inline;
@@ -181,7 +168,6 @@ body {
         width: 85%;
     }
     #parent-line{
-        margin-bottom: 10px;
         display: flex;
         justify-content: space-between;
     }
@@ -211,4 +197,7 @@ body {
     margin: auto;
     margin-top: 5px;
     margin-bottom: 5px; 
+}
+.border-option{
+    background-color: rgba(128, 128, 128,0.2);
 }

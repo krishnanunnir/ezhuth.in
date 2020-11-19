@@ -10,6 +10,7 @@
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
     <script src="{% static 'js/like.js' %}"></script>
     <script src="{% static 'js/comment.js' %}"></script>
+    <script src="{% static 'js/bulma.js' %}"></script>
 {% endblock %}
 {% block content %}
 <div id="postform-wrapper">
@@ -18,38 +19,84 @@
             {% include "formerrors.html" %}
             {% include "message.html" %}
           </div>
+
+        <span id="title-text">{{ post.title }} </span>
         <div id="parent-line">
             <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
-            {% if modify_status %}
-                <div id="parent-operations">
-                    <div id="operations"><a href="{% url 'feed:edit_post' post.slug %}" onclick="return confirm('Are you sure you want to edit this item?');">Edit</a></div>
-                    <div id="operations"><a href="{% url 'feed:delete_post' post.slug %}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></div>
-                </div>
-            {% endif %}
         </div>
-        <span id="title-text">{{ post.title }} </span>
+
         <div id="post-content">
             {{ post.content | bleach }}
         </div>
     </div>
-    <div class="symbols">
+    <div class="symbols column is-one-third-desktop is-full-mobile">
         <div class="post-like">
             {% post_liked_by_user post as show_likes %}
-            <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
-            <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
+            <a href="#" {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
+                <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} >
+                <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
+            </a>
         </div>
         <div class="post-comment">
-            <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  onclick="toggleCommentVisibility()">
-            <span id="posts-{{post.id}}-number" class="comment-number">Add a comment</span>
+            <a href="#" onclick="toggleCommentVisibility()">
+                <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  ">
+                <span id="posts-{{post.id}}-number" class="comment-number">Add a comment</span>
+            </a>
         </div>
+        {% if modify_status %}
+        <div id="edit-delete">
+        <div class="dropdown has-text-link-dark">
+            <div class="editdelete dropdown-trigger">
+                    <a class="icon">
+                        <img src="{% static 'images/more-vertical.svg' %}">
+                    </a>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                    <a href="{% url 'feed:edit_post' post.slug %}"
+                        onclick="return confirm('Are you sure you want to edit this item?');" class="dropdown-item is-size-6 has-text-black">
+                        Edit
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="{% url 'feed:delete_post' post.slug %}"
+                        onclick="return confirm('Are you sure you want to delete this item?');"
+                        class="dropdown-item is-size-6 has-text-black">
+                        Delete
+                    </a>
+                </div>
+            </div>
+          </div>
+    </div>
+    {% endif %}
     </div>
     {% if display_comment_form %}
     <div id="comment-editor" class="show-comment-editor">
         <form action="" method="POST">
             {% csrf_token %}
             {{ form.media }}
-            {{form.content}}
-            <input type="submit" value="Add Comment" id="submit-comment">
+            <article class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="field">
+                    <p class="control">
+                        {{form.content}}
+                    </p>
+                  </div>
+                  <nav class="level">
+                    <div class="level-left">
+                      <div class="level-item">
+                        <button type="submit" class="button is-info">
+                            Submit
+                        </button>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+              </article>
         </form>
     </div>
     {% endif %}
