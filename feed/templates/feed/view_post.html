@@ -29,7 +29,7 @@
             {{ post.content | bleach }}
         </div>
     </div>
-    <div class="symbols column is-one-third-desktop is-full-mobile">
+    <div class="symbols column {% if user.is_authenticated %} is-one-third-desktop {% else %} is-one-quarter-desktop {% endif %} is-full-mobile">
         <div class="post-like">
             {% post_liked_by_user post as show_likes %}
             <a href="#" {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
