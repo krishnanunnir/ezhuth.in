@@ -1,27 +1,14 @@
 
 #user-details{
     text-align: center;
+    padding:2em;
     background-color: white;
-    width: 65%; /* Can be in percentage also. */
     height: auto;
-    margin: 0 auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    position: relative;
     border: 1px solid #efefef;
     border-radius: 6px;
     margin-top:20px;
     box-shadow: 1px 1px grey;
 }
-
-@media screen and (min-width: 1300px) { 
-    #user-details{
-        width: 50%; /* Can be in percentage also. */
-    }
-  }
-
 #username{
     font-size: 30px;
 }

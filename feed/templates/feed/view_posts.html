@@ -28,11 +28,13 @@
     {% include "message.html" %}
   </div>
 {% if show_selected_user or False %}
-  <div id="user-details">
+<div class="columns is-centered is-desktop is-mobile">
+  <div id="user-details" class="column is-half-desktop is-four-fifths-mobile">
     <div id="username">{{ selected_user | full_name }}</div>
     <hr class="inner-separator">
     <div id="bio">I write blogs, probably, bio is not supported now.</div>
   </div>
+</div>
 {% endif %}
 
 <div id="posts">
