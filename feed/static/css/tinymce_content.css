@@ -21,11 +21,14 @@ p{
     font-size: 1em;
 }
 
-.tox .tox-toolbar__group:last-child button span{
-    padding:4em;
-}
 
 .tox .tox-toolbar__group:last-child button:hover{
     background-color: rgb(50, 152, 220);
     border-color: transparent;
+}
+
+@media screen and (min-width: 1300px) { 
+    .tox .tox-toolbar__group:last-child button span{
+        padding:4em;
+    }
 }

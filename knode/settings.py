@@ -154,6 +154,9 @@ TINYMCE_DEFAULT_CONFIG = {
     'toolbar_location': 'bottom',
     'plugins' : 'advlist autolink link image lists code autoresize autosave save',
     'toolbar' : ' h1 | bold italic underline | link image |  alignleft aligncenter alignright alignjustify | outdent indent | undo redo restoredraft | submit',
+    'mobile':{
+        'toolbar' : ' h1 | bold | link image | submit',
+    },
     'width': '90%',
     'autosave_restore_when_empty': True,
     'images_upload_url': '/uploadfile/',
