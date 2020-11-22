@@ -15,20 +15,26 @@ p{
     padding: 0px;
 }
 .tox .tox-toolbar__group:last-child button{
-    background-color: rgb(50, 152, 220);
-    border-color: transparent;
-    color: #fff;
+    background-color:rgb(50, 152, 220,1);
+    color: white;
     font-size: 1em;
+    margin-right:1em;
+    border-radius: 0.3em;
 }
 
 
 .tox .tox-toolbar__group:last-child button:hover{
-    background-color: rgb(50, 152, 220);
-    border-color: transparent;
+    background-color: #3298dc;
+    color: white;
 }
 
 @media screen and (min-width: 1300px) { 
+    .tox .tox-toolbar__group:last-child button{
+        background-color:rgb(50, 152, 220,0.5);
+    }
+    
     .tox .tox-toolbar__group:last-child button span{
-        padding:4em;
+        padding:1.3em;
+        font-weight: 700;
     }
 }
