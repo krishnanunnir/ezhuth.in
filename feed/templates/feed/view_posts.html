@@ -6,7 +6,7 @@
 {% load post %}
 {% load bleach_tags %}
 {% load user %}
-{% block title%} Feed{% endblock %}
+{% block title%} {% if show_selected_user or False %}{{ selected_user | full_name }} {% else %} Feed {% endif %} {% endblock %}
 
 {% block headers %}
 <meta name="robots" content="noindex">
