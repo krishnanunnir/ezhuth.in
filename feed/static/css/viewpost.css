@@ -165,9 +165,6 @@ body {
     .comment{
         width: 60%;
     }
-    #id_content{
-        width: 85%;
-    }
     #parent-line{
         display: flex;
         justify-content: space-between;

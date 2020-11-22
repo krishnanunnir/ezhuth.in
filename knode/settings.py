@@ -147,12 +147,13 @@ MEDIA_URL = '/media/'
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
 TINYMCE_DEFAULT_CONFIG = {
     'selector':"#postform #id_content",
+    'setup': 'tinymce_js',
     'branding': False,
     'menubar': False,
     'statusbar': False,
     'toolbar_location': 'bottom',
     'plugins' : 'advlist autolink link image lists code autoresize autosave save',
-    'toolbar' : ' h1 | bold italic underline | link image |  alignleft aligncenter alignright alignjustify | outdent indent | undo redo restoredraft',
+    'toolbar' : ' h1 | bold italic underline | link image |  alignleft aligncenter alignright alignjustify | outdent indent | undo redo restoredraft | submit',
     'width': '90%',
     'autosave_restore_when_empty': True,
     'images_upload_url': '/uploadfile/',

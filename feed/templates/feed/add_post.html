@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/tinymce_content.css' %}">
     <script src="{% static 'js/fileuploader.js' %}"></script>
+    <script src="{% static 'js/tinymce_button.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +22,7 @@
             {{ form.media }}
             {{ form.title }}
             {{ form.content }}
-            <button type="submit" id="publish-button" name="publish">Publish</button>
+            <button type="submit" id="publish-button" name="publish" style="display:none;">Publish</button>
         </form>
     </div>
 </div>
