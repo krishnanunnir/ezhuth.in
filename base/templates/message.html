@@ -1,11 +1,13 @@
 
 {% if messages %}
     {% for message in messages %}
-<div class="dismissible dismissible-{{ message.tags }}">
-    <span>
-        {{ message }}
-    </span>
-</div>
+<article class="message is-{{ message.tags }}">
+    <div class="message-body">
+        <span>
+            {{ message }}
+        </span>
+    </div>
+</article>
     {% endfor %}
 {% endif %}
 

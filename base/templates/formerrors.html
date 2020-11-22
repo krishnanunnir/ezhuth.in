@@ -1,18 +1,22 @@
 {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}
-        <div class="dismissible dismissible-error">
-            <span>
-                {{ error|escape }}
-            </span>
-        </div>
+            <article class="message is-danger">
+                <div class="message-body">
+                    <span>
+                        {{ error|escape }}
+                    </span>
+                </div>
+            </article>
         {% endfor %}
     {% endfor %}
 {% endif %}
 {% for error in form.non_field_errors %}
-<div class="dismissible dismissible-error">
-    <span>
-        {{ error|escape }}
-    </span>
-</div>
+<article class="message is-danger">
+    <div class="message-body">
+        <span>
+            {{ error|escape }}
+        </span>
+    </div>
+</article>
 {% endfor %}

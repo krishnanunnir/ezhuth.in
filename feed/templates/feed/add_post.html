@@ -7,11 +7,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/tinymce_content.css' %}">
     <script src="{% static 'js/fileuploader.js' %}"></script>
     <script src="{% static 'js/tinymce_button.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            var postdiv = document.getElementById("postform-wrapper");
+            postdiv.style.display ="block";
+        })
+      </script>
 {% endblock %}
 
 {% block content %}
 
-<div id="postform-wrapper">
+<div id="postform-wrapper" style="display:none">
     <div id="postform">
         <div id="errors-addpost">
             {% include "formerrors.html" %}

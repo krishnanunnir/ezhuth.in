@@ -12,12 +12,17 @@ p{
 }
 .tox .tox-toolbar__group:last-child{
     margin-left: auto !important;
+    padding: 0px;
 }
 .tox .tox-toolbar__group:last-child button{
-    background-color: rgb(50, 152, 220,0.5);
+    background-color: rgb(50, 152, 220);
     border-color: transparent;
     color: #fff;
     font-size: 1em;
+}
+
+.tox .tox-toolbar__group:last-child button span{
+    padding:4em;
 }
 
 .tox .tox-toolbar__group:last-child button:hover{
