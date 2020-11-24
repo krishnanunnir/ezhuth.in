@@ -24,8 +24,10 @@
             </a>
           </div>
           <div class="post-comment">
+            <a href="{% url 'feed:view_post' post.slug %}#comments">
             <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  onclick="showhide()">
             <span id="posts-{{post.id}}-number" class="comment-number">{{ post | comment_count }}</span>
+          </a>
           </div>
         </div>
       </div>
