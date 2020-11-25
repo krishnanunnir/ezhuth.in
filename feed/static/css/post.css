@@ -20,7 +20,7 @@
 }
 .post-title-sneak a{
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
 .post-title-sneak a:active{
     text-decoration: none;
