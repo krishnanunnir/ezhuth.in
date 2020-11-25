@@ -11,5 +11,3 @@ export EMAIL_HOST_PASSWORD=
 export EMAIL_HOST_USER=
 export DEFAULT_FROM_EMAIL=krishnanunni@ezhuth.in
 export DJANGO_SETTINGS_MODULE=knode.settings.local
-export SOCIAL_AUTH_FACEBOOK_KEY = 
-export SOCIAL_AUTH_FACEBOOK_SECRET =
