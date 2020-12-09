@@ -6,21 +6,26 @@
 {% load post %}
 {% load bleach_tags %}
 {% load user %}
+{% load compress %}
 {% block title%} {% if show_selected_user or False %}{{ selected_user | full_name }} {% else %} Feed {% endif %} {% endblock %}
 
 {% block headers %}
 <meta name="robots" content="noindex">
-<script src="{% static 'js/infinitescroll.js' %}"></script>
-<script src="{% static 'js/like.js' %}"></script>
-<script>
+{% compress js %}
+  <script src="{% static 'js/infinitescroll.js' %}"></script>
+  <script src="{% static 'js/like.js' %}"></script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       let bottomSentinel = document.querySelector("#sentinel");
       let scrollElement = document.querySelector("#posts");
       attachInfiniteScroll(bottomSentinel, scrollElement);
     })
   </script>
+{% endcompress %}
+{% compress css %}
 <link rel='stylesheet' href="{% static 'css/post.css' %}">
 <link rel='stylesheet' href="{% static 'css/profile.css' %}">
+{% endcompress %}
 {% endblock%}
 {% block content %}
   <div id="errors-post">

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'feed',
     'tinymce',
     'allauth',
+    'compressor',
     'allauth.account',
     'allauth.socialaccount',
     'django.contrib.sitemaps'
@@ -184,3 +185,10 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+COMPRESS_ENABLED=True
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)

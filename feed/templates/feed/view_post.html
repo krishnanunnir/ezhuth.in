@@ -5,12 +5,16 @@
 {% load like %}
 {% load comment %}
 {% load user %}
+{% load compress %}
 {% load bleach_tags %}
 {% block headers %}
+
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
+    {% compress js %}
     <script src="{% static 'js/like.js' %}"></script>
     <script src="{% static 'js/comment.js' %}"></script>
     <script src="{% static 'js/bulma.js' %}"></script>
+    {% endcompress %}
 {% endblock %}
 {% block content %}
 <div id="postform-wrapper">
