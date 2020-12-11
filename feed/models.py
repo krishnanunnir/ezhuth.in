@@ -9,6 +9,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from tinymce.models import HTMLField
+from django.utils.crypto import get_random_string
 # Defines the status as published or draft
 
 
@@ -60,8 +61,8 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         # creates a slug for the post on calling the save command
         now = datetime.now()
-        if self.created_on == None:
-            self.slug = "%s_%s" %(slugify(unidecode.unidecode(self.title)),now.strftime("%m_%d_%Y_%H_%M_%S"))
+        if not self.id:
+            self.slug = "%s_%s" %(get_random_string(),slugify(unidecode.unidecode(self.title)))
             self.created_on = now
         super(Post, self).save(*args, **kwargs)
 
