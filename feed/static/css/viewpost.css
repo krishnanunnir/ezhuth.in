@@ -4,6 +4,10 @@
     box-sizing: border-box;
     font-size: 2.7em;
     font-family: 'sans';
+    letter-spacing: -0.011em;
+    font-style: normal;
+    line-height: 44px;
+    font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;;
 }
 
 #operations{
@@ -157,6 +161,10 @@ body {
 .show-comment-editor{
     display: none;
 }
+#parent-line{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
 
 @media screen and (min-width: 1300px) { 
     #postform-wrapper{
@@ -180,7 +188,7 @@ body {
   }
 
   #post-content p{
-      line-height: 22px;
+      line-height: 1.5em;
 }
 
 .comment-byline a{
