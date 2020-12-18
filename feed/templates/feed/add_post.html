@@ -15,6 +15,9 @@
         document.addEventListener("DOMContentLoaded", () => {
             var postdiv = document.getElementById("postform-wrapper");
             postdiv.style.display ="block";
+            document.getElementById("id_title").oninput = function() {
+                this.style.height = (this.scrollHeight)+"px";
+            };
         })
     </script>
     {% endcompress %}
@@ -23,7 +26,7 @@
 {% block content %}
 
 <div id="postform-wrapper" style="display:none">
-    <div id="postform">
+    <div id="postform" class="content">
         <div id="errors-addpost">
             {% include "formerrors.html" %}
             {% include "message.html" %}

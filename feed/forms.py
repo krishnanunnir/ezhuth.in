@@ -6,7 +6,7 @@ class AddPostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'content')
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'ടൈറ്റിൽ'}),
+            'title': forms.Textarea(attrs={'placeholder': 'ടൈറ്റിൽ', 'height':'5em'}),
         }
         labels = {
             "content": _("Post")

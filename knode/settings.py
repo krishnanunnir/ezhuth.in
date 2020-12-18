@@ -158,7 +158,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'mobile':{
         'toolbar' : ' h1 | bold | link image | submit',
     },
-    'width': '90%',
+    'width': '100%',
     'autosave_restore_when_empty': True,
     'images_upload_url': '/uploadfile/',
     'images_upload_handler': 'example_image_upload_handler',

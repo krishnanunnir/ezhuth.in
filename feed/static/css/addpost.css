@@ -1,13 +1,26 @@
 #id_title{
-    width: 90%;
-    margin: 8px 0;
+    width: 100%;
     border: none;
     /* border-bottom: 1px solid black; */
-    box-sizing: border-box;
-    font-size: 30px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    font-size: 2.7em;
+    letter-spacing: -0.011em;
+    font-style: normal;
+    line-height: 44px;
+    font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
+    color: #4a4a4a;
+    height: 2em;
+    overflow-y: hidden;
 }
+#id_title:focus{
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; /*remove the resize handle on the bottom right*/
+}
+
 
 #id_description{
     width: 90%;
@@ -16,7 +29,6 @@
     box-sizing: border-box;
     font-size: 16px;
     color: grey;
-    margin-bottom: 20px;
 }
 
 input:focus{
@@ -28,13 +40,17 @@ input:focus{
     width: 95%;
     margin: 0 auto;
     background-color: white;
-    border-radius: 4px;
-    box-shadow: 1px 1px grey;
+    border-radius: 0.4em;
     overflow: visible;
-    min-height: 90vh;
-    margin-top: 2em;
-    padding-top:1em;
-    padding-bottom: 3em;
+    min-height: 80vh;
+    padding: 2em;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 3em;
+    padding-bottom: 4em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 #publish-button{
 
@@ -55,6 +71,18 @@ input:focus{
 }
 #errors-addpost{
     margin: auto;
-    width: 90%;
+    width: 100%;
     margin-top: 10px;
 }
+@media screen and (min-width: 1300px) { 
+    #postform-wrapper{
+        width: 60%;
+    }
+    .comment{
+        width: 60%;
+    }
+    #parent-line{
+        display: flex;
+        justify-content: space-between;
+    }
+  }
