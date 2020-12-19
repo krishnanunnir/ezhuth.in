@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'compressor',
     'allauth.account',
     'allauth.socialaccount',
+    'sass_processor',
     'django.contrib.sitemaps'
 ]
 
@@ -191,4 +192,10 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
     'compressor.finders.CompressorFinder',
+    'sass_processor.finders.CssFinder',
 )
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(BASE_DIR, 'base','static','scss'),
+    os.path.join(BASE_DIR, 'node_modules'),
+]

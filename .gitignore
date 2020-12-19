@@ -13,3 +13,4 @@ static/*
 __pycache__
 .env
 .envs/
+node_modules/
