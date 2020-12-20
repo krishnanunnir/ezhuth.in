@@ -7,18 +7,9 @@ $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
 
 // Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-// Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
+$navbar-background-color: white;
+$navbar-box-shadow-size:   0px 4px 12px;
+$navbar-box-shadow-color: rgba(0, 0, 0, 0.2);
+$navbar-height: 3.7rem;
 
 @import "bulma/bulma.sass";
