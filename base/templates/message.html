@@ -1,13 +1,11 @@
 
 {% if messages %}
     {% for message in messages %}
-<article class="message is-{{ message.tags }}">
-    <div class="message-body">
+    <div class="notification is-{{ message.tags }} is-light">
         <span>
             {{ message }}
         </span>
     </div>
-</article>
     {% endfor %}
 {% endif %}
 
