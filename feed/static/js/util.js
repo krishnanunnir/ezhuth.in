@@ -1,4 +1,4 @@
-  
+  // Code for intfinite scroll
   const appendElements = async (scrollElement, counter) => {
     end = false;
     let url = `?page=${counter + 1}`
@@ -31,3 +31,10 @@
   
     observer.observe(sentinel);
   };
+  // End of Infinite Scroll
+
+
+  // Code for floating button transition
+
+
+  // End of floating button transition
