@@ -1,10 +1,8 @@
 {% load static %}
 {% load compress %}
-{% load sass_tags %}
-
 
 <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-<link href="{% sass_src 'scss/bulma.scss' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 {% compress js %}
 <script src="{% static 'js/nav.js' %}"></script>
 {% endcompress %}
