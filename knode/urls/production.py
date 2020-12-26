@@ -28,6 +28,5 @@ urlpatterns = [
     path('', include('feed.urls', namespace='feed')),
     path('accounts/', include("allauth.urls")),
     path('admin/', admin.site.urls),
-    path('tinymce/', include('tinymce.urls')),
     path('sitemap.xml', sitemap,{'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6)}},name='django.contrib.sitemaps.views.sitemap'),
 ]

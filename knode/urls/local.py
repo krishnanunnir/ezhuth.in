@@ -21,6 +21,5 @@ urlpatterns = [
     path('', include('feed.urls', namespace='feed')),
     path('accounts/', include("allauth.urls")),
     path('admin/', admin.site.urls),
-    path('tinymce/', include('tinymce.urls')),
     path('__debug__/', include(debug_toolbar.urls))
 ]

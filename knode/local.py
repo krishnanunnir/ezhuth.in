@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'authentication',
     'feed',
-    'tinymce',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -146,24 +145,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "tinymce")
-TINYMCE_DEFAULT_CONFIG = {
-    'selector':"#postform #id_content",
-    'branding': False,
-    'menubar': False,
-    'statusbar': False,
-    'toolbar_location': 'bottom',
-    'plugins' : 'advlist autolink link image lists code autoresize autosave save',
-    'toolbar' : ' h1 | bold italic underline | link image |  alignleft aligncenter alignright alignjustify | outdent indent | undo redo restoredraft',
-    'width': '90%',
-    'autosave_restore_when_empty': True,
-    'images_upload_url': '/uploadfile/',
-    'images_upload_handler': 'example_image_upload_handler',
-    'content_css' : "/static/css/tinymce_content.css",
-    'min_height': 600,
-    'autoresize_on_init': False,
-    'object_resizing' : False,
-}
 LOGIN_REDIRECT_URL="/"
 LOGIN_URL = '/accounts/login'
 LOGOUT_REDIRECT_URL = '/accounts/login'

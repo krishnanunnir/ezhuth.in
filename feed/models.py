@@ -8,7 +8,6 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
-from tinymce.models import HTMLField
 from django.utils.crypto import get_random_string
 # Defines the status as published or draft
 
