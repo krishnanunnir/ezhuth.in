@@ -1,25 +1,33 @@
+
 <nav class="navbar has-shadow" role="navigation" aria-label="main navigation" style="box-shadow:0 3px 6px rgba(0,0,0,0.3)">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         ezhuth.in
       </a>
-  
+      {% if not "add" in request.path %}
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
+      {% endif %}
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
     {% if user.is_authenticated %}
     <div class="navbar-end">
-          <a class="navbar-item" href="{% url 'feed:add_post' %}">
-            New Post
-          </a>
-          <a class="navbar-item" href="{% url 'account_logout' %}" >
-            Log out
-          </a>
-    </div>
+      {% if not "add" in request.path %}
+      <a class="navbar-item" href="{% url 'feed:add_post' %}">
+        New Post
+      </a>
+      <a class="navbar-item" href="{% url 'account_logout' %}" >
+        Log out
+      </a>
+      {% else %}
+        <div class="navbar-item">
+          <input type="submit"  class="button is-primary" name="publish" value="Publish" form="newpost" >
+        </div>
+      {% endif %}
+  </div>
     {% else %}
         <div class="navbar-end">
           <div class="navbar-item">

@@ -6,13 +6,33 @@
     <meta name="robots" content="noindex">
     {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/tinymce_content.css' %}">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/themes/default.css"> <!-- or any other theme -->
     {% endcompress %}
     {% compress js %}
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <script src="{% static 'js/fileuploader.js' %}"></script>
-    <script src="{% static 'js/tinymce_button.js' %}"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            var editor = new MediumEditor('#id_content', {
+                toolbar: {
+                    /* These are the default options for the toolbar,
+                    if nothing is passed this is what is used */
+                    allowMultiParagraphSelection: true,
+                    buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+                    diffLeft: 0,
+                    diffTop: -10,
+                    firstButtonClass: 'medium-editor-button-first',
+                    lastButtonClass: 'medium-editor-button-last',
+                    relativeContainer: null,
+                    standardizeSelectionStart: false,
+                    static: false,
+                    /* options which only apply when static is true */
+                    align: 'center',
+                    sticky: false,
+                    updateOnEmptySelection: false
+                }
+            });
             var postdiv = document.getElementById("postform-wrapper");
             postdiv.style.display ="block";
             document.getElementById("id_title").oninput = function() {
@@ -31,13 +51,13 @@
             {% include "formerrors.html" %}
             {% include "message.html" %}
           </div>
-        <form action="" method="POST" autocomplete="off">
+        <form action="" method="POST" autocomplete="off" id="newpost">
             {% csrf_token %}
             {{ form.media }}
             {{ form.title }}
             {{ form.content }}
-            <button type="submit" id="publish-button" name="publish" style="display:none;">Publish</button>
         </form>
     </div>
 </div>
+<input type="submit" id="mobile-button" class="button is-primary visible-mobile" name="publish" value="Publish" form="newpost" >
 {% endblock %}
