@@ -46,7 +46,7 @@ class Post(models.Model):
     # If user is deleted the default value for author becomes "[deleted]"
     author = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
     # RichTextField() is the field for ckeditor
-    content = content = HTMLField()
+    content = content = models.TextField()
     status = models.IntegerField(choices= STATUS, default= 0)
     created_on = models.DateTimeField()
     updated_on = models.DateTimeField(auto_now= True)
