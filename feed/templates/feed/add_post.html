@@ -4,42 +4,14 @@
 {% load compress %}
 {% block headers %}
     <meta name="robots" content="noindex">
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/themes/default.css"> <!-- or any other theme -->
     {% endcompress %}
     {% compress js %}
-    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <script src="{% static 'js/fileuploader.js' %}"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            var editor = new MediumEditor('#id_content', {
-                toolbar: {
-                    /* These are the default options for the toolbar,
-                    if nothing is passed this is what is used */
-                    allowMultiParagraphSelection: true,
-                    buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-                    diffLeft: 0,
-                    diffTop: -10,
-                    firstButtonClass: 'medium-editor-button-first',
-                    lastButtonClass: 'medium-editor-button-last',
-                    relativeContainer: null,
-                    standardizeSelectionStart: false,
-                    static: false,
-                    /* options which only apply when static is true */
-                    align: 'center',
-                    sticky: false,
-                    updateOnEmptySelection: false
-                }
-            });
-            var postdiv = document.getElementById("postform-wrapper");
-            postdiv.style.display ="block";
-            document.getElementById("id_title").oninput = function() {
-                this.style.height = (this.scrollHeight)+"px";
-            };
-        })
-    </script>
+    <script src="{% static 'js/addpost.js' %}"></script>
     {% endcompress %}
 {% endblock %}
 
@@ -54,8 +26,24 @@
         <form action="" method="POST" autocomplete="off" id="newpost">
             {% csrf_token %}
             {{ form.media }}
+            <div id="toolbar-wrapper">
+                <div id="toolbar">
+                    <button class="ql-bold">Bold</button>
+                    <button class="ql-italic">Italic</button>
+                    <button class="ql-underline" value="2"></button>
+                    <button class="ql-header" value="2"></button>
+                    <button class="ql-image"></button>
+                    <button class="ql-link"></button>
+                    <button class="ql-code-block"></button>
+                    <button class="ql-block-quote"></button>
+                </div>
+            </div>
             {{ form.title }}
             {{ form.content }}
+
+            <div id="editor">
+            <p>Hello World!</p>
+            </div>
         </form>
     </div>
 </div>

@@ -15,17 +15,17 @@
     <div id="navbarBasicExample" class="navbar-menu">
     {% if user.is_authenticated %}
     <div class="navbar-end">
-      {% if not "add" in request.path %}
-      <a class="navbar-item" href="{% url 'feed:add_post' %}">
-        New Post
-      </a>
-      <a class="navbar-item" href="{% url 'account_logout' %}" >
-        Log out
-      </a>
+      {% if "/add/" in request.path or "/edit/" in request.path %}
+      <div class="navbar-item">
+        <input type="submit"  class="button is-primary" name="publish" value="Publish" form="newpost" >
+      </div>
       {% else %}
-        <div class="navbar-item">
-          <input type="submit"  class="button is-primary" name="publish" value="Publish" form="newpost" >
-        </div>
+        <a class="navbar-item" href="{% url 'feed:add_post' %}">
+          New Post
+        </a>
+        <a class="navbar-item" href="{% url 'account_logout' %}" >
+          Log out
+        </a>
       {% endif %}
   </div>
     {% else %}

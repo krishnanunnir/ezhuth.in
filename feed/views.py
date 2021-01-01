@@ -42,6 +42,7 @@ def add_post(request, template_name= "feed/add_post.html"):
                 status = 0
                 # messages.info(request, 'New Draft added successfully')
                 redirect_url = drafts_home
+            status=1 # delete this when supported added for drafts
             post = Post.objects.create(title= title, content= content, author= request.user, status= status)
             liked_object = Like.objects.create(content_object=post)
             return HttpResponseRedirect(redirect_url)

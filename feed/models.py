@@ -61,7 +61,7 @@ class Post(models.Model):
         # creates a slug for the post on calling the save command
         now = datetime.now()
         if not self.id:
-            self.slug = "%s_%s" %(get_random_string(),slugify(unidecode.unidecode(self.title)))
+            self.slug = "%s_%s" %(get_random_string()[0:4],slugify(unidecode.unidecode(self.title)))
             self.created_on = now
         super(Post, self).save(*args, **kwargs)
 

@@ -1,57 +1,76 @@
-function getCookie(name) {
-  if (!document.cookie) {
-    return null;
+class FileUploader{
+
+  constructor(editor){
+    this.editor = editor;
+    this.editor.getModule('toolbar').addHandler('image', () => {
+      this.selectLocalImage();
+    });
+  }
+  getCookie(name) {
+    if (!document.cookie) {
+      return null;
+    }
+
+    const xsrfCookies = document.cookie.split(';')
+      .map(c => c.trim())
+      .filter(c => c.startsWith(name + '='));
+
+    if (xsrfCookies.length === 0) {
+      return null;
+    }
+    return decodeURIComponent(xsrfCookies[0].split('=')[1]);
   }
 
-  const xsrfCookies = document.cookie.split(';')
-    .map(c => c.trim())
-    .filter(c => c.startsWith(name + '='));
+  selectLocalImage() {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.click();
 
-  if (xsrfCookies.length === 0) {
-    return null;
+    // Listen upload local image and save to server
+    input.onchange = () => {
+      const file = input.files[0];
+
+      // file type is only image.
+      if (/^image\//.test(file.type)) {
+        this.saveToServer(file);
+      } else {
+        console.warn('You could only upload images.');
+      }
+    };
   }
-  return decodeURIComponent(xsrfCookies[0].split('=')[1]);
-}
 
-function example_image_upload_handler (blobInfo, success, failure, progress) {
-    var xhr, formData;
-    xhr = new XMLHttpRequest();
-    const csrfToken = getCookie('csrftoken');
+  /**
+   * Step2. save to server
+   *
+   * @param {File} file
+   */
+  saveToServer(file) {
+    const fd = new FormData();
+    fd.append('image', file);
+    const csrfToken = this.getCookie('csrftoken');
+    fd.append('csrfmiddlewaretoken', csrfToken);  
+
+    const xhr = new XMLHttpRequest();
     xhr.open('POST', '/uploadfile/', true);
-  
-    xhr.upload.onprogress = function (e) {
-      progress(e.loaded / e.total * 100);
-    };
-  
-    xhr.onload = function() {
-      var json;
-  
-      if (xhr.status === 403) {
-        failure('HTTP Error: ' + xhr.status, { remove: true });
-        return;
+
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        // this is callback data: url
+        const json = JSON.parse(xhr.responseText);
+        this.insertToEditor(json.location);
       }
-  
-      if (xhr.status < 200 || xhr.status >= 300) {
-        failure('HTTP Error: ' + xhr.status);
-        return;
-      }
-  
-      json = JSON.parse(xhr.responseText);
-  
-      if (!json || typeof json.location != 'string') {
-        failure('Invalid JSON: ' + xhr.responseText);
-        return;
-      }
-  
-      success(json.location);
     };
-  
-    xhr.onerror = function () {
-      failure('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
-    };
-  
-    formData = new FormData();
-    formData.append('csrfmiddlewaretoken', csrfToken);  
-    formData.append('image', blobInfo.blob());
-    xhr.send(formData);
-  };
+    xhr.send(fd);
+  }
+
+  /**
+   * Step3. insert image url to rich editor.
+   *
+   * @param {string} url
+   */
+  insertToEditor(url) {
+    // push image url to rich editor.
+    const range = this.editor.getSelection();
+    this.editor.insertEmbed(range.index, 'image', `${url}`);
+  }
+}
