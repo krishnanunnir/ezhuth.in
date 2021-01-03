@@ -167,3 +167,4 @@ STATICFILES_FINDERS = (
     # other finders..
     'compressor.finders.CompressorFinder',
 )
+ACCOUNT_FORMS = {'signup': 'authentication.forms.UserSignupForm'}
