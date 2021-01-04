@@ -72,6 +72,11 @@
                         Edit
                     </a>
                     <hr class="dropdown-divider">
+                    <a href="{% url 'feed:preview_post' post.slug %}"
+                        onclick="return confirm('Are you sure you want to edit the preview?');" class="dropdown-item is-size-6 has-text-black">
+                        Edit Post Preview
+                    </a>
+                    <hr class="dropdown-divider">
                     <a href="{% url 'feed:delete_post' post.slug %}"
                         onclick="return confirm('Are you sure you want to delete this item?');"
                         class="dropdown-item is-size-6 has-text-black">
