@@ -14,6 +14,16 @@
     <script src="{% static 'js/like.js' %}"></script>
     <script src="{% static 'js/comment.js' %}"></script>
     <script src="{% static 'js/bulma.js' %}"></script>
+    <link href="https://cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        editor = new Quill("#post-content", {
+            readOnly: true,
+            theme: 'bubble',
+        });
+    });
+    </script>
     {% endcompress %}
 {% endblock %}
 {% block content %}

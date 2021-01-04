@@ -214,3 +214,6 @@ body {
 .border-option{
     background-color: rgba(128, 128, 128,0.2);
 }
+.ql-editor{
+    padding: 0px !important;
+}
