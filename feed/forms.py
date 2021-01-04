@@ -37,3 +37,8 @@ class ImageUploadForm(forms.ModelForm):
     class Meta:
         model = ImageTinymce
         fields =('image',)
+
+class PreviewForm(forms.ModelForm):
+    class Meta:
+        model= Post
+        fields=('header_image','description')

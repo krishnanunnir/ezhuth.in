@@ -19,6 +19,10 @@
       <div class="navbar-item">
         <input type="submit"  class="button is-primary" name="publish" value="Publish" form="newpost" >
       </div>
+      {% elif "/preview/" in request.path  %}
+        <div class="navbar-item">
+          <input type="submit"  class="button is-primary" name="Save Preview" value="Publish" form="previewpost" >
+        </div>
       {% else %}
         <a class="navbar-item" href="{% url 'feed:add_post' %}">
           New Post

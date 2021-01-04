@@ -53,6 +53,8 @@ class Post(models.Model):
     comment = GenericRelation(Comment)
     like = GenericRelation(Like,related_query_name="like_for_post")
     tag = models.ForeignKey(Tag, related_name="tag_posts", null=True, on_delete=models.SET_NULL)
+    description =  models.CharField(max_length= 500, null= True, blank= True)
+    header_image = models.ImageField(blank= True);
     class Meta:
         # The newly made post will be visible at the top
         ordering = ['-created_on']

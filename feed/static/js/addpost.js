@@ -3,6 +3,7 @@ class PostEditor{
     constructor(textarea_element_id, toolbar_element_id){
         this.editor = new Quill(textarea_element_id, {
             modules: { toolbar: toolbar_element_id },
+            placeholder: 'Type here',
             theme: 'snow'
         });
         this.textarea_element_id = textarea_element_id;

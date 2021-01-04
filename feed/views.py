@@ -14,10 +14,11 @@ from django.views.decorators.http import require_GET, require_POST
 from django.db.models import Q
 from django.db.models import Count
 from django.http import JsonResponse
+from django.urls import reverse
 import uuid
 
 from .models import Post, Comment, Like
-from .forms import AddPostForm, AddCommentForm, ImageUploadForm
+from .forms import AddPostForm, AddCommentForm, ImageUploadForm, PreviewForm
 from .redirects import *
 from .utils import is_ajax, paginate_posts
 
@@ -37,7 +38,6 @@ def add_post(request, template_name= "feed/add_post.html"):
                 status = 1
                 # messages.info(request, 'New Post added successfully')
                 # setting redirect_url to feed page or draft page
-                redirect_url = feed_home
             else:
                 status = 0
                 # messages.info(request, 'New Draft added successfully')
@@ -45,6 +45,7 @@ def add_post(request, template_name= "feed/add_post.html"):
             status=1 # delete this when supported added for drafts
             post = Post.objects.create(title= title, content= content, author= request.user, status= status)
             liked_object = Like.objects.create(content_object=post)
+            redirect_url = reverse("feed:preview_post",args=[post.slug])
             return HttpResponseRedirect(redirect_url)
     template_data = {'form':form}
     return render(request, template_name, template_data)
@@ -208,3 +209,20 @@ def handle_image(request):
             }
             return JsonResponse(responseData)
     return HttpResponseServerError()
+
+@login_required
+def preview_post(request, post_slug, template_name="feed/preview_post.html"):
+    form = PreviewForm()
+    post = get_object_or_404(Post, slug= post_slug, author=request.user)
+    if request.method=="POST":
+        form = PreviewForm(request.POST, request.FILES);
+        if form.is_valid():
+            post.header_image = form.cleaned_data.get("header_image");
+            post.description = form.cleaned_data.get("description");
+            post.save()
+            return HttpResponseRedirect("/")
+
+    template_data={'post': post,'form': form}
+    return render(request, template_name, template_data)
+
+     

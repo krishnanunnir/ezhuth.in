@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+{% load relative_time %}
+{% load post %}
+{% load bleach_tags %}
+{% load user %}
+{% load compress %}
+{% block title%} {% if show_selected_user or False %}{{ selected_user | full_name }} {% else %} Feed {% endif %}
+{% endblock %}
+
+{% block headers %}
+<meta name="robots" content="noindex">
+{% compress css %}
+<link rel='stylesheet' href="{% static 'css/post.css' %}">
+<link rel='stylesheet' href="{% static 'css/profile.css' %}">
+<link rel='stylesheet' href="{% static 'css/preview.css' %}">
+<script src="{% static 'js/preview.js' %}"></script>
+{% endcompress %}
+{% endblock%}
+{% block content %}
+<div id="errors-post">
+    {% include "formerrors.html" %}
+    {% include "message.html" %}
+</div>
+
+<form action="" method="POST" enctype="multipart/form-data" id="previewpost">
+    {% csrf_token %}
+    <div id="posts">
+        <div class="columns is-centered is-desktop is-mobile">
+            <div class="post column is-half-desktop is-four-fifths-mobile">
+                <section>
+                    <div class="container">
+                        <div class="form-group">
+                            <div class="preview-zone hidden">
+                                <div class="box box-solid">
+
+                                    <div class="box-tools pull-right">
+                                        <div class="remove-preview" id="removeButton">
+                                            <i class="fa fa-times"></i>
+                                        </div>
+                                    </div>
+                                    <div class="box-body"></div>
+                                </div>
+                                <img id="output" {% if post.header_image %}src="{{post.header_image.url}}" {% endif %}/>
+                                <a>
+                                <div class="dropzone-wrapper" id="uploadImageDiv" {% if post.header_image %}style="display:none;" {% endif %}>
+                                    <div class="dropzone-desc">
+                                        <i class="glyphicon glyphicon-download-alt"></i>
+                                        <p>Choose an image file or drag it here.</p>
+                                    </div>
+                                    {{ form.header_image }}
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="post-byline">Posted by {{ post.author | full_name |default_if_none:"[deleted]" }}</a>
+                    {{ post.created_on | pretty_date  }}</div>
+                <div class="post-title-sneak content">
+                    <div class="post-title">{{ post.title }}</div>
+                    <div class="post-sneak-peak content" id="description-div"  contenteditable="true" data-ph="Add your description here" ></div>
+                </div>
+                <div class="post-option">
+                    <!-- <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div> -->
+                    <div class="symbols">
+                        <div class="post-like">
+                            <img id="posts-{{post.id}}" class="heart" {% if show_likes %}
+                                src="{% static 'images/liked_heart.svg' %}" {% else %}
+                                src="{% static 'images/heart.svg' %}" {% endif %}>
+                            <span id="posts-{{post.id}}-number" class="like-number">0</span>
+                            </a>
+                        </div>
+                        <div class="post-comment">
+                            <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}">
+                            <span id="posts-{{post.id}}-number" class="comment-number">0</span>
+                        </div>
+                    </div>
+                </div>
+                {{form.description}}
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -16,6 +16,7 @@ urlpatterns = [
     path('like/comment/<int:id>', views.like_comment, name= 'like_comment'),
     path('user/<uuid:username>', views.view_user, name= 'view_user'),
     path('delete/<slug:post_slug>', views.delete_post, name= 'delete_post'),
+    path('preview/<slug:post_slug>', views.preview_post, name= 'preview_post'),
     path('uploadfile/',views.handle_image, name="handle_image")
 ]
 
