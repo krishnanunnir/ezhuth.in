@@ -42,3 +42,6 @@ class PreviewForm(forms.ModelForm):
     class Meta:
         model= Post
         fields=('header_image','description')
+        widgets = {
+            'header_image': forms.FileInput()
+        }

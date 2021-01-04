@@ -222,6 +222,8 @@ def preview_post(request, post_slug, template_name="feed/preview_post.html"):
             post.save()
             return HttpResponseRedirect("/")
 
+    if post.header_image or post.description:
+        form = PreviewForm(initial ={'header_image':post.header_image,'description':post.description})
     template_data={'post': post,'form': form}
     return render(request, template_name, template_data)
 
