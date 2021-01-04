@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     removePreview.onclick = function(){
         document.getElementById('output').src ="";
         uploadImageDiv.style.display="block";
+        imageUpload.value="";
     }
     form = document.querySelector('form');
     form.onsubmit = function() {
