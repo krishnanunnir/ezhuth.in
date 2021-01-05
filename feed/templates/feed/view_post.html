@@ -10,10 +10,6 @@
 {% block headers %}
 
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
-    {% compress js %}
-    <script src="{% static 'js/like.js' %}"></script>
-    <script src="{% static 'js/comment.js' %}"></script>
-    <script src="{% static 'js/bulma.js' %}"></script>
     <link href="https://cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <script>
@@ -24,6 +20,10 @@
         });
     });
     </script>
+    {% compress js %}
+    <script src="{% static 'js/like.js' %}"></script>
+    <script src="{% static 'js/comment.js' %}"></script>
+    <script src="{% static 'js/bulma.js' %}"></script>
     {% endcompress %}
 {% endblock %}
 {% block content %}
