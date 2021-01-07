@@ -1,6 +1,6 @@
 from django.db.models.deletion import SET_NULL
 import unidecode 
-from datetime import datetime
+from datetime import datetime,timezone
 from django.db import models
 from django.db.models.base import Model
 from authentication.models import User
@@ -61,8 +61,8 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         # creates a slug for the post on calling the save command
-        now = datetime.now()
         if not self.id:
+            now = datetime.now(timezone.utc)
             self.slug = "%s_%s" %(get_random_string()[0:4],slugify(unidecode.unidecode(self.title)))
             self.created_on = now
         super(Post, self).save(*args, **kwargs)
