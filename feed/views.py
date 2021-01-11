@@ -15,6 +15,7 @@ from django.db.models import Q
 from django.db.models import Count
 from django.http import JsonResponse
 from django.urls import reverse
+from django.utils.translation import ugettext as _
 import uuid
 
 from .models import Post, Comment, Like
@@ -96,7 +97,7 @@ def view_post(request, post_slug, template_name= "feed/view_post.html"):
         form = AddCommentForm(request.POST)
         if form.is_valid():
             content = form.cleaned_data.get('content')
-            # messages.info(request, 'Comment added for '+post.title)
+            # messages.info(request, _('Comment added for ')+post.title)
             title = "Replied to '%s'" %(post.title)
             comment = Comment.objects.create(content_object=post, content= content, author= request.user)
             liked_object = Like.objects.create(content_object=comment)
@@ -194,7 +195,7 @@ def like_comment(request, id):
             liked_object.users.add(request.user)
             return HttpResponse("true")
     else:
-        raise Http404("Page not found")
+        raise Http404(_("Page not found"))
 
 @login_required
 @require_POST

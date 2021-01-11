@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block title%} {{ post.title }}{% endblock %}
 {% load relative_time %}
@@ -36,7 +37,7 @@
 
         <span id="title-text">{{ post.title }} </span>
         <div id="parent-line">
-            <div class="post-byline">Posted by <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
+            <div class="post-byline">{% trans "Posted by" %} <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
         </div>
 
         <div id="post-content">
@@ -54,7 +55,7 @@
         <div class="post-comment">
             <a href="#comment-editor" onclick="toggleCommentVisibility()">
                 <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  ">
-                <span id="posts-{{post.id}}-number" class="comment-number">Add a comment</span>
+                <span id="posts-{{post.id}}-number" class="comment-number">{% trans "Add a comment" %}</span>
             </a>
         </div>
         {% if modify_status %}
@@ -68,19 +69,19 @@
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                     <a href="{% url 'feed:edit_post' post.slug %}"
-                        onclick="return confirm('Are you sure you want to edit this item?');" class="dropdown-item is-size-6 has-text-black">
-                        Edit
+                        onclick="return confirm('{% trans "Are you sure you want to edit this item?" %}');" class="dropdown-item is-size-6 has-text-black">
+                        {% trans "Edit" %}
                     </a>
                     <hr class="dropdown-divider">
                     <a href="{% url 'feed:preview_post' post.slug %}"
-                        onclick="return confirm('Are you sure you want to edit the preview?');" class="dropdown-item is-size-6 has-text-black">
-                        Edit Post Preview
+                        onclick="return confirm('{% trans "Are you sure you want to edit the preview?" %}');" class="dropdown-item is-size-6 has-text-black">
+                        {% trans "Edit Post Preview" %}
                     </a>
                     <hr class="dropdown-divider">
                     <a href="{% url 'feed:delete_post' post.slug %}"
-                        onclick="return confirm('Are you sure you want to delete this item?');"
+                        onclick="return confirm('{% trans "Are you sure you want to delete this item?" %}');"
                         class="dropdown-item is-size-6 has-text-black">
-                        Delete
+                        {% trans "Delete" %}
                     </a>
                 </div>
             </div>

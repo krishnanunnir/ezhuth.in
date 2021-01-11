@@ -1,12 +1,12 @@
 from django import forms
 from .models import ImageTinymce, Post, Comment
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 class AddPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'content')
         widgets = {
-            'title': forms.Textarea(attrs={'placeholder': 'ടൈറ്റിൽ', 'height':'5em'}),
+            'title': forms.Textarea(attrs={'placeholder': _('Title'), 'height':'5em'}),
             'content': forms.HiddenInput(),
         }
         labels = {
@@ -16,7 +16,7 @@ class AddPostForm(forms.ModelForm):
         super(AddPostForm, self).__init__(*args, **kwargs)
 
         for field in self.fields.values():
-            field.error_messages = {'required':'The {fieldname} is empty.'.format(
+            field.error_messages = {'required':_('The {fieldname} is empty.').format(
                 fieldname=field.label)}
 
 class AddCommentForm(forms.ModelForm):
@@ -30,7 +30,7 @@ class AddCommentForm(forms.ModelForm):
         super(AddCommentForm, self).__init__(*args, **kwargs)
 
         for field in self.fields.values():
-            field.error_messages = {'required':'{fieldname} is empty'.format(
+            field.error_messages = {'required':_('{fieldname} is empty').format(
                 fieldname=field.label)}
 
 class ImageUploadForm(forms.ModelForm):

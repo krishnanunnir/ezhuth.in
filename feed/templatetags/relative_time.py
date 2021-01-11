@@ -1,5 +1,6 @@
 from django import template
 from datetime import datetime, timezone
+from django.utils.translation import gettext as _
 
 register = template.Library()
 
@@ -26,24 +27,24 @@ def pretty_date(time=False):
         if second_diff < 10:
             return "just now"
         if second_diff < 60:
-            return str(second_diff) + " seconds ago"
+            return str(second_diff) + _(" seconds ago")
         if second_diff < 120:
             return "a minute ago"
         if second_diff < 3600:
-            return str(second_diff // 60) + " minutes ago"
+            return str(second_diff // 60) + _(" minutes ago")
         if second_diff < 7200:
             return "an hour ago"
         if second_diff < 86400:
-            return str(second_diff // 3600) + " hours ago"
+            return str(second_diff // 3600) + _(" hours ago")
     if day_diff == 1:
         return "yesterday"
     if day_diff < 7:
-        return str(day_diff) + " days ago"
+        return str(day_diff) + _(" days ago")
     if day_diff < 31:
-        return str(day_diff // 7) + " weeks ago"
+        return str(day_diff // 7) + _(" weeks ago")
     if day_diff < 365:
-        return str(day_diff // 30) + " months ago"
-    return str(day_diff // 365) + " years ago"
+        return str(day_diff // 30) + _(" months ago")
+    return str(day_diff // 365) + _(" years ago")
 
 
 register.filter("pretty_date", pretty_date)

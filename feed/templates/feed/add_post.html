@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block title %} Texteditor {% endblock %}
 {% load compress %}
@@ -42,10 +43,9 @@
             {{ form.content }}
 
             <div id="editor">
-            <p>Hello World!</p>
             </div>
         </form>
     </div>
 </div>
-<input type="submit" id="mobile-button" class="button is-primary visible-mobile" name="publish" value="Publish" form="newpost" >
+<input type="submit" id="mobile-button" class="button is-primary visible-mobile" name="publish" value='{% trans "Publish" %}' form="newpost" >
 {% endblock %}

@@ -1,0 +1,526 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-11 01:43+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: allauth/templates/account/account_inactive.html:5
+#: allauth/templates/account/account_inactive.html:11
+msgid "Account Inactive"
+msgstr "അക്കൗണ്ട് നിഷ്‌ക്രിയമാണ്"
+
+#: allauth/templates/account/account_inactive.html:13
+msgid "This account is inactive."
+msgstr "ഈ അക്കൗണ്ട് നിഷ്‌ക്രിയമാണ്."
+
+#: allauth/templates/account/email.html:5
+msgid "E-mail Addresses"
+msgstr "ഇ-മെയിൽ അഡ്രസെസ്"
+
+#: allauth/templates/account/email.html:17
+msgid "Manage E-mail"
+msgstr "ഇ-മെയിൽ നിയന്ത്രിക്കുക"
+
+#: allauth/templates/account/email.html:19
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "ഇനിപ്പറയുന്ന ഇ-മെയിൽ വിലാസങ്ങൾ നിങ്ങളുടെ അക്കൗണ്ടുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു:"
+
+#: allauth/templates/account/email.html:31
+msgid "Verified"
+msgstr "വെരിഫൈഡ്"
+
+#: allauth/templates/account/email.html:33
+msgid "Unverified"
+msgstr "അൻവേരിഫൈഡ്"
+
+#: allauth/templates/account/email.html:35
+msgid "Primary"
+msgstr "പ്രാഥമികം"
+
+#: allauth/templates/account/email.html:41
+msgid "Make Primary"
+msgstr "പ്രാഥമികമാക്കുക"
+
+#: allauth/templates/account/email.html:42
+msgid "Re-send Verification"
+msgstr "വെരിഫിക്കേഷൻ വീണ്ടും അയയ്‌ക്കുക"
+
+#: allauth/templates/account/email.html:43
+msgid "Remove"
+msgstr "നീക്കംചെയ്യുക"
+
+#: allauth/templates/account/email.html:48
+msgid "Warning:"
+msgstr "മുന്നറിയിപ്പ്:"
+
+#: allauth/templates/account/email.html:48
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+"നിങ്ങൾക്ക് നിലവിൽ ഒരു ഇ-മെയിൽ വിലാസവും സജ്ജീകരിച്ചിട്ടില്ല.നിങ്ങൾ ഒരു ഇ-മെയിൽ വിലാസം "
+"ചേർക്കേണ്ടതിനാൽ നിങ്ങൾക്ക് അറിയിപ്പുകൾ സ്വീകരിക്കാനും പാസ്‌വേഡ് റീസെറ്റ്‌ ചെയ്യാനും കഴിയും."
+
+#: allauth/templates/account/email.html:53
+msgid "Add another E-mail Address"
+msgstr "മറ്റൊരു ഇ-മെയിൽ വിലാസം ചേർക്കുക"
+
+#: allauth/templates/account/email.html:58
+msgid "Add E-mail"
+msgstr "ഇ-മെയിൽ ചേർക്കുക"
+
+#: allauth/templates/account/email.html:70
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "തിരഞ്ഞെടുത്ത ഇ-മെയിൽ വിലാസം നീക്കംചെയ്യണോ?"
+
+#: allauth/templates/account/email/base_message.txt:1
+#, python-format
+msgid "Hello from %(site_name)s!"
+msgstr "നിന്ന് ഹലോ %(site_name)s!"
+
+#: allauth/templates/account/email/base_message.txt:5
+#, python-format
+msgid ""
+"Thank you for using %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"%(site_name)s! ഉപയോഗിച്ചതിന് നന്ദി\n"
+"%(site_domain)s"
+
+#: allauth/templates/account/email/email_confirmation_message.html:10
+#, python-format
+msgid ""
+"\n"
+"  <h1>Welcome to %(site_domain)s</h1>\n"
+"  Hello %(user_display)s,<br><br>\n"
+"  Let me begin by welcoming you to %(site_domain)s, please confirm your "
+"email by clicking <a href=\"%(activate_url)s\">here</a>.<br><br>\n"
+"  \n"
+"  Thanks & Regards,<br>\n"
+"  Krishnanunni,<br>\n"
+"  krishnanunni@ezhuth.in\n"
+"  "
+msgstr ""
+"\n"
+"  <h1>%(site_domain)s ലേക്ക് സ്വാഗതം</h1>\n"
+"  നമസ്കാരം %(user_display)s,<br><br>\n"
+"  നിങ്ങളെ %(site_domain)s ലേക്ക് സ്വാഗതം ചെയ്തുകൊണ്ട് ഞാൻ ആരംഭിക്കാം,"
+"  <a href=\"%(activate_url)s\">ഇവിടെ</a> ക്ലിക്കുചെയ്ത് നിങ്ങളുടെ ഇമെയിൽ സ്ഥിരീകരിക്കുക.<br><br>\n"
+"  \n"
+"  നന്ദി, ആശംസകൾ,<br>\n"
+"  കൃഷ്ണനുണ്ണി,<br>\n"
+"  krishnanunni@ezhuth.in\n"
+"  "
+
+#: allauth/templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: allauth/templates/account/email/password_reset_key_message.txt:4
+msgid ""
+"\n"
+"\n"
+"You're receiving this e-mail because a password reset request was issued for "
+"the account associated with this email id.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: allauth/templates/account/email/password_reset_key_message.txt:12
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: allauth/templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:6
+#: allauth/templates/account/email_confirm.html:13
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:19
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:23
+msgid "Confirm"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:30
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: allauth/templates/account/login.html:6
+msgid "Sign In"
+msgstr ""
+
+#: allauth/templates/account/login.html:30
+msgid "Log In"
+msgstr ""
+
+#: allauth/templates/account/login.html:32
+#: allauth/templates/account/password_change.html:26
+msgid "Forgot Password?"
+msgstr ""
+
+#: allauth/templates/account/login.html:34
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"    of your existing third party accounts. Or, <a href=\"%(signup_url)s"
+"\">sign up</a>\n"
+"    for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: allauth/templates/account/login.html:41
+msgid "or"
+msgstr ""
+
+#: allauth/templates/account/login.html:45
+#, python-format
+msgid ""
+"Are you trying to \n"
+"      <a href=\"%(signup_url)s\">Sign Up?</a> "
+msgstr ""
+
+#: allauth/templates/account/logout.html:5
+#: allauth/templates/account/logout.html:11
+#: allauth/templates/account/logout.html:20
+msgid "Sign Out"
+msgstr ""
+
+#: allauth/templates/account/logout.html:13
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: allauth/templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: allauth/templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: allauth/templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: allauth/templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: allauth/templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: allauth/templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: allauth/templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr ""
+
+#: allauth/templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr ""
+
+#: allauth/templates/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: allauth/templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: allauth/templates/account/password_change.html:5
+#: allauth/templates/account/password_change.html:17
+#: allauth/templates/account/password_change.html:24
+#: allauth/templates/account/password_reset_from_key.html:4
+#: allauth/templates/account/password_reset_from_key.html:14
+#: allauth/templates/account/password_reset_from_key_done.html:4
+#: allauth/templates/account/password_reset_from_key_done.html:14
+msgid "Change Password"
+msgstr ""
+
+#: allauth/templates/account/password_reset.html:6
+#: allauth/templates/account/password_reset.html:16
+#: allauth/templates/account/password_reset_done.html:6
+#: allauth/templates/account/password_reset_done.html:16
+msgid "Password Reset"
+msgstr ""
+
+#: allauth/templates/account/password_reset.html:21
+msgid ""
+"Enter your e-mail address below, and we'll send you an e-mail allowing you "
+"to reset it."
+msgstr ""
+
+#: allauth/templates/account/password_reset.html:26
+msgid "Reset My Password"
+msgstr ""
+
+#: allauth/templates/account/password_reset.html:29
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: allauth/templates/account/password_reset_done.html:22
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: allauth/templates/account/password_reset_from_key.html:14
+msgid "Bad Token"
+msgstr ""
+
+#: allauth/templates/account/password_reset_from_key.html:18
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: allauth/templates/account/password_reset_from_key.html:27
+msgid "change password"
+msgstr ""
+
+#: allauth/templates/account/password_reset_from_key.html:30
+#: allauth/templates/account/password_reset_from_key_done.html:15
+msgid "Your password is now changed."
+msgstr ""
+
+#: allauth/templates/account/password_set.html:5
+#: allauth/templates/account/password_set.html:15
+#: allauth/templates/account/password_set.html:20
+msgid "Set Password"
+msgstr ""
+
+#: allauth/templates/account/signup.html:5
+msgid "Signup"
+msgstr ""
+
+#: allauth/templates/account/signup.html:27
+msgid "Create New Account"
+msgstr ""
+
+#: allauth/templates/account/signup.html:30
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: allauth/templates/account/signup_closed.html:5
+#: allauth/templates/account/signup_closed.html:15
+msgid "Sign Up Closed"
+msgstr ""
+
+#: allauth/templates/account/signup_closed.html:17
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: allauth/templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr "കുറിപ്പ്"
+
+#: allauth/templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr "താങ്കൾ ഇപ്പോൾ തന്നെ ലോഗേഡ് ഇൻ ആണ് %(user_display)s."
+
+#: allauth/templates/account/verification_sent.html:5
+#: allauth/templates/account/verification_sent.html:15
+#: allauth/templates/account/verified_email_required.html:5
+#: allauth/templates/account/verified_email_required.html:15
+msgid "Verify Your E-mail Address"
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം വെരിഫയ ചെയുക"
+
+#: allauth/templates/account/verification_sent.html:17
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"സ്ഥിരീകരണത്തിനായി ഞങ്ങൾ നിങ്ങൾക്ക് ഒരു ഇ-മെയിൽ അയച്ചു. സൈനപ്പ് പ്രക്രിയ അന്തിമമാക്കുന്നതിന് "
+"നൽകിയിരിക്കുന്ന ലിങ്ക് പിന്തുടരുക. കുറച്ച് മിനിറ്റിനുള്ളിൽ നിങ്ങൾക്ക് അത് ലഭിച്ചില്ലെങ്കിൽ ദയവായി "
+"ഞങ്ങളെ ബന്ധപ്പെടുക. "
+
+#: allauth/templates/account/verified_email_required.html:19
+msgid ""
+"This part of the site requires us to verify that\n"
+"    you are who you claim to be. For this purpose, we require that you\n"
+"    verify ownership of your e-mail address. "
+msgstr ""
+
+#: allauth/templates/account/verified_email_required.html:23
+msgid ""
+"We have sent an e-mail to you for\n"
+"    verification. Please click on the link inside this e-mail. Please\n"
+"    contact us if you do not receive it within a few minutes."
+msgstr ""
+"സ്ഥിരീകരണത്തിനായി ഞങ്ങൾ നിങ്ങൾക്ക് ഒരു ഇ-മെയിൽ അയച്ചു.\n"
+"ദയവായി ഈ ഇ-മെയിലിനുള്ളിലെ ലിങ്കിൽ ക്ലിക്കുചെയ്യുക.\n"
+"കുറച്ച് മിനിറ്റിനുള്ളിൽ നിങ്ങൾക്ക് അത് ലഭിച്ചില്ലെങ്കിൽ ദയവായി ഞങ്ങളെ ബന്ധപ്പെടുക."
+
+#: allauth/templates/account/verified_email_required.html:27
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+"<strong> കുറിപ്പ്: </ strong> നിങ്ങൾക്ക് ഇപ്പോഴും നിങ്ങളുടെ <a href=\"%(email_url)s"
+"\">മെയിൽ വിലാസം</a> മാറ്റാൻ കഴിയും."
+
+#: authentication/forms.py:7
+msgid "First Name"
+msgstr "ഫസ്റ്റ് നെയിം"
+
+#: authentication/forms.py:8
+msgid "Last Name"
+msgstr "ലാസ്‌റ് നെയിം"
+
+#: authentication/models.py:19
+msgid "The Email must be set"
+msgstr "ഇമെയിൽ സജ്ജമാക്കിയിരിക്കണം"
+
+#: authentication/models.py:35
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: authentication/models.py:37
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: authentication/models.py:44
+msgid "email address"
+msgstr "ഈ - മെയില് വിലാസം"
+
+#: feed/forms.py:9
+msgid "Title"
+msgstr "ടൈറ്റിൽ"
+
+#: feed/forms.py:13
+msgid "Post"
+msgstr "പോസ്റ്റ്"
+
+#: feed/forms.py:19
+#, python-brace-format
+msgid "The {fieldname} is empty."
+msgstr "{fieldname} ശൂന്യമാണ്"
+
+#: feed/forms.py:27
+msgid "Comment"
+msgstr "കമന്റ്"
+
+#: feed/forms.py:33
+#, python-brace-format
+msgid "{fieldname} is empty"
+msgstr "{fieldname} ശൂന്യമാണ്"
+
+#: feed/templates/feed/__posts.html:17 feed/templates/feed/comments.html:8
+#: feed/templates/feed/view_post.html:40
+msgid "Posted by"
+msgstr "പോസ്റ്റഡ് ബൈ"
+
+#: feed/templates/feed/add_post.html:50
+msgid "Publish"
+msgstr "പബ്ലിഷ്"
+
+#: feed/templates/feed/preview_post.html:50
+msgid "Choose an image file or drag it here."
+msgstr "ഒരു ഇമേജ് ഫയൽ തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ അത് ഇവിടെ വലിച്ചിടുക."
+
+#: feed/templates/feed/preview_post.html:63
+msgid "Add your description here"
+msgstr "വിവരണം ഇവിടെ ചേർക്കുക"
+
+#: feed/templates/feed/view_post.html:58
+msgid "Add a comment"
+msgstr "ഒരു കമന്റ് ചേർക്കുക"
+
+#: feed/templates/feed/view_post.html:72
+msgid "Are you sure you want to edit this item?"
+msgstr "ഈ പോസ്റ്റ് എഡിറ്റുചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"
+
+#: feed/templates/feed/view_post.html:73
+msgid "Edit"
+msgstr "പോസ്റ്റ് എഡിറ്റുചെയ്യുക"
+
+#: feed/templates/feed/view_post.html:77
+msgid "Are you sure you want to edit the preview?"
+msgstr "ഈ പോസ്റ്റ് പ്രിവ്യൂ എഡിറ്റുചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"
+
+#: feed/templates/feed/view_post.html:78
+msgid "Edit Post Preview"
+msgstr "പോസ്റ്റ് പ്രിവ്യൂ എഡിറ്റുചെയ്യുക"
+
+#: feed/templates/feed/view_post.html:82
+msgid "Are you sure you want to delete this item?"
+msgstr "ഈ പോസ്റ്റ് ഡിലീറ്റ്ചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"
+
+#: feed/templates/feed/view_post.html:84
+msgid "Delete"
+msgstr "ഡിലീറ്റ് പോസ്റ്റ്"
+
+#: feed/templatetags/relative_time.py:30
+msgid " seconds ago"
+msgstr " സെക്കൻഡ് മുമ്പ്"
+
+#: feed/templatetags/relative_time.py:34
+msgid " minutes ago"
+msgstr " മിനിറ്റ് മുമ്പ്"
+
+#: feed/templatetags/relative_time.py:38
+msgid " hours ago"
+msgstr " മണിക്കൂറുകള്ക്ക് മുന്പ്"
+
+#: feed/templatetags/relative_time.py:42
+msgid " days ago"
+msgstr " ദിവസങ്ങൾക്ക് മുൻപ്"
+
+#: feed/templatetags/relative_time.py:44
+msgid " weeks ago"
+msgstr " ആഴ്ചകൾക്ക് മുമ്പ്"
+
+#: feed/templatetags/relative_time.py:46
+msgid " months ago"
+msgstr " മാസം മുമ്പ്"
+
+#: feed/templatetags/relative_time.py:47
+msgid " years ago"
+msgstr " വർഷങ്ങൾക്കുമുമ്പ്"
+
+#: feed/views.py:198
+msgid "Page not found"
+msgstr "പേജ് കണ്ടെത്തിയില്ല"
+
+#~ msgid "ഫസ്റ്റ് നെയിം"
+#~ msgstr "പേരിന്റെ ആദ്യഭാഗം"
