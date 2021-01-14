@@ -15,6 +15,17 @@
     border-bottom: 0.5px dashed grey;
     resize:none;
 }
+#title-div{
+    display: inline-block;
+    width: 100%;
+    font-size: 2.7em;
+    letter-spacing: -0.011em;
+    font-style: normal;
+    line-height: 1.3em;
+    font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
+    color: #4a4a4a;
+    margin-top: 0.5em;
+}
 #id_title:focus{
     border: none;
     overflow: auto;
@@ -86,9 +97,7 @@ input:focus{
     height: 10em;
   }
   
-[contenteditable]:focus {
-    outline: 0px solid transparent;
-}
+
 .visible-mobile{
     display:block;
 }
@@ -127,4 +136,15 @@ input:focus{
   }
 #toolbar-wrapper{
     visibility: hidden;
+}
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-ph)
+}
+[contentEditable=true]:focus{
+    outline: none;
+  }
+/* Fix for firefox 0 height content editable issue */
+  *[contenteditable]:empty:before
+{
+    content: "\feff"; /* ZERO WIDTH NO-BREAK SPACE */
 }

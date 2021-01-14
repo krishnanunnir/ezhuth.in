@@ -33,7 +33,7 @@
         </div>
         {% endif %}
 
-        <span id="title-text">{{ post.title }} </span>
+        <span id="title-text">{{ post.title | bleach }} </span>
         {% if post.description %}
             <div class="post-sneak-peak">
               {{ post.description | bleach }}

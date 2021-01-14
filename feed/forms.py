@@ -6,7 +6,7 @@ class AddPostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'content')
         widgets = {
-            'title': forms.Textarea(attrs={'placeholder': _('Title'), 'height':'5em'}),
+            'title': forms.HiddenInput(),
             'content': forms.HiddenInput(),
         }
         labels = {

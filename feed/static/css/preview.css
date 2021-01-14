@@ -75,3 +75,8 @@
 [contentEditable=true]:focus{
   outline: none;
 }
+/* Fix for 0 height firefox issue */
+*[contenteditable]:empty:before
+{
+    content: "\feff"; /* ZERO WIDTH NO-BREAK SPACE */
+}

@@ -16,7 +16,6 @@ from django.db.models import Count
 from django.http import JsonResponse
 from django.urls import reverse
 from django.utils.translation import ugettext as _
-import uuid
 
 from .models import Post, Comment, Like
 from .forms import AddPostForm, AddCommentForm, ImageUploadForm, PreviewForm
@@ -60,7 +59,6 @@ def edit_post(request, post_slug, template_name= "feed/add_post.html"):
         #Sanitizing data using AddPostForm since both of them use the same data
         form = AddPostForm(request.POST)
         if form.is_valid():           
-            post.title = form.cleaned_data.get('title')
             post.content = form.cleaned_data.get('content')
             if 'publish' in request.POST:
                 post.status = 1

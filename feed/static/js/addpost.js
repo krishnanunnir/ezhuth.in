@@ -28,7 +28,7 @@ class PostEditor{
     }
     moveTexteditorToQuill(){
         var quill = this.editor;
-        var titleEditor = document.getElementById("id_title");
+        var titleEditor = document.getElementById("title-div");
         titleEditor.addEventListener("keydown",function(e){
             var code = (e.keyCode ? e.keyCode : e.which);
             if(code == 13) { //Enter keycode
@@ -53,12 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
     invokeAction = new PostEditor("#editor","#toolbar");
     form = document.querySelector('form');
     var quill = invokeAction.editor;
-    var inputField = document.getElementById("id_content");
-    if(inputField.value!= null){
-        quill.root.innerHTML = inputField.value;
+    var inputContentField = document.getElementById("id_content");
+    var inputTitleField = document.getElementById("id_title");
+    var titleField = document.getElementById("title-div");
+    if(inputContentField.value!= ""){
+        quill.root.innerHTML = inputContentField.value;
+        titleField.innerHTML = inputTitleField.value;
+        titleField.removeAttribute("contenteditable");
+        quill.focus();
     }
     form.onsubmit = function() {
-        inputField.value = quill.root.innerHTML;
+        inputContentField.value = quill.root.innerHTML;
+        inputTitleField.value = titleField.innerHTML;
     }
 });
 
