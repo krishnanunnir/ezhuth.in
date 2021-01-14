@@ -69,7 +69,7 @@
 #id_description{
   display:none;
 }
-  [contentEditable=true]:empty:not(:focus):before{
+[contentEditable=true]:empty:not(:focus):before{
     content:attr(data-ph)
 }
 [contentEditable=true]:focus{

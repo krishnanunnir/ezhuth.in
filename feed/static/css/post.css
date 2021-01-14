@@ -32,6 +32,7 @@
  .post-byline{
     color: grey;
     font-size: 15px;
+    margin-bottom: 0.5em;
 }
 
 .post-byline a{
@@ -49,17 +50,8 @@
     margin-top:10px;
     color: grey;
     max-height: 5em;
-    min-height: 1em;
     overflow: hidden;
     font-size: 1em;
-}
-.post-sneak-peak img{
-    max-width: 90%;
-    margin: 0 auto;
-    height: auto;
-    width: auto;
-    display: block;
-    
 }
 
 #sentinel{

@@ -4,10 +4,9 @@
     box-sizing: border-box;
     font-size: 2.7em;
     font-family: 'sans';
-    letter-spacing: -0.011em;
     font-style: normal;
-    line-height: 1.3em;
     font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
+    display: block;
 }
 
 #operations{
@@ -48,7 +47,7 @@
     text-align: left;
     color: black;
     font-size: 1.2em;
-    margin-top:10px;
+    margin-bottom: 1em;
 }
 body {
     background-color: #EFF6FC;
@@ -159,18 +158,18 @@ body {
     height: 26px;
 }
 .symbols{
-    margin-top: 15px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+    padding: 0px;
+    padding-right: 1.5em;
 }
 
 .show-comment-editor{
     display: none;
 }
 #parent-line{
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 @media screen and (min-width: 1300px) { 
@@ -216,4 +215,12 @@ body {
 }
 .ql-editor{
     padding: 0px !important;
+}
+.post-sneak-peak{
+    font-size: 1em;
+    color: grey;
+    max-height: 5em;
+    overflow: hidden;
+    font-size: 1em;
+    margin-bottom: 1em;
 }

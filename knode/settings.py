@@ -204,4 +204,4 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
-LANGUAGE_CODE = 'ml'
+LANGUAGE_CODE = 'en'

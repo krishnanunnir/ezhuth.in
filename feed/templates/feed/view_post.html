@@ -11,16 +11,6 @@
 {% block headers %}
 
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
-    <link href="https://cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-        editor = new Quill("#post-content", {
-            readOnly: true,
-            theme: 'bubble',
-        });
-    });
-    </script>
     {% compress js %}
     <script src="{% static 'js/like.js' %}"></script>
     <script src="{% static 'js/comment.js' %}"></script>
@@ -29,16 +19,26 @@
 {% endblock %}
 {% block content %}
 <div id="postform-wrapper">
-    <div id="postform" class="content">
+    <div id="postform">
         <div id="errors-viewpost">
             {% include "formerrors.html" %}
             {% include "message.html" %}
           </div>
+          <div id="parent-line">
+              <div class="post-byline">{% trans "Posted by" %} <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
+          </div>
+          {% if post.header_image %}
+          <div id="header-image">
+            <img src="{{post.header_image.url}}"/>
+        </div>
+        {% endif %}
 
         <span id="title-text">{{ post.title }} </span>
-        <div id="parent-line">
-            <div class="post-byline">{% trans "Posted by" %} <a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a>  {{ post.created_on | pretty_date  }}</div>
-        </div>
+        {% if post.description %}
+            <div class="post-sneak-peak">
+              {{ post.description | bleach }}
+            </div>
+        {% endif %}
 
         <div id="post-content">
             {{ post.content | bleach }}

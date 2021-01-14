@@ -42,15 +42,17 @@
                                     </div>
                                     <div class="box-body"></div>
                                 </div>
-                                <img id="output" {% if post.header_image %}src="{{post.header_image.url}}" {% endif %}/>
+                                <img id="output" {% if post.header_image %}src="{{post.header_image.url}}"
+                                    {% endif %} />
                                 <a>
-                                <div class="dropzone-wrapper" id="uploadImageDiv" {% if post.header_image %}style="display:none;" {% endif %}>
-                                    <div class="dropzone-desc">
-                                        <i class="glyphicon glyphicon-download-alt"></i>
-                                        <p>{% trans "Choose an image file or drag it here." %}</p>
+                                    <div class="dropzone-wrapper" id="uploadImageDiv"
+                                        {% if post.header_image %}style="display:none;" {% endif %}>
+                                        <div class="dropzone-desc">
+                                            <i class="glyphicon glyphicon-download-alt"></i>
+                                            <p>{% trans "Choose an image file or drag it here." %}</p>
+                                        </div>
+                                        {{ form.header_image }}
                                     </div>
-                                    {{ form.header_image }}
-                                </div>
                                 </a>
                             </div>
                         </div>
@@ -60,9 +62,8 @@
                     {{ post.created_on | pretty_date  }}</div>
                 <div class="post-title-sneak content">
                     <div class="post-title">{{ post.title }}</div>
-                    <div class="post-sneak-peak content" id="description-div"  contenteditable="true" data-ph="{% trans "Add your description here" %}" >
-                        {% if post.description %}{{post.description }} {% endif %}
-                    </div>
+                    <div class="post-sneak-peak content" id="description-div" contenteditable="true"
+                        data-ph="{% trans "Add your description here" %}">{% if post.description %}{{post.description }} {% endif %}</div>
                 </div>
                 <div class="post-option">
                     <!-- <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div> -->
