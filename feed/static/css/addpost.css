@@ -25,6 +25,7 @@
     font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
     color: #4a4a4a;
     margin-top: 0.5em;
+    padding: 12px 15px;
 }
 #id_title:focus{
     border: none;
@@ -105,16 +106,9 @@ input:focus{
 #mobile-button{
     margin: 1em;
 }
-.ql-snow button svg{
-    height: 2em !important;
-}
 .ql-snow{
     border: none !important;
-    padding: 0px !important;
 
-}
-.ql-editor{
-    padding: 0px !important;
 }
 #editor{
     margin-top: 0.3em;
@@ -148,3 +142,6 @@ input:focus{
 {
     content: "\feff"; /* ZERO WIDTH NO-BREAK SPACE */
 }
+.ql-editor::before { 
+    padding-left:0px;
+ }
