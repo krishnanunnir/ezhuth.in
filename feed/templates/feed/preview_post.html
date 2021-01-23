@@ -63,7 +63,7 @@
                 <div class="post-title-sneak content">
                     <div class="post-title">{{ post.title }}</div>
                     <div class="post-sneak-peak content" id="description-div" contenteditable="true"
-                        data-ph="{% trans "Add your description here" %}">{% if post.description %}{{post.description }} {% endif %}</div>
+                        data-ph="{% trans "Add your description here" %}">{% if post.description %}{{post.description | bleach }} {% endif %}</div>
                 </div>
                 <div class="post-option">
                     <!-- <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div> -->
