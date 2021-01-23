@@ -27,9 +27,23 @@
         <a class="navbar-item" href="{% url 'feed:add_post' %}">
           New Post
         </a>
-        <a class="navbar-item" href="{% url 'account_logout' %}" >
-          Log out
-        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Account
+          </a>      
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="{% url 'account_change_password' %}" >
+              Change Password
+            </a>
+            <a class="navbar-item" href="{% url 'account_email' %}" >
+              Manage Email
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href="{% url 'account_logout' %}" >
+              Log out
+            </a>
+          </div>
+        </div>
       {% endif %}
   </div>
     {% else %}
