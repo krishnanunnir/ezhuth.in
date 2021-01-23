@@ -7,7 +7,10 @@ class PostEditor{
                     ['bold', 'italic'],
                     ['link', 'blockquote', 'code-block', 'image'],
                     [{ list: 'ordered' }, { list: 'bullet' }]
-                  ]
+                  ],
+                  clipboard: {
+                    matchVisual: false
+                }
              },
             placeholder: 'Type here',
             theme: 'snow'
@@ -43,6 +46,9 @@ class PostEditor{
             }
         });
     }
+    isQuillEmpty() {
+        return this.editor.getText().trim().length === 0 && this.editor.container.firstChild.innerHTML.includes("img") === false;
+    }
 };
 document.addEventListener("DOMContentLoaded", () => {
     invokeAction = new PostEditor("#editor","#toolbar");
@@ -58,7 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
         quill.focus();
     }
     form.onsubmit = function() {
-        inputContentField.value = quill.root.innerHTML;
+        if(!invokeAction.isQuillEmpty()){
+            inputContentField.value = quill.root.innerHTML;
+        }
         inputTitleField.value = titleField.innerHTML;
     }
 });
