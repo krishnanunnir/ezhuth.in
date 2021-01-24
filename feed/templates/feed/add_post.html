@@ -14,6 +14,35 @@
     <script src="{% static 'js/fileuploader.js' %}"></script>
     <script src="{% static 'js/addpost.js' %}"></script>
 {% endcompress %}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    invokeAction = new PostEditor("#editor","{{post.slug}}");
+    form = document.querySelector('form');
+    var quill = invokeAction.editor;
+    var inputContentField = document.getElementById("id_content");
+    var inputTitleField = document.getElementById("id_title");
+    var titleField = document.getElementById("title-div");
+    if(inputTitleField.value!=""){
+        titleField.innerHTML = inputTitleField.value;
+    }
+    if(inputContentField.value!= ""){
+        quill.root.innerHTML = inputContentField.value;
+        quill.focus();
+    }
+    form.onsubmit = function() {
+        if(!invokeAction.isQuillEmpty()){
+            inputContentField.value = quill.root.innerHTML;
+        }else{
+            inputContentField.value = "";
+        }
+        inputTitleField.value = titleField.innerHTML;
+    }
+    setInterval(function(){ 
+            //code goes here that will be run every 5 seconds.
+            invokeAction.syncpost()
+        }, 5000);
+});
+</script>
 {% endblock %}
 
 {% block content %}
@@ -27,7 +56,7 @@
         <form action="" method="POST" autocomplete="off" id="newpost">
             {% csrf_token %}
             {{ form.media }}
-            <span id="title-div" {% if not "/edit/" in request.path %} contenteditable="true"{% endif %} data-ph="Add your title"></span>
+            <span id="title-div" contenteditable="true" data-ph="Add your title"></span>
             {{ form.title }}
             {{ form.content}}
 

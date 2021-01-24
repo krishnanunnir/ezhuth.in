@@ -1,14 +1,14 @@
 from django.db.models.deletion import SET_NULL
 import unidecode 
-from datetime import datetime,timezone
 from django.db import models
 from django.db.models.base import Model
 from authentication.models import User
+from datetime import datetime,timezone
 from django.template.defaultfilters import slugify
+from django.utils.crypto import get_random_string
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
-from django.utils.crypto import get_random_string
 # Defines the status as published or draft
 
 
@@ -40,12 +40,12 @@ class Comment(models.Model):
     like = GenericRelation(Like, related_query_name="like_for_comment")
 
 class Post(models.Model):
-    title = models.CharField(max_length= 200)
+    title = models.CharField(max_length= 200,blank=True, null=True)
     slug = models.SlugField(max_length= 500, unique= True, allow_unicode=True)
     # If user is deleted the default value for author becomes "[deleted]"
     author = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
     # RichTextField() is the field for ckeditor
-    content = content = models.TextField()
+    content = models.TextField(blank=True, null=True)
     status = models.IntegerField(choices= STATUS, default= 0)
     created_on = models.DateTimeField()
     updated_on = models.DateTimeField(auto_now= True)
@@ -61,10 +61,6 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         # creates a slug for the post on calling the save command
-        if not self.id:
-            now = datetime.now(timezone.utc)
-            self.slug = "%s_%s" %(get_random_string()[0:4],slugify(unidecode.unidecode(self.title)))
-            self.created_on = now
         super(Post, self).save(*args, **kwargs)
 
     def __str__(self):

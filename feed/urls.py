@@ -11,6 +11,7 @@ urlpatterns = [
     path('feed/', views.view_feed, name= 'view_feed'),
     path('add/', views.add_post, name= 'add_post'),
     path('view/<slug:post_slug>', views.view_post, name= 'view_post'),
+    path('drafts/', views.view_drafts, name= 'view_drafts'),
     path('edit/<slug:post_slug>', views.edit_post, name= 'edit_post'),
     path('like/<slug:post_slug>', views.like_post, name= 'like_post'),
     path('like/comment/<int:id>', views.like_comment, name= 'like_comment'),

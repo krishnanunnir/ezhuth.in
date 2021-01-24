@@ -1,6 +1,7 @@
 class PostEditor{
 
-    constructor(textarea_element_id, toolbar_element_id){
+    constructor(textarea_element_id, slug){
+        this.slug = slug
         this.editor = new Quill(textarea_element_id, {
             modules: { 
                 toolbar: [
@@ -16,14 +17,26 @@ class PostEditor{
             theme: 'snow'
         });
         this.textarea_element_id = textarea_element_id;
-        this.toolbar_element_id = toolbar_element_id;
         new FileUploader(this.editor);
         this.onLoadMakeVisible();
         this.onTitleInputScroll();
         this.moveTexteditorToQuill();
         
     };
-
+    getCookie(name) {
+        if (!document.cookie) {
+          return null;
+        }
+    
+        const xsrfCookies = document.cookie.split(';')
+          .map(c => c.trim())
+          .filter(c => c.startsWith(name + '='));
+    
+        if (xsrfCookies.length === 0) {
+          return null;
+        }
+        return decodeURIComponent(xsrfCookies[0].split('=')[1]);
+      }
     onLoadMakeVisible(){
         var postdiv = document.getElementById("postform-wrapper");
         postdiv.style.display ="block";
@@ -33,6 +46,19 @@ class PostEditor{
         tx.addEventListener("input", function(){
             this.style.height = (this.scrollHeight) + 'px';
         }, false);
+    }
+
+    syncpost(){
+        var titleField = document.getElementById("title-div");
+        const fd = new FormData();
+        fd.append('title', titleField.innerHTML);
+        fd.append('content', this.editor.root.innerHTML);
+        const csrfToken = this.getCookie('csrftoken');
+        fd.append('csrfmiddlewaretoken', csrfToken);  
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/edit/'+this.slug, true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.send(fd);
     }
     moveTexteditorToQuill(){
         var quill = this.editor;
@@ -50,28 +76,4 @@ class PostEditor{
         return this.editor.getText().trim().length === 0 && this.editor.container.firstChild.innerHTML.includes("img") === false;
     }
 };
-document.addEventListener("DOMContentLoaded", () => {
-    invokeAction = new PostEditor("#editor","#toolbar");
-    form = document.querySelector('form');
-    var quill = invokeAction.editor;
-    var inputContentField = document.getElementById("id_content");
-    var inputTitleField = document.getElementById("id_title");
-    var titleField = document.getElementById("title-div");
-    if(inputTitleField.value!=""){
-        titleField.innerHTML = inputTitleField.value;
-    }
-    if(inputContentField.value!= ""){
-        quill.root.innerHTML = inputContentField.value;
-        quill.focus();
-    }
-    form.onsubmit = function() {
-        if(!invokeAction.isQuillEmpty()){
-            inputContentField.value = quill.root.innerHTML;
-        }else{
-            inputContentField.value = "";
-        }
-        inputTitleField.value = titleField.innerHTML;
-        console.log(inputContentField.value);
-    }
-});
 

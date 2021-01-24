@@ -14,10 +14,24 @@ class AddPostForm(forms.ModelForm):
         }
     def __init__(self, *args, **kwargs):
         super(AddPostForm, self).__init__(*args, **kwargs)
+    def clean(self):
+        super(AddPostForm,self)
+        if self.cleaned_data['content']=="" or self.cleaned_data['title']==None:
+            raise forms.ValidationError("Please add post title and content.")
 
-        for field in self.fields.values():
-            field.error_messages = {'required':_('The {fieldname} is empty.').format(
-                fieldname=field.label)}
+class EditPostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'content')
+        widgets = {
+            'title': forms.HiddenInput(),
+            'content': forms.HiddenInput(),
+        }
+        labels = {
+            "content": _("Post")
+        }
+    def __init__(self, *args, **kwargs):
+        super(EditPostForm, self).__init__(*args, **kwargs)
 
 class AddCommentForm(forms.ModelForm):
     class Meta:

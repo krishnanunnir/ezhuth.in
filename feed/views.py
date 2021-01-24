@@ -1,3 +1,4 @@
+from django import forms
 from django.http.response import HttpResponseServerError
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
@@ -16,9 +17,14 @@ from django.db.models import Count
 from django.http import JsonResponse
 from django.urls import reverse
 from django.utils.translation import ugettext as _
+import uuid
+from datetime import datetime,timezone
+from django.template.defaultfilters import slugify
+from django.utils.crypto import get_random_string
+import unidecode
 
 from .models import Post, Comment, Like
-from .forms import AddPostForm, AddCommentForm, ImageUploadForm, PreviewForm
+from .forms import AddPostForm, AddCommentForm, ImageUploadForm, PreviewForm, EditPostForm
 from .redirects import *
 from .utils import is_ajax, paginate_posts
 
@@ -27,54 +33,55 @@ from .utils import is_ajax, paginate_posts
 @login_required
 def add_post(request, template_name= "feed/add_post.html"):
     """ For adding posts and drafts"""
-    form = AddPostForm()
-    if request.method == 'POST':
-        form = AddPostForm(request.POST)
-        if form.is_valid():
-            title = form.cleaned_data.get('title')
-            content = form.cleaned_data.get('content')
-            # save post in feed or draft depending on the button present in request.POST
-            if 'publish' in request.POST:
-                status = 1
-                # messages.info(request, 'New Post added successfully')
-                # setting redirect_url to feed page or draft page
-            else:
-                status = 0
-                # messages.info(request, 'New Draft added successfully')
-                redirect_url = drafts_home
-            status=1 # delete this when supported added for drafts
-            post = Post.objects.create(title= title, content= content, author= request.user, status= status)
-            liked_object = Like.objects.create(content_object=post)
-            redirect_url = reverse("feed:preview_post",args=[post.slug])
-            return HttpResponseRedirect(redirect_url)
-    template_data = {'form':form}
-    return render(request, template_name, template_data)
-
+    slug=uuid.uuid1()
+    now = datetime.now(timezone.utc)
+    post = Post.objects.create(slug=slug,author= request.user, status= 0, created_on =now)
+    Like.objects.create(content_object=post)
+    redirect_url = reverse("feed:edit_post",args=[post.slug])
+    return HttpResponseRedirect(redirect_url)
 
 @login_required
 def edit_post(request, post_slug, template_name= "feed/add_post.html"):
     """ Edit already saved posts or drafts """
     post = get_object_or_404(Post, slug= post_slug, author= request.user)
     if request.method == 'POST':
-        #Sanitizing data using AddPostForm since both of them use the same data
-        form = AddPostForm(request.POST)
-        if form.is_valid():           
-            post.content = form.cleaned_data.get('content')
-            if 'publish' in request.POST:
+        if is_ajax(request):
+            #Sanitizing data using AddPostForm since both of them use the same data
+            form = EditPostForm(request.POST)
+            if form.is_valid():    
+                post.content = form.cleaned_data.get('content')
+                post.title = form.cleaned_data.get('title')
+                post.save()
+                responseData = {
+                    'message':'Post updated',
+                    'status':200
+                }
+                return JsonResponse(responseData)
+            else:
+                responseData = {
+                    'message':'Post updation failed',
+                    'status':400
+                }
+                return JsonResponse(responseData)
+        else:
+            form = AddPostForm(request.POST)
+            if form.is_valid():           
+                post.title = form.cleaned_data.get('title')
+                post.content = form.cleaned_data.get('content')
+                now = datetime.now(timezone.utc)
+                if post.status==0:
+                    post.created_on = now
                 post.status = 1
                 # messages.info(request, 'Post added to feed')
-                redirect_url = feed_home
+                post.slug = "%s_%s" %(get_random_string()[0:4],slugify(unidecode.unidecode(post.title)))
+                post.save()
+                redirect_url = reverse("feed:preview_post",args=[post.slug])
+                return HttpResponseRedirect(redirect_url)
             else:
-                post.status = 0
-                # messages.info(request, 'Post updated in Drafts')
-                redirect_url = drafts_home
-            post.save()
-            return HttpResponseRedirect(redirect_url)
-        else:
-            template_data = {'form':form}
-            return render(request, template_name, template_data)
-    form = AddPostForm(initial= {'title':post.title, 'content':post.content})
-    template_data = {'form': form}
+                template_data = {'form':form}
+                return render(request, template_name, template_data)
+    form = EditPostForm(initial= {'title':post.title, 'content':post.content})
+    template_data = {'form': form,'post':post}
     return render(request, template_name, template_data)
 
 
