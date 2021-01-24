@@ -37,10 +37,12 @@
         }
         inputTitleField.value = titleField.innerHTML;
     }
-    setInterval(function(){ 
+    {% if post.status == 0 %}
+        setInterval(function(){ 
             //code goes here that will be run every 5 seconds.
             invokeAction.syncpost()
         }, 5000);
+    {% endif %}
 });
 </script>
 {% endblock %}

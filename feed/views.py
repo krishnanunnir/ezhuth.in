@@ -47,6 +47,12 @@ def edit_post(request, post_slug, template_name= "feed/add_post.html"):
     if request.method == 'POST':
         if is_ajax(request):
             #Sanitizing data using AddPostForm since both of them use the same data
+            if(post.status==1):
+                responseData = {
+                    'message':'Not permitted',
+                    'status':500
+                }
+                return JsonResponse(responseData)            
             form = EditPostForm(request.POST)
             if form.is_valid():    
                 post.content = form.cleaned_data.get('content')
@@ -158,7 +164,7 @@ def view_feed(request, template_name= "feed/view_posts.html"):
 
 @require_GET
 @login_required
-def view_drafts(request, template_name= "feed/view_posts.html"):
+def view_drafts(request, template_name= "feed/view_drafts.html"):
     """ Renders all drafts """
     all_posts = Post.objects.filter(status= 0, author= request.user)
     posts = paginate_posts(request, all_posts, 10)
@@ -222,7 +228,7 @@ def handle_image(request):
 @login_required
 def preview_post(request, post_slug, template_name="feed/preview_post.html"):
     form = PreviewForm()
-    post = get_object_or_404(Post, slug= post_slug, author=request.user)
+    post = get_object_or_404(Post, slug= post_slug, author=request.user,status=1)
     if request.method=="POST":
         form = PreviewForm(request.POST, request.FILES);
         if form.is_valid():
