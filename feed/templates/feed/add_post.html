@@ -4,16 +4,16 @@
 {% block title %} Texteditor {% endblock %}
 {% load compress %}
 {% block headers %}
-    <meta name="robots" content="noindex">
-    {% compress css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
-    <link href="{% static 'quill/quill.snow.css' %}" rel="stylesheet">
-    {% endcompress %}
-    {% compress js %}
+<meta name="robots" content="noindex">
+{% compress css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
+<link href="{% static 'quill/quill.snow.css' %}" rel="stylesheet">
+{% endcompress %}
+{% compress js %}
     <script src="{% static 'quill/quill.min.js' %}"></script>
     <script src="{% static 'js/fileuploader.js' %}"></script>
     <script src="{% static 'js/addpost.js' %}"></script>
-    {% endcompress %}
+{% endcompress %}
 {% endblock %}
 
 {% block content %}
@@ -23,18 +23,19 @@
         <div id="errors-addpost">
             {% include "formerrors.html" %}
             {% include "message.html" %}
-          </div>
+        </div>
         <form action="" method="POST" autocomplete="off" id="newpost">
             {% csrf_token %}
             {{ form.media }}
-            <span id="title-div" contenteditable="true" data-ph="Add your title"></div>
+            <span id="title-div" {% if not "/edit/" in request.path %} contenteditable="true"{% endif %} data-ph="Add your title"></span>
             {{ form.title }}
-            {{ form.content }}
+            {{ form.content}}
 
             <div id="editor">
             </div>
         </form>
     </div>
 </div>
-<input type="submit" id="mobile-button" class="button is-primary visible-mobile" name="publish" value='{% trans "Publish" %}' form="newpost" >
+<input type="submit" id="mobile-button" class="button is-primary visible-mobile" name="publish"
+    value='{% trans "Publish" %}' form="newpost">
 {% endblock %}

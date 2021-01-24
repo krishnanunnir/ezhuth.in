@@ -57,17 +57,21 @@ document.addEventListener("DOMContentLoaded", () => {
     var inputContentField = document.getElementById("id_content");
     var inputTitleField = document.getElementById("id_title");
     var titleField = document.getElementById("title-div");
-    if(inputContentField.value!= "" && inputTitleField.value!=""){
-        quill.root.innerHTML = inputContentField.value;
+    if(inputTitleField.value!=""){
         titleField.innerHTML = inputTitleField.value;
-        titleField.removeAttribute("contenteditable");
+    }
+    if(inputContentField.value!= ""){
+        quill.root.innerHTML = inputContentField.value;
         quill.focus();
     }
     form.onsubmit = function() {
         if(!invokeAction.isQuillEmpty()){
             inputContentField.value = quill.root.innerHTML;
+        }else{
+            inputContentField.value = "";
         }
         inputTitleField.value = titleField.innerHTML;
+        console.log(inputContentField.value);
     }
 });
 

@@ -70,6 +70,9 @@ def edit_post(request, post_slug, template_name= "feed/add_post.html"):
                 redirect_url = drafts_home
             post.save()
             return HttpResponseRedirect(redirect_url)
+        else:
+            template_data = {'form':form}
+            return render(request, template_name, template_data)
     form = AddPostForm(initial= {'title':post.title, 'content':post.content})
     template_data = {'form': form}
     return render(request, template_name, template_data)
