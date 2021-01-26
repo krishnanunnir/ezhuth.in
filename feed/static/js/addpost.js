@@ -65,7 +65,7 @@ class PostEditor{
         var titleEditor = document.getElementById("title-div");
         titleEditor.addEventListener("keydown",function(e){
             var code = (e.keyCode ? e.keyCode : e.which);
-            if(code == 13) { //Enter keycode
+            if(code == 13 || code==9) { //Enter keycode
                 e.stopPropagation();
                 e.preventDefault();
                 quill.focus();
