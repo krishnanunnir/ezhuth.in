@@ -37,10 +37,3 @@ const likeComment = async (element, id) => {
     }
 
 }
-
-
-const fetchPage = async (url) => {
-    let headers = new Headers()
-    headers.append("X-Requested-With", "XMLHttpRequest")
-    return fetch(url, { headers })
-}

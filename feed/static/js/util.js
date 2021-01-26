@@ -1,3 +1,9 @@
+const fetchPage = async (url) => {
+  let headers = new Headers()
+  headers.append("X-Requested-With", "XMLHttpRequest")
+  return fetch(url, { headers })
+}
+
   // Code for intfinite scroll
   const appendElements = async (scrollElement, counter) => {
     end = false;
