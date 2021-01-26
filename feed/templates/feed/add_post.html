@@ -19,6 +19,7 @@
 {% endcompress %}
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+    var showMessage = true;
     invokeAction = new PostEditor("#editor","{{post.slug}}");
     form = document.querySelector('form');
     var quill = invokeAction.editor;
@@ -29,7 +30,9 @@
         titleField.innerHTML = inputTitleField.value;
     }
     window.onbeforeunload = function() {
-        return true;
+        if(showMessage){
+            return true;
+        }
     };
     var tributeObject =  new TributeComplete();
     tributeObject.tribute.attach(document.querySelector('.ql-editor'));
@@ -39,6 +42,7 @@
         quill.focus();
     }
     form.onsubmit = function() {
+        showMessage=false;
         if(!invokeAction.isQuillEmpty()){
             inputContentField.value = quill.root.innerHTML;
         }else{
