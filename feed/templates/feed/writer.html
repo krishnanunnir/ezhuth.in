@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %} എഴുതിൻ {% endblock %}
+{% load compress %}
+{% block headers %}
+<meta name="robots" content="noindex">
+{% compress css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
+<link rel="stylesheet" href="{% static 'tribute/tribute.css' %}" />
+{% endcompress %}
+{% compress js %}
+    <script src="{% static 'tribute/tribute.js' %}"></script>
+    <script src="{% static 'js/addpost.js' %}"></script>
+    <script src="{% static 'js/editor_transliterate.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        var tributeObject =  new TributeComplete();
+        tributeObject.tribute.attach(document.querySelector('#editor'));
+        window.onbeforeunload = function() {
+            return true;
+        }
+    });
+    </script>
+{% endcompress %}
+{% endblock %}
+
+{% block content %}
+
+<div id="postform-wrapper">
+    <div id="postform">
+
+            <span id="editor" contenteditable="true" data-ph="ഇവിടെ എഴുതിൻ" style="display:block"></span>
+    </div>
+</div>
+{% endblock %}

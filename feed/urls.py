@@ -18,7 +18,8 @@ urlpatterns = [
     path('user/<uuid:username>', views.view_user, name= 'view_user'),
     path('delete/<slug:post_slug>', views.delete_post, name= 'delete_post'),
     path('preview/<slug:post_slug>', views.preview_post, name= 'preview_post'),
-    path('uploadfile/',views.handle_image, name="handle_image")
+    path('uploadfile/',views.handle_image, name="handle_image"),
+    path('writer/',views.write, name="write")
 ]
 
 if settings.DEBUG:

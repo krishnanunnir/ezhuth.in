@@ -242,4 +242,5 @@ def preview_post(request, post_slug, template_name="feed/preview_post.html"):
     template_data={'post': post,'form': form}
     return render(request, template_name, template_data)
 
-     
+def write(request, template_name="feed/writer.html"):
+    return render(request, template_name,{})
