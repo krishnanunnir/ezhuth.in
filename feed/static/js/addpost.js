@@ -55,7 +55,7 @@ class PostEditor{
         const fd = new FormData();
         var titleVal =titleField.innerHTML;
         var contentVal =  this.editor.root.innerHTML;
-        if(titleVal==this.title && contentVal == this.content){
+        if(titleVal==this.title && (contentVal == this.content || this.isQuillEmpty())){
             return ;
         }
         fd.append('title', titleVal);
