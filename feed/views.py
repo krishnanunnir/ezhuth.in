@@ -170,7 +170,7 @@ def view_drafts(request, template_name= "feed/view_drafts.html"):
     posts = paginate_posts(request, all_posts, 10)
     template_data = {'posts': posts}
     if is_ajax(request):
-        return render(request, 'feed/__posts.html', template_data)
+        return render(request, 'feed/__drafts.html', template_data)
     return render(request, template_name, template_data)
 
 def view_user(request, username, template_name= "feed/view_posts.html"):

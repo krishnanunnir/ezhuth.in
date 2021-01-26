@@ -25,6 +25,9 @@
     if(inputTitleField.value!=""){
         titleField.innerHTML = inputTitleField.value;
     }
+    window.onbeforeunload = function() {
+        return true;
+    };
     if(inputContentField.value!= ""){
         quill.root.innerHTML = inputContentField.value;
         quill.focus();

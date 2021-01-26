@@ -17,7 +17,7 @@
       {% endif %}
     </div>
     <div class="post-title-sneak content">
-      <a href="{% url 'feed:edit_post' post.slug %}"><div class="post-title">{{ post.title | bleach }}</div>
+      <a href="{% url 'feed:edit_post' post.slug %}"><div class="post-title">{% if post.header_image %} {{ post.title | bleach }} {% else %} No Title {% endif %}</div>
         <div class="post-sneak-peak content">
       {% if post.content %}
         {{ post.content | bleach }}
