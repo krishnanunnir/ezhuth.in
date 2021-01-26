@@ -224,3 +224,10 @@ body {
     font-size: 1em;
     margin-bottom: 1em;
 }
+#header-image img{
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+}
