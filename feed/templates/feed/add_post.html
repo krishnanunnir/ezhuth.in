@@ -42,6 +42,9 @@
             //code goes here that will be run every 5 seconds.
             invokeAction.syncpost()
         }, 5000);
+        window.addEventListener('beforeunload', function(event) {
+            invokeAction.syncpost()
+      });
     {% endif %}
 });
 </script>

@@ -16,6 +16,8 @@ class PostEditor{
             placeholder: 'Type here',
             theme: 'snow'
         });
+        this.title = "";
+        this.content = "";
         this.textarea_element_id = textarea_element_id;
         new FileUploader(this.editor);
         this.onLoadMakeVisible();
@@ -51,14 +53,21 @@ class PostEditor{
     syncpost(){
         var titleField = document.getElementById("title-div");
         const fd = new FormData();
-        fd.append('title', titleField.innerHTML);
-        fd.append('content', this.editor.root.innerHTML);
+        var titleVal =titleField.innerHTML;
+        var contentVal =  this.editor.root.innerHTML;
+        if(titleVal==this.title && contentVal == this.content){
+            return ;
+        }
+        fd.append('title', titleVal);
+        fd.append('content', contentVal);
         const csrfToken = this.getCookie('csrftoken');
         fd.append('csrfmiddlewaretoken', csrfToken);  
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/edit/'+this.slug, true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send(fd);
+        this.title = titleField.innerHTML;
+        this.content = this.editor.root.innerHTML;
     }
     moveTexteditorToQuill(){
         var quill = this.editor;
