@@ -8,11 +8,14 @@
 {% compress css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
 <link href="{% static 'quill/quill.snow.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'tribute/tribute.css' %}" />
 {% endcompress %}
 {% compress js %}
+    <script src="{% static 'tribute/tribute.js' %}"></script>
     <script src="{% static 'quill/quill.min.js' %}"></script>
     <script src="{% static 'js/fileuploader.js' %}"></script>
     <script src="{% static 'js/addpost.js' %}"></script>
+    <script src="{% static 'js/editor_transliterate.js' %}"></script>
 {% endcompress %}
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -28,6 +31,9 @@
     window.onbeforeunload = function() {
         return true;
     };
+    var tributeObject =  new TributeComplete();
+    tributeObject.tribute.attach(document.querySelector('.ql-editor'));
+    tributeObject.tribute.attach(document.querySelector('#title-div'));
     if(inputContentField.value!= ""){
         quill.root.innerHTML = inputContentField.value;
         quill.focus();

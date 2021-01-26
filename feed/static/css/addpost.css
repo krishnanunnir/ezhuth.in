@@ -145,3 +145,7 @@ input:focus{
 .ql-editor::before { 
     padding-left:0px;
  }
+ .activeElem{
+    background-color: #3273dc;
+    color: #fff;
+ }
