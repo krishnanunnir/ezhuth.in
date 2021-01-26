@@ -36,7 +36,6 @@ def add_post(request, template_name= "feed/add_post.html"):
     slug=uuid.uuid1()
     now = datetime.now(timezone.utc)
     post = Post.objects.create(slug=slug,author= request.user, status= 0, created_on =now)
-    Like.objects.create(content_object=post)
     redirect_url = reverse("feed:edit_post",args=[post.slug])
     return HttpResponseRedirect(redirect_url)
 
@@ -81,6 +80,7 @@ def edit_post(request, post_slug, template_name= "feed/add_post.html"):
                 # messages.info(request, 'Post added to feed')
                 post.slug = "%s_%s" %(get_random_string()[0:4],slugify(unidecode.unidecode(post.title)))
                 post.save()
+                Like.objects.create(content_object=post)
                 redirect_url = reverse("feed:preview_post",args=[post.slug])
                 return HttpResponseRedirect(redirect_url)
             else:
