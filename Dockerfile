@@ -3,4 +3,4 @@ ENV PYTHONBUFFERED 1
 RUN mkdir /knodev
 WORKDIR /knodev
 ADD . /knodev/
-RUN pip install -r requirements.txt
+RUN pip install -r requirements/production.txt
