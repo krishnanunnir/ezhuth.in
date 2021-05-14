@@ -44,3 +44,5 @@ RUN pip install -r base.txt
 
 # copy project
 COPY . .
+
+ENTRYPOINT ["/knodev/entrypoint.sh"]
