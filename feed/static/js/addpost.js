@@ -63,7 +63,7 @@ class PostEditor{
         const csrfToken = this.getCookie('csrftoken');
         fd.append('csrfmiddlewaretoken', csrfToken);  
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/edit/'+this.slug, true);
+        xhr.open('POST', window.location.href, true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send(fd);
         this.title = titleField.innerHTML;
