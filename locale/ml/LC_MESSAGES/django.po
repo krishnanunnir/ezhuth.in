@@ -140,6 +140,12 @@ msgid ""
 "It can be safely ignored if you did not request a password reset. Click the "
 "link below to reset your password."
 msgstr ""
+"\n"
+"\n"
+"ഈ ഇമെയിൽ ഐഡിയുമായി ബന്ധപ്പെട്ട അക്കൗണ്ടിനായി പാസ്‌വേഡ് പുന സജ്ജമാക്കൽ"
+" അഭ്യർത്ഥന നൽകിയതിനാലാണ് നിങ്ങൾക്ക് ഈ ഇ-മെയിൽ ലഭിക്കുന്നത്."
+"നിങ്ങൾ പാസ്‌വേഡ് പുന .സജ്ജീകരണത്തിനായി അഭ്യർത്ഥിച്ചില്ലെങ്കിൽ ഇത് സുരക്ഷിതമായി അവഗണിക്കാം."
+"നിങ്ങളുടെ പാസ്‌വേഡ് പുന സജ്ജമാക്കാൻ ചുവടെയുള്ള ലിങ്ക് ക്ലിക്കുചെയ്യുക."
 
 #: allauth/templates/account/email/password_reset_key_message.txt:12
 #, python-format
@@ -197,24 +203,24 @@ msgstr ""
 
 #: allauth/templates/account/login.html:41
 msgid "or"
-msgstr ""
+msgstr "അഥവാ"
 
 #: allauth/templates/account/login.html:45
 #, python-format
 msgid ""
 "Are you trying to \n"
 "      <a href=\"%(signup_url)s\">Sign Up?</a> "
-msgstr ""
+msgstr "നിങ്ങൾ <a href=\"%(signup_url)s\">സൈൻ അപ്പ്</a> ചെയ്യാൻ ശ്രമിക്കുകയാണോ"
 
 #: allauth/templates/account/logout.html:5
 #: allauth/templates/account/logout.html:11
 #: allauth/templates/account/logout.html:20
 msgid "Sign Out"
-msgstr ""
+msgstr "സൈൻ ഔട്ട്"
 
 #: allauth/templates/account/logout.html:13
 msgid "Are you sure you want to sign out?"
-msgstr ""
+msgstr "നിങ്ങൾക്ക് സൈൻ ഔട്ട് ചെയ്യണമെന്ന് ഉറപ്പാണോ?"
 
 #: allauth/templates/account/messages/cannot_delete_primary_email.txt:2
 #, python-format
@@ -229,37 +235,37 @@ msgstr ""
 #: allauth/templates/account/messages/email_confirmed.txt:2
 #, python-format
 msgid "You have confirmed %(email)s."
-msgstr ""
+msgstr "നിങ്ങൾ %(email)s സ്ഥിരീകരിച്ചു."
 
 #: allauth/templates/account/messages/email_deleted.txt:2
 #, python-format
 msgid "Removed e-mail address %(email)s."
-msgstr ""
+msgstr "നീക്കംചെയ്ത ഇ-മെയിൽ വിലാസം %(email)s"
 
 #: allauth/templates/account/messages/logged_in.txt:4
 #, python-format
 msgid "Successfully signed in as %(name)s."
-msgstr ""
+msgstr "%(name)s ആയി വിജയകരമായി പ്രവേശിച്ചു."
 
 #: allauth/templates/account/messages/logged_out.txt:2
 msgid "You have signed out."
-msgstr ""
+msgstr "നിങ്ങൾ സൈൻ ഔട്ട് ചെയ്‌തു."
 
 #: allauth/templates/account/messages/password_changed.txt:2
 msgid "Password successfully changed."
-msgstr ""
+msgstr "പാസ്സ്വേർഡ് വിജയകരമായി മാറ്റി."
 
 #: allauth/templates/account/messages/password_set.txt:2
 msgid "Password successfully set."
-msgstr ""
+msgstr "പാസ്‌വേഡ് വിജയകരമായി സജ്ജമാക്കി."
 
 #: allauth/templates/account/messages/primary_email_set.txt:2
 msgid "Primary e-mail address set."
-msgstr ""
+msgstr "നിങ്ങളുടെ പ്രാഥമിക ഇ-മെയിൽ വിലാസം സജ്ജമാക്കുക"
 
 #: allauth/templates/account/messages/unverified_primary_email.txt:2
 msgid "Your primary e-mail address must be verified."
-msgstr ""
+msgstr "നിങ്ങളുടെ പ്രാഥമിക ഇ-മെയിൽ വിലാസം പരിശോധിക്കേണ്ടതാണ്."
 
 #: allauth/templates/account/password_change.html:5
 #: allauth/templates/account/password_change.html:17
@@ -269,7 +275,7 @@ msgstr ""
 #: allauth/templates/account/password_reset_from_key_done.html:4
 #: allauth/templates/account/password_reset_from_key_done.html:14
 msgid "Change Password"
-msgstr ""
+msgstr "പാസ്‌വേഡ് പുന .സജ്ജമാക്കുക"
 
 #: allauth/templates/account/password_reset.html:6
 #: allauth/templates/account/password_reset.html:16
@@ -283,21 +289,24 @@ msgid ""
 "Enter your e-mail address below, and we'll send you an e-mail allowing you "
 "to reset it."
 msgstr ""
+"നിങ്ങളുടെ ഇ-മെയിൽ വിലാസം ചുവടെ നൽകുക, അത് പുന reset സജ്ജമാക്കാൻ നിങ്ങളെ അനുവദിക്കുന്ന ഒരു"
+" ഇമെയിൽ ഞങ്ങൾ നിങ്ങൾക്ക് അയയ്ക്കും."
 
 #: allauth/templates/account/password_reset.html:26
 msgid "Reset My Password"
-msgstr ""
+msgstr "എന്റെ പാസ്സ്വേർഡ് റീസെറ്റ് ചെയ്യുക"
 
 #: allauth/templates/account/password_reset.html:29
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr ""
+msgstr "നിങ്ങളുടെ പാസ്‌വേഡ് പുന സജ്ജമാക്കുന്നതിൽ എന്തെങ്കിലും പ്രശ്നമുണ്ടെങ്കിൽ ദയവായി ഞങ്ങളെ ബന്ധപ്പെടുക."
 
 #: allauth/templates/account/password_reset_done.html:22
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
-
+"ഞങ്ങൾ നിങ്ങൾക്ക് ഒരു ഇ-മെയിൽ അയച്ചു. നിങ്ങൾക്ക് അത് ലഭിച്ചില്ലെങ്കിൽ ദയവായി ഞങ്ങളെ ബന്ധപ്പെടുക "
+"കുറച്ച് മിനിറ്റിനുള്ളിൽ."
 #: allauth/templates/account/password_reset_from_key.html:14
 msgid "Bad Token"
 msgstr ""
@@ -309,44 +318,46 @@ msgid ""
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
 msgstr ""
+"പാസ്‌വേഡ് പുന reset സജ്ജീകരണ ലിങ്ക് അസാധുവാണ്, കാരണം ഇത് ഇതിനകം ഉപയോഗിച്ചതാകാം. ഒരു അഭ്യർത്ഥിക്കുക."
+"ഒരു പുതിയ പാസ്‌വേഡ് <a href=\"%(passwd_reset_url)s\">പുന സജ്ജീകരണത്തിനായി അഭ്യർത്ഥിക്കുക.</a>"
 
 #: allauth/templates/account/password_reset_from_key.html:27
 msgid "change password"
-msgstr ""
+msgstr "പാസ്വേഡ് മാറ്റുക"
 
 #: allauth/templates/account/password_reset_from_key.html:30
 #: allauth/templates/account/password_reset_from_key_done.html:15
 msgid "Your password is now changed."
-msgstr ""
+msgstr "നിങ്ങളുടെ പാസ്‌വേഡ് ഇപ്പോൾ മാറ്റി."
 
 #: allauth/templates/account/password_set.html:5
 #: allauth/templates/account/password_set.html:15
 #: allauth/templates/account/password_set.html:20
 msgid "Set Password"
-msgstr ""
+msgstr "പാസ്‌വേഡ് സജ്ജമാക്കുക."
 
 #: allauth/templates/account/signup.html:5
 msgid "Signup"
-msgstr ""
+msgstr "സൈൻ അപ്പ്"
 
 #: allauth/templates/account/signup.html:27
 msgid "Create New Account"
-msgstr ""
+msgstr "പുതിയ അക്കൗണ്ട് സൃഷ്ടിക്കുക"
 
 #: allauth/templates/account/signup.html:30
 #, python-format
 msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
-msgstr ""
+msgstr "ഇതിനകം ഒരു അക്കൗണ്ട് ഉണ്ടോ? തുടർന്ന് <a href=\"%(login_url)s\"> സൈൻ അപ്പ് ചെയ്യുക </a>."
 
 #: allauth/templates/account/signup_closed.html:5
 #: allauth/templates/account/signup_closed.html:15
 msgid "Sign Up Closed"
-msgstr ""
+msgstr "സൈൻ അപ്പ് അടച്ചു"
 
 #: allauth/templates/account/signup_closed.html:17
 msgid "We are sorry, but the sign up is currently closed."
-msgstr ""
+msgstr "ക്ഷമിക്കണം, സൈൻ അപ്പ് നിലവിൽ അടച്ചിരിക്കുന്നു."
 
 #: allauth/templates/account/snippets/already_logged_in.html:5
 msgid "Note"
