@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY',"tt4wkdfrmpuiz6m@gcs647i5&tzkb9qzt+rhmb%5#seg%hog57")
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','localhost').split(',')
 DEBUG = os.getenv('DEBUG',"False") == "True"
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -107,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 LANGUAGE_CODE = 'en-us'
 
@@ -118,6 +121,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = (
+    ('en-us', 'English'),
+    ('ml', 'Malayalam'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -147,7 +154,6 @@ LOGIN_REDIRECT_URL="/"
 LOGIN_URL = '/accounts/login'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -199,9 +205,3 @@ LOGGING = {
         },
     },
 }
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-
-LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
-LANGUAGE_CODE = 'en'
