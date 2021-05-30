@@ -1,8 +1,10 @@
-from django import template
 from datetime import datetime, timezone
+
+from django import template
 from django.utils.translation import gettext as _
 
 register = template.Library()
+
 
 def pretty_date(time=False):
     """
@@ -13,7 +15,7 @@ def pretty_date(time=False):
     now = datetime.now(timezone.utc)
     if type(time) is int:
         diff = now - datetime.fromtimestamp(time)
-    elif isinstance(time,datetime):
+    elif isinstance(time, datetime):
         diff = now - time
     elif not time:
         diff = now - now
@@ -21,7 +23,7 @@ def pretty_date(time=False):
     day_diff = diff.days
 
     if day_diff < 0:
-        return ''
+        return ""
 
     if day_diff == 0:
         if second_diff < 10:

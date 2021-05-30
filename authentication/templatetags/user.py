@@ -1,7 +1,11 @@
-from django import template
 from datetime import datetime, timezone
-from feed.models import Post, Like
+
+from django import template
+
+from feed.models import Like, Post
+
 register = template.Library()
+
 
 @register.filter(name="full_name")
 def return_full_name(user):

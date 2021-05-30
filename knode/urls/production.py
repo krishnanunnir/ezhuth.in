@@ -13,21 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from django.contrib.sitemaps.views import sitemap
-from feed.models import Post
-from django.contrib.sitemaps import GenericSitemap
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib import admin
+from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path
+
+from feed.models import Post
 
 info_dict = {
-    'queryset': Post.objects.filter(status=1),
-    'date_field': 'created_on',
+    "queryset": Post.objects.filter(status=1),
+    "date_field": "created_on",
 }
 
 urlpatterns = [
-    path('', include('feed.urls', namespace='feed')),
-    path('accounts/', include("allauth.urls")),
-    path('admin/', admin.site.urls),
-    path('sitemap.xml', sitemap,{'sitemaps': {'blog': GenericSitemap(info_dict, priority=0.6)}},name='django.contrib.sitemaps.views.sitemap'),
+    path("", include("feed.urls", namespace="feed")),
+    path("accounts/", include("allauth.urls")),
+    path("admin/", admin.site.urls),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": {"blog": GenericSitemap(info_dict, priority=0.6)}},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
 ]

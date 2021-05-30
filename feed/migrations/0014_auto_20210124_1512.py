@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('feed', '0013_auto_20210103_1629'),
+        ("feed", "0013_auto_20210103_1629"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='content',
+            model_name="post",
+            name="content",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='title',
+            model_name="post",
+            name="title",
             field=models.CharField(blank=True, max_length=200, null=True),
         ),
     ]

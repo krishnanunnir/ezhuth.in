@@ -14,22 +14,56 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('slug', models.SlugField(allow_unicode=True, max_length=255, unique=True)),
-                ('description', models.CharField(default='No description provided', max_length=510)),
-                ('content', models.TextField()),
-                ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Publish')], default=0)),
-                ('created_on', models.DateTimeField()),
-                ('updated_on', models.DateTimeField(auto_now=True)),
-                ('comments_enabled', models.BooleanField(default=True)),
-                ('author', models.ForeignKey(null=True, on_delete=models.SET('[deleted]'), to=settings.AUTH_USER_MODEL)),
-                ('parent', models.ForeignKey(blank=True, null=True, on_delete=models.SET('[deleted]'), to='feed.Post')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                (
+                    "slug",
+                    models.SlugField(allow_unicode=True, max_length=255, unique=True),
+                ),
+                (
+                    "description",
+                    models.CharField(default="No description provided", max_length=510),
+                ),
+                ("content", models.TextField()),
+                (
+                    "status",
+                    models.IntegerField(
+                        choices=[(0, "Draft"), (1, "Publish")], default=0
+                    ),
+                ),
+                ("created_on", models.DateTimeField()),
+                ("updated_on", models.DateTimeField(auto_now=True)),
+                ("comments_enabled", models.BooleanField(default=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=models.SET("[deleted]"),
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=models.SET("[deleted]"),
+                        to="feed.Post",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created_on'],
+                "ordering": ["-created_on"],
             },
         ),
     ]

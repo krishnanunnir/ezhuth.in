@@ -1,5 +1,7 @@
-from django import template
 from datetime import datetime, timezone
-from feed.models import Post, Like
-register = template.Library()
 
+from django import template
+
+from feed.models import Like, Post
+
+register = template.Library()

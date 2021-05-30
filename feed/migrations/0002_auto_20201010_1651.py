@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('feed', '0001_initial'),
+        ("feed", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='description',
+            model_name="post",
+            name="description",
             field=models.CharField(max_length=510),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='slug',
+            model_name="post",
+            name="slug",
             field=models.SlugField(allow_unicode=True, max_length=500, unique=True),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='title',
+            model_name="post",
+            name="title",
             field=models.CharField(max_length=200),
         ),
     ]
