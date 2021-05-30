@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-29 17:32+0000\n"
+"POT-Creation-Date: 2021-05-30 14:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,12 +93,9 @@ msgid "Hello from %(site_name)s!"
 msgstr "ഹലോ ഫ്രോം %(site_name)s!"
 
 #: allauth/templates/account/email/base_message.txt:5
-#, python-format
 msgid ""
-"Thank you for using %(site_name)s!\n"
-"%(site_domain)s"
-msgstr ""
-"%(site_name)s ഉപയോഗിച്ചതിന് നന്ദി!!\n"
+" Thank you for using %(site_name)s!\n"
+msgstr "%(site_name)s ഉപയോഗിച്ചതിന് നന്ദി!! \n"
 
 #: allauth/templates/account/email/email_confirmation_message.html:10
 #, python-format
@@ -273,6 +270,7 @@ msgstr "നിങ്ങളുടെ പ്രാഥമിക ഇ-മെയിൽ
 #: allauth/templates/account/password_reset_from_key.html:14
 #: allauth/templates/account/password_reset_from_key_done.html:4
 #: allauth/templates/account/password_reset_from_key_done.html:14
+#: base/templates/nav.html:43
 msgid "Change Password"
 msgstr "പാസ്‌വേഡ് പുന .സജ്ജമാക്കുക"
 
@@ -414,50 +412,78 @@ msgstr ""
 "<strong> കുറിപ്പ്: </ strong> നിങ്ങൾക്ക് ഇപ്പോഴും നിങ്ങളുടെ <a href=\"%(email_url)s"
 "\">മെയിൽ വിലാസം</a> മാറ്റാൻ കഴിയും."
 
-#: authentication/forms.py:7
+#: authentication/forms.py:12
 msgid "First Name"
 msgstr "ഫസ്റ്റ് നെയിം"
 
-#: authentication/forms.py:8
+#: authentication/forms.py:18
 msgid "Last Name"
 msgstr "ലാസ്‌റ് നെയിം"
 
-#: authentication/models.py:19
+#: authentication/models.py:21
 msgid "The Email must be set"
 msgstr "ഇമെയിൽ സജ്ജമാക്കിയിരിക്കണം"
 
-#: authentication/models.py:35
+#: authentication/models.py:37
 msgid "Superuser must have is_staff=True."
 msgstr ""
 
-#: authentication/models.py:37
+#: authentication/models.py:39
 msgid "Superuser must have is_superuser=True."
 msgstr ""
 
-#: authentication/models.py:44
+#: authentication/models.py:45
 msgid "email address"
 msgstr "ഈ - മെയില് വിലാസം"
 
-#: feed/forms.py:13 feed/forms.py:31
+#: base/templates/nav.html:21
+msgid "Write in Malaylam"
+msgstr "മലയാളത്തിൽ എഴുതുക"
+
+#: base/templates/nav.html:32
+msgid "New Post"
+msgstr "പുതിയ പോസ്റ്റ് സൃഷ്ടിക്കുക"
+
+#: base/templates/nav.html:35
+msgid "Drafts"
+msgstr "ഡ്രാഫ്റ്റുകൾ"
+
+#: base/templates/nav.html:39
+msgid "Account"
+msgstr "അക്കൗണ്ട്"
+
+#: base/templates/nav.html:46
+msgid "Manage Email"
+msgstr "ഇ-മെയിൽ നിയന്ത്രിക്കുക"
+
+#: base/templates/nav.html:50
+msgid "Log out"
+msgstr ""
+
+#: base/templates/nav.html:61
+msgid "Sign up"
+msgstr "സൈൻ അപ്പ്"
+
+#: base/templates/nav.html:64
+msgid "Log in"
+msgstr "ലോഗിൻ"
+
+#: feed/forms.py:15 feed/forms.py:34
 msgid "Post"
 msgstr "പോസ്റ്റ്"
 
-#: feed/forms.py:41
+#: feed/forms.py:44
 msgid "Comment"
 msgstr "കമന്റ്"
 
-#: feed/forms.py:47
+#: feed/forms.py:51
 #, python-brace-format
 msgid "{fieldname} is empty"
 msgstr "{fieldname} ശൂന്യമാണ്"
 
-#: feed/templates/feed/add_post.html:87
+#: feed/templates/feed/add_post.html:98
 msgid "Publish"
 msgstr "പബ്ലിഷ്"
-
-#: feed/templates/feed/comments.html:8 feed/templates/feed/view_post.html:38
-msgid "Posted by"
-msgstr "പോസ്റ്റഡ് ബൈ"
 
 #: feed/templates/feed/preview_post.html:60
 msgid "Choose an image file or drag it here."
@@ -467,85 +493,84 @@ msgstr "ഒരു ഇമേജ് ഫയൽ തിരഞ്ഞെടുക്ക
 msgid "Add your description here"
 msgstr "വിവരണം ഇവിടെ ചേർക്കുക"
 
-#: feed/templates/feed/view_post.html:68
+#: feed/templates/feed/view_post.html:72
 msgid "Add a comment"
 msgstr "ഒരു കമന്റ് ചേർക്കുക"
 
-#: feed/templates/feed/view_post.html:82
+#: feed/templates/feed/view_post.html:86
 msgid "Are you sure you want to edit this item?"
 msgstr "ഈ പോസ്റ്റ് എഡിറ്റുചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"
 
-#: feed/templates/feed/view_post.html:83
+#: feed/templates/feed/view_post.html:87
 msgid "Edit"
 msgstr "പോസ്റ്റ് എഡിറ്റുചെയ്യുക"
 
-#: feed/templates/feed/view_post.html:87
+#: feed/templates/feed/view_post.html:91
 msgid "Are you sure you want to edit the preview?"
 msgstr "ഈ പോസ്റ്റ് പ്രിവ്യൂ എഡിറ്റുചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"
 
-#: feed/templates/feed/view_post.html:88
+#: feed/templates/feed/view_post.html:92
 msgid "Edit Post Preview"
 msgstr "പോസ്റ്റ് പ്രിവ്യൂ എഡിറ്റുചെയ്യുക"
 
-#: feed/templates/feed/view_post.html:92
+#: feed/templates/feed/view_post.html:96
 msgid "Are you sure you want to delete this item?"
 msgstr "ഈ പോസ്റ്റ് ഡിലീറ്റ്ചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"
 
-#: feed/templates/feed/view_post.html:94
+#: feed/templates/feed/view_post.html:98
 msgid "Delete"
 msgstr "ഡിലീറ്റ് പോസ്റ്റ്"
 
-#: feed/templatetags/relative_time.py:28
+#: feed/templatetags/relative_time.py:30
 msgid "Just now"
 msgstr ""
 
-#: feed/templatetags/relative_time.py:30
+#: feed/templatetags/relative_time.py:32
 msgid " seconds ago"
 msgstr " സെക്കൻഡ് മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:32
-#, fuzzy
-#| msgid " minutes ago"
+#: feed/templatetags/relative_time.py:34
 msgid "A minute ago"
 msgstr "ഒരു മിനിറ്റ് മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:34
+#: feed/templatetags/relative_time.py:36
 msgid " minutes ago"
 msgstr " മിനിറ്റ് മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:36
-#, fuzzy
-#| msgid " hours ago"
+#: feed/templatetags/relative_time.py:38
 msgid "An hour ago"
 msgstr "ഒരു മണിക്കൂർ മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:38
+#: feed/templatetags/relative_time.py:40
 msgid " hours ago"
 msgstr " മണിക്കൂറുകള്ക്ക് മുന്പ്"
 
-#: feed/templatetags/relative_time.py:40
+#: feed/templatetags/relative_time.py:42
 msgid "Yesterday"
 msgstr "ഇന്നലെ"
 
-#: feed/templatetags/relative_time.py:42
+#: feed/templatetags/relative_time.py:44
 msgid " days ago"
 msgstr " ദിവസങ്ങൾക്ക് മുൻപ്"
 
-#: feed/templatetags/relative_time.py:44
+#: feed/templatetags/relative_time.py:46
 msgid " weeks ago"
 msgstr " ആഴ്ചകൾക്ക് മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:46
+#: feed/templatetags/relative_time.py:48
 msgid " months ago"
 msgstr " മാസം മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:47
+#: feed/templatetags/relative_time.py:49
 msgid " years ago"
 msgstr " വർഷങ്ങൾക്കുമുമ്പ്"
 
-#: feed/views.py:212
+#: feed/views.py:223
 msgid "Page not found"
 msgstr "പേജ് കണ്ടെത്തിയില്ല"
+
+#~ msgid "Posted by"
+#~ msgstr "പോസ്റ്റഡ് ബൈ"
 
 #~ msgid "Title"
 #~ msgstr "ടൈറ്റിൽ"
