@@ -20,9 +20,23 @@
     <script src="{% static 'js/comment.js' %}"></script>
     <script src="{% static 'js/bulma.js' %}"></script>
     {% endcompress %}
+    <script src="{% static 'tribute/tribute.js' %}"></script>
+    <script src="{% static 'js/editor_transliterate.js' %}"></script>
     <link href="https://cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <script>
+        enabled = false;
+        function attachElementMalayalam(){
+        var tributeObject =  new TributeComplete();
+            if(!enabled){
+                enabled = true;
+                tributeObject.tribute.attach(document.querySelector('#id_content'));
+            }else{
+                enabled = false;
+                tributeObject.tribute.detach(document.querySelector('#id_content'));
+            }
+            document.getElementById("malaylam-transliterate").checked = enabled;
+        }
         document.addEventListener("DOMContentLoaded", () => {
         editor = new Quill("#post-content", {
             readOnly: true,

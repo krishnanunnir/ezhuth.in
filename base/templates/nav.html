@@ -28,6 +28,11 @@
           <input type="submit"  class="button is-primary" name="Save Preview" value='{% trans "Publish" %}' form="previewpost" >
         </div>
       {% else %}
+        {% if "/view/" in request.path %}
+        <div class="navbar-item">
+          <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
+        </div>
+        {% endif %}
         <a class="navbar-item" href="{% url 'feed:add_post' %}">
           {% trans "New Post" %}
         </a>
