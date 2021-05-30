@@ -18,11 +18,12 @@
     </div>
     <div class="post-title-sneak content">
       <a href="{% url 'feed:view_post' post.slug %}"><div class="post-title">{{ post.title | bleach }}</div>
+        {% if post.description %}
         <div class="post-sneak-peak content">
-      {% if post.description %}
         {{ post.description | bleach }}
+      </div>
       {% endif %}
-      </div></a>
+    </a>
     </div>
     <div class="post-option">
         <!-- <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div> -->
