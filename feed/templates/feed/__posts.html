@@ -30,7 +30,7 @@
         <div class="symbols">
           <div class="post-like">
             {% post_liked_by_user post as show_likes %}
-            <a {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
+            <a {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {%else %} href="{% url 'account_login' %}" {% endif %}>
               <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} >
               <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
             </a>
