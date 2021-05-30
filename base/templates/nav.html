@@ -17,6 +17,9 @@
     <div class="navbar-end">
       {% if "/add/" in request.path or "/edit/" in request.path %}
       <div class="navbar-item">
+          <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()">Write in Malaylam</a>
+      </div>
+      <div class="navbar-item">
         <input type="submit"  class="button is-primary" name="publish" value="Publish" form="newpost" >
       </div>
       {% elif "/preview/" in request.path  %}

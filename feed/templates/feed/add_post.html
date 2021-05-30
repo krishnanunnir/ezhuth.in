@@ -18,6 +18,20 @@
     <script src="{% static 'js/editor_transliterate.js' %}"></script>
 {% endcompress %}
 <script>
+    enabled = false;
+    function attachElementMalayalam(){
+        var tributeObject =  new TributeComplete();
+        if(!enabled){
+            enabled = true;
+            tributeObject.tribute.attach(document.querySelector('.ql-editor'));
+            tributeObject.tribute.attach(document.querySelector('#title-div'));
+        }else{
+            enabled = false;
+            tributeObject.tribute.detach(document.querySelector('.ql-editor'));
+            tributeObject.tribute.detach(document.querySelector('#title-div'));
+        }
+        document.getElementById("malaylam-transliterate").checked = enabled;
+    }
     document.addEventListener("DOMContentLoaded", () => {
     var showMessage = true;
     invokeAction = new PostEditor("#editor","{{post.slug}}");
@@ -34,9 +48,6 @@
             return true;
         }
     };
-    var tributeObject =  new TributeComplete();
-    tributeObject.tribute.attach(document.querySelector('.ql-editor'));
-    tributeObject.tribute.attach(document.querySelector('#title-div'));
     if(inputContentField.value!= ""){
         quill.root.innerHTML = inputContentField.value;
         quill.focus();
