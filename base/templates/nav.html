@@ -1,3 +1,4 @@
+{% load i18n %}
 
 <nav class="navbar has-shadow" role="navigation" aria-label="main navigation" style="box-shadow:0 3px 6px rgba(0,0,0,0.3)">
     <div class="navbar-brand">
@@ -17,36 +18,36 @@
     <div class="navbar-end">
       {% if "/add/" in request.path or "/edit/" in request.path %}
       <div class="navbar-item">
-          <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()">Write in Malaylam</a>
+          <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
       </div>
       <div class="navbar-item">
-        <input type="submit"  class="button is-primary" name="publish" value="Publish" form="newpost" >
+        <input type="submit"  class="button is-primary" name="publish" value='{% trans "Publish" %}' form="newpost" >
       </div>
       {% elif "/preview/" in request.path  %}
         <div class="navbar-item">
-          <input type="submit"  class="button is-primary" name="Save Preview" value="Publish" form="previewpost" >
+          <input type="submit"  class="button is-primary" name="Save Preview" value='{% trans "Publish" %}' form="previewpost" >
         </div>
       {% else %}
         <a class="navbar-item" href="{% url 'feed:add_post' %}">
-          New Post
+          {% trans "New Post" %}
         </a>
         <a class="navbar-item" href="{% url 'feed:view_drafts' %}">
-          Drafts
+          {% trans "Drafts" %}
         </a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
-            Account
+            {% trans "Account" %}
           </a>      
           <div class="navbar-dropdown is-right">
             <a class="navbar-item" href="{% url 'account_change_password' %}" >
-              Change Password
+              {% trans "Change Password" %}
             </a>
             <a class="navbar-item" href="{% url 'account_email' %}" >
-              Manage Email
+              {% trans "Manage Email" %}
             </a>
             <hr class="navbar-divider">
             <a class="navbar-item" href="{% url 'account_logout' %}" >
-              Log out
+              {% trans "Log out" %}
             </a>
           </div>
         </div>
@@ -57,10 +58,10 @@
           <div class="navbar-item">
             <div class="buttons">
               <a class="button is-primary" href="{% url 'account_signup' %}">
-                <strong>Sign up</strong>
+                <strong>{% trans "Sign up" %}</strong>
               </a>
               <a class="button is-light" href="{% url 'account_login' %}" >
-                Log in
+                {% trans "Log in" %}
               </a>
             </div>
           </div>
