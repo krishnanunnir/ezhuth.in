@@ -25,19 +25,19 @@ def pretty_date(time=False):
 
     if day_diff == 0:
         if second_diff < 10:
-            return "Just now"
+            return _("Just now")
         if second_diff < 60:
             return str(second_diff) + _(" seconds ago")
         if second_diff < 120:
-            return "A minute ago"
+            return _("A minute ago")
         if second_diff < 3600:
             return str(second_diff // 60) + _(" minutes ago")
         if second_diff < 7200:
-            return "An hour ago"
+            return _("An hour ago")
         if second_diff < 86400:
             return str(second_diff // 3600) + _(" hours ago")
     if day_diff == 1:
-        return "Yesterday"
+        return _("Yesterday")
     if day_diff < 7:
         return str(day_diff) + _(" days ago")
     if day_diff < 31:

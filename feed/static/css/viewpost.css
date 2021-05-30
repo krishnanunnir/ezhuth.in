@@ -52,6 +52,10 @@
 body {
     background-color: #EFF6FC;
 }
+#byline-date{
+    display: block;
+    margin-top: 0.3em;
+}
 
 #postform-wrapper{
     padding: 2em;
@@ -169,7 +173,6 @@ body {
     display: none;
 }
 #parent-line{
-    margin-bottom: 0.5em;
 }
 
 @media screen and (min-width: 1300px) { 
