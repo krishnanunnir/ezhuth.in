@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 14:28+0000\n"
+"POT-Creation-Date: 2021-05-30 15:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "ഹലോ ഫ്രോം %(site_name)s!"
 
 #: allauth/templates/account/email/base_message.txt:5
 msgid ""
-" Thank you for using %(site_name)s!\n"
+"Thank you for using %(site_name)s!\n"
 msgstr "%(site_name)s ഉപയോഗിച്ചതിന് നന്ദി!! \n"
 
 #: allauth/templates/account/email/email_confirmation_message.html:10
@@ -440,6 +440,11 @@ msgstr "ഈ - മെയില് വിലാസം"
 msgid "Write in Malaylam"
 msgstr "മലയാളത്തിൽ എഴുതുക"
 
+#: base/templates/nav.html:24 base/templates/nav.html:28
+#: feed/templates/feed/add_post.html:98
+msgid "Publish"
+msgstr "പബ്ലിഷ്"
+
 #: base/templates/nav.html:32
 msgid "New Post"
 msgstr "പുതിയ പോസ്റ്റ് സൃഷ്ടിക്കുക"
@@ -480,10 +485,6 @@ msgstr "കമന്റ്"
 #, python-brace-format
 msgid "{fieldname} is empty"
 msgstr "{fieldname} ശൂന്യമാണ്"
-
-#: feed/templates/feed/add_post.html:98
-msgid "Publish"
-msgstr "പബ്ലിഷ്"
 
 #: feed/templates/feed/preview_post.html:60
 msgid "Choose an image file or drag it here."
@@ -554,14 +555,26 @@ msgid " days ago"
 msgstr " ദിവസങ്ങൾക്ക് മുൻപ്"
 
 #: feed/templatetags/relative_time.py:46
+msgid " week ago"
+msgstr " ആഴ്ച മുമ്പ്"
+
+#: feed/templatetags/relative_time.py:48
 msgid " weeks ago"
 msgstr " ആഴ്ചകൾക്ക് മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:48
+#: feed/templatetags/relative_time.py:50
+msgid " month ago"
+msgstr " മാസം മുമ്പ്"
+
+#: feed/templatetags/relative_time.py:52
 msgid " months ago"
 msgstr " മാസം മുമ്പ്"
 
-#: feed/templatetags/relative_time.py:49
+#: feed/templatetags/relative_time.py:54
+msgid " year ago"
+msgstr " വർഷം മുമ്പ്"
+
+#: feed/templatetags/relative_time.py:55
 msgid " years ago"
 msgstr " വർഷങ്ങൾക്കുമുമ്പ്"
 
