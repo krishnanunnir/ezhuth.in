@@ -18,6 +18,7 @@
 #byline-date{
     display: block;
     margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
 .post-title{
@@ -25,6 +26,10 @@
     margin-top: 10px;
     font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
 }
+.post-title-sneak{
+    margin-bottom: 0.5em !important;
+}
+
 .post-title-sneak a{
     text-decoration: none;
     color: inherit;
@@ -51,7 +56,6 @@
 
 .post-sneak-peak{
     font-size: 1em;
-    margin-top:10px;
     color: grey;
     max-height: 5em;
     overflow: hidden;
@@ -100,7 +104,7 @@
 .post-option{
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 0.5em;
 }
 #errors-post{
     margin: auto;
