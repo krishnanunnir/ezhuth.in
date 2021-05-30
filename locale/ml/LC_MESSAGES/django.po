@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 15:42+0000\n"
+"POT-Creation-Date: 2021-05-30 15:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -441,7 +441,7 @@ msgstr "ഈ - മെയില് വിലാസം"
 
 #: base/templates/nav.html:6
 msgid "ezhuth.in"
-msgstr "എഴുത്തിന്"
+msgstr "എഴുത്തിൻ"
 
 #: base/templates/nav.html:21
 msgid "Write in Malaylam"
