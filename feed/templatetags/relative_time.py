@@ -42,10 +42,16 @@ def pretty_date(time=False):
         return _("Yesterday")
     if day_diff < 7:
         return str(day_diff) + _(" days ago")
+    if (day_diff // 7==1):
+        return str(day_diff // 7) + _(" week ago")
     if day_diff < 31:
         return str(day_diff // 7) + _(" weeks ago")
+    if (day_diff // 30 == 1):
+        return str(day_diff // 30) + _(" month ago")
     if day_diff < 365:
         return str(day_diff // 30) + _(" months ago")
+    if (day_diff // 365 == 1):
+        return str(day_diff // 30) + _(" year ago")
     return str(day_diff // 365) + _(" years ago")
 
 
