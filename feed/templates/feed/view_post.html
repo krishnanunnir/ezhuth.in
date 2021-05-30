@@ -8,6 +8,9 @@
 {% load user %}
 {% load compress %}
 {% load bleach_tags %}
+{% block description %} 
+    <meta name="description" content="{{ post.description }}">
+{% endblock %}
 {% block headers %}
 
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
