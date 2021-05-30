@@ -90,7 +90,7 @@ msgstr "തിരഞ്ഞെടുത്ത ഇ-മെയിൽ വിലാസ
 #: allauth/templates/account/email/base_message.txt:1
 #, python-format
 msgid "Hello from %(site_name)s!"
-msgstr "നിന്ന് ഹലോ %(site_name)s!"
+msgstr "ഹലോ ഫ്രോം %(site_name)s!"
 
 #: allauth/templates/account/email/base_message.txt:5
 #, python-format
@@ -98,8 +98,7 @@ msgid ""
 "Thank you for using %(site_name)s!\n"
 "%(site_domain)s"
 msgstr ""
-"%(site_name)s! ഉപയോഗിച്ചതിന് നന്ദി\n"
-"%(site_domain)s"
+"%(site_name)s ഉപയോഗിച്ചതിന് നന്ദി!!\n"
 
 #: allauth/templates/account/email/email_confirmation_message.html:10
 #, python-format
