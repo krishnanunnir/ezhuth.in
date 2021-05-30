@@ -13,6 +13,7 @@
     <link rel='stylesheet' href="{% static 'css/viewpost.css' %}">
     {% compress js %}
     <script src="{% static 'js/like.js' %}"></script>
+    <script src="{% static 'js/util.js' %}"></script>
     <script src="{% static 'js/comment.js' %}"></script>
     <script src="{% static 'js/bulma.js' %}"></script>
     {% endcompress %}
@@ -57,7 +58,7 @@
     <div class="symbols column {% if  user == post.author %} is-one-third-desktop {% else %} is-one-quarter-desktop {% endif %} is-full-mobile">
         <div class="post-like">
             {% post_liked_by_user post as show_likes %}
-            <a href="#" {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
+            <a {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {% endif %}>
                 <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} >
                 <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
             </a>
