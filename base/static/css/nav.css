@@ -1,0 +1,26 @@
+#nav-container{
+    display: flex;
+    justify-content: space-between;
+}
+#nav-title{
+    text-align: center;
+    color: white;
+    font-size: 3em;
+    font-weight: 700;
+    padding-left: 0.5em;
+    text-shadow: rgb(194 110 110) 0.09rem 0.3rem 0rem;
+}
+#nav-right{
+    display: flex;
+    align-items: center;
+}
+
+.nav-item{
+    text-decoration: underline;
+    padding: 1em;
+    text-align: center;
+    color: white;
+    font-size: 1.25em;
+    font-weight: 700;
+    text-shadow: rgb(194 110 110) 0.11rem 0.06rem 0rem;
+}

@@ -1,76 +1,48 @@
 {% load i18n %}
 
-<nav class="navbar has-shadow" role="navigation" aria-label="main navigation" style="box-shadow:0 3px 6px rgba(0,0,0,0.3)">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <span style="font-size: 1.3em;font-weight: 900;">{% trans "ezhuth.in" %}</span>
-      </a>
-      {% if not "add" in request.path %}
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-      {% endif %}
-    </div>
-    <div id="navbarBasicExample" class="navbar-menu">
-    {% if user.is_authenticated %}
-    <div class="navbar-end">
-      {% if "/add/" in request.path or "/edit/" in request.path %}
-      <div class="navbar-item">
-          <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
-      </div>
-      <div class="navbar-item">
-        <input type="submit"  class="button is-primary" name="publish" value='{% trans "Publish" %}' form="newpost" >
-      </div>
-      {% elif "/preview/" in request.path  %}
-        <div class="navbar-item">
-          <input type="submit"  class="button is-primary" name="Save Preview" value='{% trans "Publish" %}' form="previewpost" >
-        </div>
-      {% else %}
-        {% if "/view/" in request.path %}
-        <div class="navbar-item">
-          <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
-        </div>
-        {% endif %}
-        <a class="navbar-item" href="{% url 'feed:add_post' %}">
-          {% trans "New Post" %}
-        </a>
-        <a class="navbar-item" href="{% url 'feed:view_drafts' %}">
-          {% trans "Drafts" %}
-        </a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            {% trans "Account" %}
-          </a>      
-          <div class="navbar-dropdown is-right">
-            <a class="navbar-item" href="{% url 'account_change_password' %}" >
-              {% trans "Change Password" %}
-            </a>
-            <a class="navbar-item" href="{% url 'account_email' %}" >
-              {% trans "Manage Email" %}
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="{% url 'account_logout' %}" >
-              {% trans "Log out" %}
-            </a>
-          </div>
-        </div>
-      {% endif %}
+<nav id="nav-container" role="navigation" aria-label="main navigation">
+  <div id="nav-left">
+    <a id="nav-title" href="{% url 'feed:view_all' %}">
+      <span style="font-size: 1.3em;font-weight: 900;">{% trans "ezhuth.in" %}</span>
+    </a>
   </div>
-    {% else %}
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary" href="{% url 'account_signup' %}">
-                <strong>{% trans "Sign up" %}</strong>
-              </a>
-              <a class="button is-light" href="{% url 'account_login' %}" >
-                {% trans "Log in" %}
-              </a>
-            </div>
-          </div>
+    
+  <div id="nav-right">
+    {% if user.is_authenticated %}
+      {% if "/add/" in request.path or "/edit/" in request.path %}
+        <div class="nav-item">
+            <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
         </div>
+        <div class="nav-item">
+          <input type="submit"  class="button is-primary" name="publish" value='{% trans "Publish" %}' form="newpost" >
+        </div>
+        {% elif "/preview/" in request.path  %}
+          <div class="nav-item">
+            <input type="submit"  class="button is-primary" name="Save Preview" value='{% trans "Publish" %}' form="previewpost" >
+          </div>
+        {% else %}
+          {% if "/view/" in request.path %}
+            <div class="nav-item">
+              <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
+            </div>
+          {% endif %}
+          <a class="nav-item" href="{% url 'feed:add_post' %}">
+            {% trans "New Post" %}
+          </a>
+          <a class="nav-item" href="{% url 'feed:view_drafts' %}">
+            {% trans "Drafts" %}
+          </a>
+          <a class="nav-item" href="{% url 'account_logout' %}" >
+            {% trans "Log out" %}
+          </a>
+        {% endif %}
+      {% else %}
+        <a class="nav-item" href="{% url 'account_signup' %}">
+          {% trans "Sign up" %}
+        </a>
+        <a  class="nav-item" href="{% url 'account_login' %}" >
+          {% trans "Log in" %}
+        </a>
     {% endif %}
-    </div>
-</nav>  
+  </div>
+</nav>
