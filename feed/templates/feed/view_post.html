@@ -53,7 +53,9 @@
             {% include "message.html" %}
           </div>
           <div id="parent-line">
-              <div class="post-byline"><a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a> <br><span id="byline-date"> {{ post.created_on | pretty_date  }} </span></div>
+              <div class="post-byline"><a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a> <br>
+                <!-- <span id="byline-date"> {{ post.created_on | pretty_date  }} </span> -->
+            </div>
           </div>
           {% if post.header_image %}
           <div id="header-image">

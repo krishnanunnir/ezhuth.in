@@ -5,7 +5,9 @@
 {% load user %}
     {% for comment in comments.all %}
     <div class="comment">
-        <div class="comment-byline"> <a href="{% url 'feed:view_user' post.author.username %}">{{ comment.author | full_name |default_if_none:"[deleted]" }}</a> <span id="byline-date">{{ comment.created_on | pretty_date}} </span></div>
+        <div class="comment-byline"> <a href="{% url 'feed:view_user' post.author.username %}">{{ comment.author | full_name |default_if_none:"[deleted]" }}</a> 
+            <!-- <span id="byline-date">{{ comment.created_on | pretty_date}} </span> -->
+        </div>
         <div class="comment-content">{{ comment.content | linebreaks }}</div>
         {% comment_liked_by_user comment as show_likes %}
         <a {% if user.is_authenticated %}  onclick="likeComment('comments-{{comment.id}}','{{comment.id}}')" {% endif %}>

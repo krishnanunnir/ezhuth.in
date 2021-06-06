@@ -10,7 +10,9 @@
 <div class="columns is-centered is-desktop is-mobile">
 <div class="post column is-half-desktop is-four-fifths-mobile">
 
-    <div class="post-byline"><a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a><br><span id="byline-date"> {{ post.created_on | pretty_date  }} </span></div>
+    <div class="post-byline"><a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a><br>
+      <!-- <span id="byline-date"> {{ post.created_on | pretty_date  }} </span> -->
+    </div>
     <div id="header-image">
       {% if post.header_image %}
       <a href="{% url 'feed:view_post' post.slug %}"><img src="{{post.header_image.url}}"/></a>
