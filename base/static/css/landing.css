@@ -1,0 +1,23 @@
+#main-box{
+
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 4px;
+    overflow: auto;
+    padding: 3em;
+    border-radius: 0.3em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    margin-top: 3em;
+}
+
+#tagline{
+    text-align: center;
+    color: rgb(194 110 110);
+    font-size: 1em;
+    font-weight: 700;
+    padding-left: 0.5em;
+    text-shadow: rgb(194 110 110) 0.11rem 0.06rem 0rem;
+}

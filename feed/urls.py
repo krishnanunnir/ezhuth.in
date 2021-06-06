@@ -8,6 +8,7 @@ from . import converters
 
 app_name = "feed"
 urlpatterns = [
+    path("", views.landing, name="view_landing"),
     path("read/", views.view_all, name="view_all"),
     path("feed/", views.view_feed, name="view_feed"),
     path("add/", views.add_post, name="add_post"),

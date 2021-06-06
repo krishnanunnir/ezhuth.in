@@ -258,3 +258,6 @@ def preview_post(request, post_slug, template_name="feed/preview_post.html"):
 
 def write(request, template_name="feed/writer.html"):
     return render(request, template_name, {})
+
+def landing(request, template_name="landing.html"):
+    return render(request, template_name, {})
