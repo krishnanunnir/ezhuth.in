@@ -11,7 +11,7 @@
     {% if user.is_authenticated %}
       {% if "/add/" in request.path or "/edit/" in request.path %}
         <div class="nav-item">
-            <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
+            <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()" class="nav-item-input-label"><a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
         </div>
         <div class="nav-item">
           <input type="submit"  class="button is-primary" name="publish" value='{% trans "Publish" %}' form="newpost" >
@@ -22,8 +22,8 @@
           </div>
         {% else %}
           {% if "/view/" in request.path %}
-            <div class="nav-item">
-              <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()">&nbsp; <a onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
+            <div>
+              <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()"><a class="nav-item-input-label" onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
             </div>
           {% endif %}
           <a class="nav-item" href="{% url 'feed:add_post' %}">

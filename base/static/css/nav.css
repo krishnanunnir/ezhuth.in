@@ -24,3 +24,14 @@
     font-weight: 700;
     text-shadow: rgb(194 110 110) 0.11rem 0.06rem 0rem;
 }
+
+.nav-item-input-label{
+    text-decoration: underline;
+    padding: 1em;
+    padding-left: 0.1em;
+    text-align: center;
+    color: white;
+    font-size: 1.25em;
+    font-weight: 700;
+    text-shadow: rgb(194 110 110) 0.11rem 0.06rem 0rem;
+}
