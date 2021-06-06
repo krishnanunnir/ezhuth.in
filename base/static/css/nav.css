@@ -11,7 +11,7 @@
     text-shadow: rgb(194 110 110) 0.09rem 0.3rem 0rem;
 }
 #nav-right{
-    display: flex;
+    display: none;
     align-items: center;
 }
 
@@ -34,4 +34,9 @@
     font-size: 1.25em;
     font-weight: 700;
     text-shadow: rgb(194 110 110) 0.11rem 0.06rem 0rem;
+}
+@media screen and (min-width: 1300px) { 
+    #nav-right{
+        display: flex;
+    }
 }

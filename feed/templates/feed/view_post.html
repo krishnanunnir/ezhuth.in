@@ -119,17 +119,22 @@
     </div>
     {% endif %}
     </div>
+</div>
+<div id="comments"  class="show-comment-editor" >
+    <div id="comment-title-text">
+        Comments for <b>'{{ post.title | bleach }}'</b>
+    </div>
     {% if display_comment_form %}
-    <div id="comment-editor" class="show-comment-editor">
+    <div id="comment-editor">
         <form action="" method="POST">
             {% csrf_token %}
             {{ form.media }}
             <article class="media">
-                <figure class="media-left">
+                <!-- <figure class="media-left">
                   <p class="image is-64x64">
                     <img src="https://bulma.io/images/placeholders/128x128.png">
                   </p>
-                </figure>
+                </figure> -->
                 <div class="media-content">
                   <div class="field">
                     <p class="control">
@@ -150,8 +155,6 @@
         </form>
     </div>
     {% endif %}
-</div>
-<div id="comments" >
     {% include "feed/comments.html" %}
 </div>
 {% endblock %}
