@@ -1,21 +1,24 @@
 #nav-container{
-    display: flex;
-    justify-content: space-between;
+    display: block;
+}
+#nav-left{
+    text-align: center;
 }
 #nav-title{
-    text-align: center;
+    margin: 0 auto;
     color: white;
     font-size: 3em;
     font-weight: 700;
-    padding-left: 0.5em;
     text-shadow: rgb(194 110 110) 0.09rem 0.3rem 0rem;
 }
 #nav-right{
-    display: none;
+    display: block;
     align-items: center;
 }
 
 .nav-item{
+    display: block;
+    margin: 0 auto;
     text-decoration: underline;
     padding: 1em;
     text-align: center;
@@ -38,5 +41,12 @@
 @media screen and (min-width: 1300px) { 
     #nav-right{
         display: flex;
+    }
+    #nav-container{
+        display: flex;
+        justify-content: space-between;
+    }
+    #nav-title{
+        padding-left: 0.5em;
     }
 }
