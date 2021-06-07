@@ -2,10 +2,9 @@
   
   #auth {
     text-align: center;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     overflow: auto;
-    padding: 1em;
   }
   textarea:focus, input:focus{
     outline: none;
