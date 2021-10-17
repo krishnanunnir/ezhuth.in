@@ -209,4 +209,4 @@ LOGGING = {
         },
     },
 }
-LANGUAGE_CODE = "ml"
+LANGUAGE_CODE = "en"
