@@ -2,12 +2,15 @@
 
 <nav id="nav-container" role="navigation" aria-label="main navigation">
     <div id="nav-left">
-        <a id="nav-title" href="{% url 'feed:view_all' %}">
+        <a id="nav-title" href="/">
             <span style="font-size: 1.3em;font-weight: 900;">{% trans "ezhuth.in" %}</span>
         </a>
     </div>
 
     <div id="nav-right">
+        <a class="nav-item" href="{% url 'feed:view_all' %}">
+            {% trans "Read" %}
+        </a>
         {% if user.is_authenticated %}
             {% if "/add/" in request.path or "/edit/" in request.path %}
                 <div class="nav-item">
