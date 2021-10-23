@@ -1,11 +1,11 @@
 {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}
-                <div class="notification is-danger is-light errors-post">
-                    <span>
-                        {{ error|escape }}
-                    </span>
-                </div>
+            <div class="notification is-danger is-light errors-post">
+                <span>
+                    {{ error|escape }}
+                </span>
+            </div>
         {% endfor %}
     {% endfor %}
 {% endif %}

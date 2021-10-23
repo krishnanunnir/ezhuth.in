@@ -1,5 +1,5 @@
 
-  
+
   #auth {
     text-align: center;
     width: 90%;
@@ -9,7 +9,7 @@
   textarea:focus, input:focus{
     outline: none;
 }
-  
+
   #action {
     border-radius: 1em;
     display: inline-block;
@@ -23,7 +23,7 @@
     cursor: pointer;
     width: 85%;
   }
-  
+
   input[type=text],
   input[type=password],
   input[type=email]{
@@ -36,7 +36,7 @@
     box-sizing: border-box;
     font-size: 1em;
   }
-  
+
   .inner-separator {
     border: none;
     height: 1px;
@@ -47,7 +47,7 @@
     /* Modern Browsers */
     margin-top: 20px;
   }
-  
+
   #form-signin {
     margin-top: 10px;
     padding: 20px;
@@ -59,16 +59,16 @@
     padding: 10px;
     margin-top: 10px;
   }
-  
+
   #forgotpsw a {
     text-decoration: none;
     margin-bottom: 30px;
   }
-  
+
   .showFields {
     visibility: visible;
   }
-  
+
 
   #remember-me{
     display: block;
@@ -91,7 +91,7 @@
     font-weight: 700;
     text-shadow: rgb(194 110 110) 0.11rem 0.06rem 0rem;
   }
-  @media screen and (min-width: 1300px) { 
+  @media screen and (min-width: 1300px) {
     #auth {
       width: 40%;
     }

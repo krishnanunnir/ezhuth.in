@@ -21,4 +21,3 @@ document.addEventListener("DOMContentLoaded", () => {
         inputDescription.value = descriptionDiv.innerHTML;
     }
 });
-

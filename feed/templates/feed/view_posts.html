@@ -10,41 +10,41 @@
 {% block title%} {% if show_selected_user or False %}{{ selected_user | full_name }} {% else %} Feed {% endif %} {% endblock %}
 
 {% block headers %}
-<meta name="robots" content="noindex">
-{% compress js %}
-  <script src="{% static 'js/util.js' %}"></script>
-  <script src="{% static 'js/like.js' %}"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      let bottomSentinel = document.querySelector("#sentinel");
-      let scrollElement = document.querySelector("#posts");
-      attachInfiniteScroll(bottomSentinel, scrollElement);
-    })
-  </script>
-{% endcompress %}
-{% compress css %}
-<link rel='stylesheet' href="{% static 'css/post.css' %}">
-<link rel='stylesheet' href="{% static 'css/profile.css' %}">
-{% endcompress %}
+    <meta name="robots" content="noindex">
+    {% compress js %}
+        <script src="{% static 'js/util.js' %}"></script>
+        <script src="{% static 'js/like.js' %}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                let bottomSentinel = document.querySelector("#sentinel");
+                let scrollElement = document.querySelector("#posts");
+                attachInfiniteScroll(bottomSentinel, scrollElement);
+            })
+        </script>
+    {% endcompress %}
+    {% compress css %}
+        <link rel='stylesheet' href="{% static 'css/post.css' %}">
+        <link rel='stylesheet' href="{% static 'css/profile.css' %}">
+    {% endcompress %}
 {% endblock%}
 {% block content %}
-  <div id="errors-post">
-    {% include "formerrors.html" %}
-    {% include "message.html" %}
-  </div>
-{% if show_selected_user or False %}
-<div class="columns is-centered is-desktop is-mobile">
-  <div id="user-details" class="column is-half-desktop is-four-fifths-mobile">
-    <div id="username">{{ selected_user | full_name }}</div>
-    <hr class="inner-separator">
-    <!-- <div id="bio">I will add bis not supported now.</div> -->
-  </div>
-</div>
-{% endif %}
+    <div id="errors-post">
+        {% include "formerrors.html" %}
+        {% include "message.html" %}
+    </div>
+    {% if show_selected_user or False %}
+        <div class="columns is-centered is-desktop is-mobile">
+            <div id="user-details" class="column is-half-desktop is-four-fifths-mobile">
+                <div id="username">{{ selected_user | full_name }}</div>
+                <hr class="inner-separator">
+                <!-- <div id="bio">I will add bis not supported now.</div> -->
+            </div>
+        </div>
+    {% endif %}
 
-<div id="posts">
-  {% include "feed/__posts.html"%}
-</div>
+    <div id="posts">
+        {% include "feed/__posts.html"%}
+    </div>
 
-<div id="sentinel"></div>
+    <div id="sentinel"></div>
 {% endblock %}

@@ -3,9 +3,9 @@
 {% load like %}
 {% load relative_time %}
 {% load user %}
-    {% for comment in comments.all %}
+{% for comment in comments.all %}
     <div class="comment">
-        <div class="comment-byline"> <a href="{% url 'feed:view_user' post.author.username %}">{{ comment.author | full_name |default_if_none:"[deleted]" }}</a> 
+        <div class="comment-byline"> <a href="{% url 'feed:view_user' post.author.username %}">{{ comment.author | full_name |default_if_none:"[deleted]" }}</a>
             <!-- <span id="byline-date">{{ comment.created_on | pretty_date}} </span> -->
         </div>
         <div class="comment-content">{{ comment.content | linebreaks }}</div>
@@ -15,5 +15,5 @@
             <span id="comments-{{comment.id}}-number" class="like-number">{{ comment | comment_like_count }}</span>
         </a>
     </div>
-    {% endfor %}
+{% endfor %}
 </div>

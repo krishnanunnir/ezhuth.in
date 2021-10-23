@@ -8,8 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.db.models import Count, Q
-from django.http import (Http404, HttpResponse, HttpResponseRedirect,
-                         JsonResponse)
+from django.http import Http404, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.http.response import HttpResponseServerError
 from django.shortcuts import get_object_or_404, render
 from django.template.defaultfilters import slugify
@@ -20,8 +19,13 @@ from django.views.decorators.http import require_GET, require_POST
 
 from authentication.models import User
 
-from .forms import (AddCommentForm, AddPostForm, EditPostForm, ImageUploadForm,
-                    PreviewForm)
+from .forms import (
+    AddCommentForm,
+    AddPostForm,
+    EditPostForm,
+    ImageUploadForm,
+    PreviewForm,
+)
 from .models import Comment, Like, Post
 from .redirects import *
 from .utils import is_ajax, paginate_posts
@@ -258,6 +262,7 @@ def preview_post(request, post_slug, template_name="feed/preview_post.html"):
 
 def write(request, template_name="feed/writer.html"):
     return render(request, template_name, {})
+
 
 def landing(request, template_name="landing.html"):
     return render(request, template_name, {})

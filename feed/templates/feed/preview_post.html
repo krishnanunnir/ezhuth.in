@@ -10,63 +10,63 @@
 {% endblock %}
 
 {% block headers %}
-<meta name="robots" content="noindex">
-{% compress css %}
-<link rel='stylesheet' href="{% static 'css/post.css' %}">
-<link rel='stylesheet' href="{% static 'css/preview.css' %}">
-<link rel="stylesheet" href="{% static 'tribute/tribute.css' %}" />
-{% endcompress %}
-<script src="{% static 'js/preview.js' %}"></script>
-<script src="{% static 'js/editor_transliterate.js' %}"></script>
-<script src="{% static 'tribute/tribute.js' %}"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        var tributeObject =  new TributeComplete();
-        tributeObject.tribute.attach(document.querySelector('#description-div'));
-    });
-</script>
+    <meta name="robots" content="noindex">
+    {% compress css %}
+        <link rel='stylesheet' href="{% static 'css/post.css' %}">
+        <link rel='stylesheet' href="{% static 'css/preview.css' %}">
+        <link rel="stylesheet" href="{% static 'tribute/tribute.css' %}" />
+    {% endcompress %}
+    <script src="{% static 'js/preview.js' %}"></script>
+    <script src="{% static 'js/editor_transliterate.js' %}"></script>
+    <script src="{% static 'tribute/tribute.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            var tributeObject =  new TributeComplete();
+            tributeObject.tribute.attach(document.querySelector('#description-div'));
+        });
+    </script>
 {% endblock%}
 {% block content %}
-<div id="errors-post">
-    {% include "formerrors.html" %}
-    {% include "message.html" %}
-</div>
+    <div id="errors-post">
+        {% include "formerrors.html" %}
+        {% include "message.html" %}
+    </div>
 
-<form action="" method="POST" enctype="multipart/form-data" id="previewpost">
-    {% csrf_token %}
-    <div id="posts">
-        <div class="columns is-centered is-desktop is-mobile">
-            <div class="post column is-half-desktop is-four-fifths-mobile">
-                <section>
-                    <div class="container">
-                        <div class="form-group">
-                            <div class="preview-zone hidden">
-                                <div class="box box-solid">
+    <form action="" method="POST" enctype="multipart/form-data" id="previewpost">
+        {% csrf_token %}
+        <div id="posts">
+            <div class="columns is-centered is-desktop is-mobile">
+                <div class="post column is-half-desktop is-four-fifths-mobile">
+                    <section>
+                        <div class="container">
+                            <div class="form-group">
+                                <div class="preview-zone hidden">
+                                    <div class="box box-solid">
 
-                                    <div class="box-tools pull-right">
-                                        <div class="remove-preview" id="removeButton">
-                                            <i class="fa fa-times"></i>
+                                        <div class="box-tools pull-right">
+                                            <div class="remove-preview" id="removeButton">
+                                                <i class="fa fa-times"></i>
+                                            </div>
                                         </div>
+                                        <div class="box-body"></div>
                                     </div>
-                                    <div class="box-body"></div>
-                                </div>
-                                <img id="output" {% if post.header_image %}src="{{post.header_image.url}}"
+                                    <img id="output" {% if post.header_image %}src="{{post.header_image.url}}"
                                     {% endif %} />
-                                <a>
-                                    <div class="dropzone-wrapper" id="uploadImageDiv"
-                                        {% if post.header_image %}style="display:none;" {% endif %}>
-                                        <div class="dropzone-desc">
-                                            <i class="glyphicon glyphicon-download-alt"></i>
-                                            <p>{% trans "Choose an image file or drag it here." %}</p>
+                                    <a>
+                                        <div class="dropzone-wrapper" id="uploadImageDiv"
+                                            {% if post.header_image %}style="display:none;" {% endif %}>
+                                            <div class="dropzone-desc">
+                                                <i class="glyphicon glyphicon-download-alt"></i>
+                                                <p>{% trans "Choose an image file or drag it here." %}</p>
+                                            </div>
+                                            {{ form.header_image }}
                                         </div>
-                                        {{ form.header_image }}
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <div class="post-byline">Posted by {{ post.author | full_name |default_if_none:"[deleted]" }}</a>
+                    </section>
+                    <div class="post-byline">Posted by {{ post.author | full_name |default_if_none:"[deleted]" }}</a>
                     {{ post.created_on | pretty_date  }}</div>
                 <div class="post-title-sneak content">
                     <div class="post-title">{{ post.title | bleach}}</div>
@@ -81,17 +81,17 @@
                                 src="{% static 'images/liked_heart.svg' %}" {% else %}
                                 src="{% static 'images/heart.svg' %}" {% endif %}>
                             <span id="posts-{{post.id}}-number" class="like-number">0</span>
-                            </a>
-                        </div>
-                        <div class="post-comment">
-                            <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}">
-                            <span id="posts-{{post.id}}-number" class="comment-number">0</span>
-                        </div>
+                        </a>
+                    </div>
+                    <div class="post-comment">
+                        <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}">
+                        <span id="posts-{{post.id}}-number" class="comment-number">0</span>
                     </div>
                 </div>
-                {{form.description}}
             </div>
+            {{form.description}}
         </div>
     </div>
-</form>
+    </div>
+    </form>
 {% endblock %}

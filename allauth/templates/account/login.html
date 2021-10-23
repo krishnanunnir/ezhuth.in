@@ -5,30 +5,30 @@
 
 {% block title %}{% trans "Sign In" %}{% endblock %}
 {% block headers %}
-  <link rel='stylesheet' href="{% static 'css/auth.css' %}">
+    <link rel='stylesheet' href="{% static 'css/auth.css' %}">
 {% endblock %}
 
 {% block content %}
-  <div id="auth">
+    <div id="auth">
 
-  {% get_providers as socialaccount_providers %}
+        {% get_providers as socialaccount_providers %}
 
-  <div id="form-signup">
-    <div id="errors">
-      {% include "formerrors.html" %}
-      {% include "message.html" %}
+        <div id="form-signup">
+            <div id="errors">
+                {% include "formerrors.html" %}
+                {% include "message.html" %}
+            </div>
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form.login }}
+                {{ form.password }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+
+                <button id="action" type="submit">{% trans "Log In" %}</button>
+                <a id="bottomauthstring" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            </form>
+        </div>
     </div>
-  <form class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form.login }}
-    {{ form.password }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    
-    <button id="action" type="submit">{% trans "Log In" %}</button>
-    <a id="bottomauthstring" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  </form>
-  </div>
-  </div>
 {% endblock %}

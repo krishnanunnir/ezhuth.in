@@ -1,48 +1,48 @@
 {% load i18n %}
 
 <nav id="nav-container" role="navigation" aria-label="main navigation">
-  <div id="nav-left">
-    <a id="nav-title" href="{% url 'feed:view_all' %}">
-      <span style="font-size: 1.3em;font-weight: 900;">{% trans "ezhuth.in" %}</span>
-    </a>
-  </div>
-    
-  <div id="nav-right">
-    {% if user.is_authenticated %}
-      {% if "/add/" in request.path or "/edit/" in request.path %}
-        <div class="nav-item">
-            <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()" ><a class="nav-item-input-label" onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
-        </div>
-        <div class="nav-item">
-          <input type="submit"  class="button is-primary" name="publish" value='{% trans "Publish" %}' form="newpost" >
-        </div>
-        {% elif "/preview/" in request.path  %}
-          <div class="nav-item">
-            <input type="submit"  class="button is-primary" name="Save Preview" value='{% trans "Publish" %}' form="previewpost" >
-          </div>
+    <div id="nav-left">
+        <a id="nav-title" href="{% url 'feed:view_all' %}">
+            <span style="font-size: 1.3em;font-weight: 900;">{% trans "ezhuth.in" %}</span>
+        </a>
+    </div>
+
+    <div id="nav-right">
+        {% if user.is_authenticated %}
+            {% if "/add/" in request.path or "/edit/" in request.path %}
+                <div class="nav-item">
+                    <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()" ><a class="nav-item-input-label" onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
+                </div>
+                <div class="nav-item">
+                    <input type="submit"  class="button is-primary" name="publish" value='{% trans "Publish" %}' form="newpost" >
+                </div>
+            {% elif "/preview/" in request.path  %}
+                <div class="nav-item">
+                    <input type="submit"  class="button is-primary" name="Save Preview" value='{% trans "Publish" %}' form="previewpost" >
+                </div>
+            {% else %}
+                {% if "/view/" in request.path %}
+                    <div>
+                        <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()"><a class="nav-item-input-label" onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
+                    </div>
+                {% endif %}
+                <a class="nav-item" href="{% url 'feed:add_post' %}">
+                    {% trans "New Post" %}
+                </a>
+                <a class="nav-item" href="{% url 'feed:view_drafts' %}">
+                    {% trans "Drafts" %}
+                </a>
+                <a class="nav-item" href="{% url 'account_logout' %}" >
+                    {% trans "Log out" %}
+                </a>
+            {% endif %}
         {% else %}
-          {% if "/view/" in request.path %}
-            <div>
-              <input type="checkbox" id="malaylam-transliterate" onclick="attachElementMalayalam()"><a class="nav-item-input-label" onclick="attachElementMalayalam()"> {% trans "Write in Malaylam" %} </a>
-            </div>
-          {% endif %}
-          <a class="nav-item" href="{% url 'feed:add_post' %}">
-            {% trans "New Post" %}
-          </a>
-          <a class="nav-item" href="{% url 'feed:view_drafts' %}">
-            {% trans "Drafts" %}
-          </a>
-          <a class="nav-item" href="{% url 'account_logout' %}" >
-            {% trans "Log out" %}
-          </a>
+            <a class="nav-item" href="{% url 'account_signup' %}">
+                {% trans "Sign up" %}
+            </a>
+            <a  class="nav-item" href="{% url 'account_login' %}" >
+                {% trans "Log in" %}
+            </a>
         {% endif %}
-      {% else %}
-        <a class="nav-item" href="{% url 'account_signup' %}">
-          {% trans "Sign up" %}
-        </a>
-        <a  class="nav-item" href="{% url 'account_login' %}" >
-          {% trans "Log in" %}
-        </a>
-    {% endif %}
-  </div>
+    </div>
 </nav>

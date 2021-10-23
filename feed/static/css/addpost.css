@@ -97,7 +97,7 @@ input:focus{
 #editor-container {
     height: 10em;
   }
-  
+
 
 .visible-mobile{
     display:block;
@@ -113,7 +113,7 @@ input:focus{
 #editor{
     margin-top: 0.3em;
 }
-@media screen and (min-width: 1300px) { 
+@media screen and (min-width: 1300px) {
     #postform-wrapper{
         width: 60%;
     }
@@ -142,6 +142,6 @@ input:focus{
 {
     content: "\feff"; /* ZERO WIDTH NO-BREAK SPACE */
 }
-.ql-editor::before { 
+.ql-editor::before {
     padding-left:0px;
  }

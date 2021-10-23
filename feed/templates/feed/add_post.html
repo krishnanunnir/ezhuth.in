@@ -4,96 +4,96 @@
 {% block title %} Texteditor {% endblock %}
 {% load compress %}
 {% block headers %}
-<meta name="robots" content="noindex">
-{% compress css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
-<link href="{% static 'quill/quill.snow.css' %}" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'tribute/tribute.css' %}" />
-{% endcompress %}
-{% compress js %}
-    <script src="{% static 'tribute/tribute.js' %}"></script>
-    <script src="{% static 'quill/quill.min.js' %}"></script>
-    <script src="{% static 'js/fileuploader.js' %}"></script>
-    <script src="{% static 'js/addpost.js' %}"></script>
-    <script src="{% static 'js/editor_transliterate.js' %}"></script>
-{% endcompress %}
-<script>
-    enabled = false;
-    function attachElementMalayalam(){
-        var tributeObject =  new TributeComplete();
-        if(!enabled){
-            enabled = true;
-            tributeObject.tribute.attach(document.querySelector('.ql-editor'));
-            tributeObject.tribute.attach(document.querySelector('#title-div'));
-        }else{
-            enabled = false;
-            tributeObject.tribute.detach(document.querySelector('.ql-editor'));
-            tributeObject.tribute.detach(document.querySelector('#title-div'));
+    <meta name="robots" content="noindex">
+    {% compress css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/addpost.css' %}">
+        <link href="{% static 'quill/quill.snow.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'tribute/tribute.css' %}" />
+    {% endcompress %}
+    {% compress js %}
+        <script src="{% static 'tribute/tribute.js' %}"></script>
+        <script src="{% static 'quill/quill.min.js' %}"></script>
+        <script src="{% static 'js/fileuploader.js' %}"></script>
+        <script src="{% static 'js/addpost.js' %}"></script>
+        <script src="{% static 'js/editor_transliterate.js' %}"></script>
+    {% endcompress %}
+    <script>
+        enabled = false;
+        function attachElementMalayalam(){
+            var tributeObject =  new TributeComplete();
+            if(!enabled){
+                enabled = true;
+                tributeObject.tribute.attach(document.querySelector('.ql-editor'));
+                tributeObject.tribute.attach(document.querySelector('#title-div'));
+            }else{
+                enabled = false;
+                tributeObject.tribute.detach(document.querySelector('.ql-editor'));
+                tributeObject.tribute.detach(document.querySelector('#title-div'));
+            }
+            document.getElementById("malaylam-transliterate").checked = enabled;
         }
-        document.getElementById("malaylam-transliterate").checked = enabled;
-    }
-    document.addEventListener("DOMContentLoaded", () => {
-    var showMessage = true;
-    invokeAction = new PostEditor("#editor","{{post.slug}}");
-    form = document.querySelector('form');
-    var quill = invokeAction.editor;
-    var inputContentField = document.getElementById("id_content");
-    var inputTitleField = document.getElementById("id_title");
-    var titleField = document.getElementById("title-div");
-    if(inputTitleField.value!=""){
-        titleField.innerHTML = inputTitleField.value;
-    }
-    window.onbeforeunload = function() {
-        if(showMessage){
-            return true;
-        }
-    };
-    if(inputContentField.value!= ""){
-        quill.root.innerHTML = inputContentField.value;
-        quill.focus();
-    }
-    form.onsubmit = function() {
-        showMessage=false;
-        if(!invokeAction.isQuillEmpty()){
-            inputContentField.value = quill.root.innerHTML;
-        }else{
-            inputContentField.value = "";
-        }
-        inputTitleField.value = titleField.innerHTML;
-    }
-    {% if post.status == 0 %}
-        setInterval(function(){ 
-            //code goes here that will be run every 5 seconds.
-            invokeAction.syncpost()
-        }, 5000);
-        window.addEventListener('beforeunload', function(event) {
-            invokeAction.syncpost()
-      });
-    {% endif %}
-});
-</script>
+        document.addEventListener("DOMContentLoaded", () => {
+            var showMessage = true;
+            invokeAction = new PostEditor("#editor","{{post.slug}}");
+            form = document.querySelector('form');
+            var quill = invokeAction.editor;
+            var inputContentField = document.getElementById("id_content");
+            var inputTitleField = document.getElementById("id_title");
+            var titleField = document.getElementById("title-div");
+            if(inputTitleField.value!=""){
+                titleField.innerHTML = inputTitleField.value;
+            }
+            window.onbeforeunload = function() {
+                if(showMessage){
+                    return true;
+                }
+            };
+            if(inputContentField.value!= ""){
+                quill.root.innerHTML = inputContentField.value;
+                quill.focus();
+            }
+            form.onsubmit = function() {
+                showMessage=false;
+                if(!invokeAction.isQuillEmpty()){
+                    inputContentField.value = quill.root.innerHTML;
+                }else{
+                    inputContentField.value = "";
+                }
+                inputTitleField.value = titleField.innerHTML;
+            }
+            {% if post.status == 0 %}
+                setInterval(function(){
+                    //code goes here that will be run every 5 seconds.
+                    invokeAction.syncpost()
+                }, 5000);
+                window.addEventListener('beforeunload', function(event) {
+                    invokeAction.syncpost()
+                });
+            {% endif %}
+        });
+    </script>
 {% endblock %}
 
 {% block content %}
 
-<div id="postform-wrapper" style="display:none">
-    <div id="postform">
-        <div id="errors-addpost">
-            {% include "formerrors.html" %}
-            {% include "message.html" %}
-        </div>
-        <form action="" method="POST" autocomplete="off" id="newpost">
-            {% csrf_token %}
-            {{ form.media }}
-            <span id="title-div" contenteditable="true" data-ph="Add your title"></span>
-            {{ form.title }}
-            {{ form.content}}
-
-            <div id="editor">
+    <div id="postform-wrapper" style="display:none">
+        <div id="postform">
+            <div id="errors-addpost">
+                {% include "formerrors.html" %}
+                {% include "message.html" %}
             </div>
-        </form>
+            <form action="" method="POST" autocomplete="off" id="newpost">
+                {% csrf_token %}
+                {{ form.media }}
+                <span id="title-div" contenteditable="true" data-ph="Add your title"></span>
+                {{ form.title }}
+                {{ form.content}}
+
+                <div id="editor">
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-<input type="submit" id="mobile-button" class="button is-primary visible-mobile" name="publish"
-    value='{% trans "Publish" %}' form="newpost">
+    <input type="submit" id="mobile-button" class="button is-primary visible-mobile" name="publish"
+        value='{% trans "Publish" %}' form="newpost">
 {% endblock %}

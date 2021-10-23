@@ -7,23 +7,23 @@
 {% load static %}
 {% load user %}
 {% for post in posts %}
-<div class="columns is-centered is-desktop is-mobile">
-<div class="post column is-half-desktop is-four-fifths-mobile">
+    <div class="columns is-centered is-desktop is-mobile">
+        <div class="post column is-half-desktop is-four-fifths-mobile">
 
-    <div class="post-byline"> {{ post.created_on | pretty_date  }}</div>
-    <div id="header-image">
-      {% if post.header_image %}
-      <img src="{{post.header_image.url}}"/>
-      {% endif %}
+            <div class="post-byline"> {{ post.created_on | pretty_date  }}</div>
+            <div id="header-image">
+                {% if post.header_image %}
+                    <img src="{{post.header_image.url}}"/>
+                {% endif %}
+            </div>
+            <div class="post-title-sneak content">
+                <a href="{% url 'feed:edit_post' post.slug %}"><div class="post-title">{% if post.title %} {{ post.title | bleach }} {% else %} No Title {% endif %}</div>
+                    <div class="post-sneak-peak content">
+                        {% if post.content %}
+                            {{ post.content | bleach }}
+                        {% endif %}
+                    </div></a>
+            </div>
+        </div>
     </div>
-    <div class="post-title-sneak content">
-      <a href="{% url 'feed:edit_post' post.slug %}"><div class="post-title">{% if post.title %} {{ post.title | bleach }} {% else %} No Title {% endif %}</div>
-        <div class="post-sneak-peak content">
-      {% if post.content %}
-        {{ post.content | bleach }}
-      {% endif %}
-      </div></a>
-    </div>
-</div>  
-</div>
-  {% endfor %}
+{% endfor %}

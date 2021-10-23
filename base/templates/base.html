@@ -1,16 +1,16 @@
-<!DOCTYPE html>    
+<!DOCTYPE html>
 <html>
-{% load static %}
-{% load i18n %}
-<head>
-{% include "ga-analytics.html" %}
-<title>{% block title %}{% endblock %} | {% trans "ezhuth.in" %}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-{% block description %}{% endblock %}
-{% include "headers.html" %}
-{% block headers %}
-{% endblock %}
+    {% load static %}
+    {% load i18n %}
+    <head>
+        {% include "ga-analytics.html" %}
+        <title>{% block title %}{% endblock %} | {% trans "ezhuth.in" %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% block description %}{% endblock %}
+        {% include "headers.html" %}
+        {% block headers %}
+        {% endblock %}
 
     </head>
     <body>

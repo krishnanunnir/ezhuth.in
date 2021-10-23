@@ -4,21 +4,21 @@
 
 {% block title %}{% trans "Sign Out" %}{% endblock %}
 {% block headers %}
-  <link rel='stylesheet' href="{% static 'css/auth.css' %}">
+    <link rel='stylesheet' href="{% static 'css/auth.css' %}">
 {% endblock %}
 {% block content %}
-<div id="auth">
-<h1>{% trans "Sign Out" %}</h1>
+    <div id="auth">
+        <h1>{% trans "Sign Out" %}</h1>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+        <p>{% trans 'Are you sure you want to sign out?' %}</p>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button class="button is-danger" type="submit">{% trans 'Sign Out' %}</button>
-</form>
-</div>
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button class="button is-danger" type="submit">{% trans 'Sign Out' %}</button>
+        </form>
+    </div>
 
 {% endblock %}

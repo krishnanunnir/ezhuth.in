@@ -7,44 +7,44 @@
 {% load static %}
 {% load user %}
 {% for post in posts %}
-<div class="columns is-centered is-desktop is-mobile">
-<div class="post column is-half-desktop is-four-fifths-mobile">
+    <div class="columns is-centered is-desktop is-mobile">
+        <div class="post column is-half-desktop is-four-fifths-mobile">
 
-    <div class="post-byline"><a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a><br>
-      <!-- <span id="byline-date"> {{ post.created_on | pretty_date  }} </span> -->
-    </div>
-    <div id="header-image">
-      {% if post.header_image %}
-      <a href="{% url 'feed:view_post' post.slug %}"><img src="{{post.header_image.url}}"/></a>
-      {% endif %}
-    </div>
-    <div class="post-title-sneak content">
-      <a href="{% url 'feed:view_post' post.slug %}"><div class="post-title">{{ post.title | bleach }}</div>
-        {% if post.description %}
-        <div class="post-sneak-peak content">
-          <a href="{% url 'feed:view_post' post.slug %}">{{ post.description | bleach }}</a>
-      </div>
-      {% endif %}
-    </a>
-    </div>
-    <div class="post-option">
-        <!-- <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div> -->
-        <div class="symbols">
-          <div class="post-like">
-            {% post_liked_by_user post as show_likes %}
-            <a {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {%else %} href="{% url 'account_login' %}" {% endif %}>
-              <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} >
-              <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
-            </a>
-          </div>
-          <div class="post-comment">
-            <a href="{% url 'feed:view_post' post.slug %}#comments">
-            <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  onclick="showhide()">
-            <span id="posts-{{post.id}}-number" class="comment-number">{{ post | comment_count }}</span>
-          </a>
-          </div>
+            <div class="post-byline"><a href="{% url 'feed:view_user' post.author.username %}">{{ post.author | full_name |default_if_none:"[deleted]" }}</a><br>
+                <!-- <span id="byline-date"> {{ post.created_on | pretty_date  }} </span> -->
+            </div>
+            <div id="header-image">
+                {% if post.header_image %}
+                    <a href="{% url 'feed:view_post' post.slug %}"><img src="{{post.header_image.url}}"/></a>
+                {% endif %}
+            </div>
+            <div class="post-title-sneak content">
+                <a href="{% url 'feed:view_post' post.slug %}"><div class="post-title">{{ post.title | bleach }}</div>
+                    {% if post.description %}
+                        <div class="post-sneak-peak content">
+                            <a href="{% url 'feed:view_post' post.slug %}">{{ post.description | bleach }}</a>
+                        </div>
+                    {% endif %}
+                </a>
+            </div>
+            <div class="post-option">
+                <!-- <div class="read-more"><a href="{% url 'feed:view_post' post.slug %}">Read more</a></div> -->
+                <div class="symbols">
+                    <div class="post-like">
+                        {% post_liked_by_user post as show_likes %}
+                        <a {% if user.is_authenticated %} onclick="likePost('posts-{{post.id}}','{{post.slug}}')" {%else %} href="{% url 'account_login' %}" {% endif %}>
+                            <img id="posts-{{post.id}}" class="heart" {% if show_likes %} src="{% static 'images/liked_heart.svg' %}"  {% else %} src="{% static 'images/heart.svg' %}" {% endif %} >
+                            <span id="posts-{{post.id}}-number" class="like-number">{{ post | post_like_count }}</span>
+                        </a>
+                    </div>
+                    <div class="post-comment">
+                        <a href="{% url 'feed:view_post' post.slug %}#comments">
+                            <img id="posts-{{post.id}}" class="comment-icon" src="{% static 'images/circle.svg' %}"  onclick="showhide()">
+                            <span id="posts-{{post.id}}-number" class="comment-number">{{ post | comment_count }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-</div>  
-</div>
-  {% endfor %}
+    </div>
+{% endfor %}

@@ -1,39 +1,39 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load static %}
-{% block title%} എഴുത്തിൻ {% endblock %} 
+{% block title%} എഴുത്തിൻ {% endblock %}
 {% block headers %}
     <link rel='stylesheet' href="{% static 'css/landing.css' %}">
 {% endblock %}
 {% block content %}
-<div id="main-box">
-    <div >
+    <div id="main-box">
         <div >
-            <!-- <p id="tagline">Write in Malyalam</p> -->
+            <div >
+                <!-- <p id="tagline">Write in Malyalam</p> -->
+            </div>
+            <div>
+                <img src="{% static 'images/theyyam.jpeg' %}">
+            </div>
         </div>
-        <div>
-            <img src="{% static 'images/theyyam.jpeg' %}">
-        </div>
+        <br>
+        <p>Malayalam content has largely been restricted to websites like Facebook, Youtube and TikTok. These platforms have
+            their own issues and I am trying to solve few of them with http://ezhuth.in.</p>
+        <br>
+        <p>Facebook has a lot of Malayalam discussions and literature but they are lost past a few days, and it is very
+            difficult to rediscover this content. Basically we are losing out on quality content once Facebook has decided
+            it is not viable to show a post algorithmically.</p>
+        <br>
+        <p>Niche content has largely been reduced to Youtube, there are some creators like @SharqSamsu who provide highly
+            specialised info, but there is no platform like @reddit which provides better discourse on these topics.</p>
+        <br>
+        <p>This might sound generic but we often hear about stories of kids chancing on content on the internet and
+            developing a passion for a subject, what are the chances this can happen if you are not English speaking?
+            We can learn from China on this, even though it is a population that is largely shielded from the rest of the
+            world, their adoption of native langauge on the internet have allowed for proliferation of all kinds content to
+            everyone.</p>
+        <br>
+        <p>Localisation is the future. Being able to use our own language has allowed a lot of people to explode on the
+            scene and make a living - ask tiktokers.</p>
+        <br>
+        <p>I think we need a new stage in this internet development and that will be localisation according to me.</p>
     </div>
-    <br>
-    <p>Malayalam content has largely been restricted to websites like Facebook, Youtube and TikTok. These platforms have
-        their own issues and I am trying to solve few of them with http://ezhuth.in.</p>
-    <br>
-    <p>Facebook has a lot of Malayalam discussions and literature but they are lost past a few days, and it is very
-        difficult to rediscover this content. Basically we are losing out on quality content once Facebook has decided
-        it is not viable to show a post algorithmically.</p>
-    <br>
-    <p>Niche content has largely been reduced to Youtube, there are some creators like @SharqSamsu who provide highly
-        specialised info, but there is no platform like @reddit which provides better discourse on these topics.</p>
-    <br>
-    <p>This might sound generic but we often hear about stories of kids chancing on content on the internet and
-        developing a passion for a subject, what are the chances this can happen if you are not English speaking?
-        We can learn from China on this, even though it is a population that is largely shielded from the rest of the
-        world, their adoption of native langauge on the internet have allowed for proliferation of all kinds content to
-        everyone.</p>
-    <br>
-    <p>Localisation is the future. Being able to use our own language has allowed a lot of people to explode on the
-        scene and make a living - ask tiktokers.</p>
-    <br>
-    <p>I think we need a new stage in this internet development and that will be localisation according to me.</p>
-</div>
 {% endblock %}

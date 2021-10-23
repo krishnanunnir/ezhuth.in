@@ -5,16 +5,16 @@
 {% endblock %}
 
 {% block content %}
-<div id="auth">
-  
-  {% autoescape off %}{% user_display user as user_display %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
-  <h1>Welcome to {{ site_domain }}</h1>
-  Hello {{ user_display }},<br><br>
-  Let me begin by welcoming you to {{ site_domain }}, please confirm your email by clicking <a href="{{ activate_url }}">here</a>.<br><br>
-  
-  Thanks & Regards,<br>
-  Krishnanunni,<br>
-  krishnanunni@ezhuth.in
-  {% endblocktrans %}{% endautoescape %}
-</div>
+    <div id="auth">
+
+        {% autoescape off %}{% user_display user as user_display %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+            <h1>Welcome to {{ site_domain }}</h1>
+            Hello {{ user_display }},<br><br>
+            Let me begin by welcoming you to {{ site_domain }}, please confirm your email by clicking <a href="{{ activate_url }}">here</a>.<br><br>
+
+            Thanks & Regards,<br>
+            Krishnanunni,<br>
+            krishnanunni@ezhuth.in
+        {% endblocktrans %}{% endautoescape %}
+    </div>
 {% endblock %}

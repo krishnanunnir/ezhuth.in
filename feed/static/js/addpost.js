@@ -3,7 +3,7 @@ class PostEditor{
     constructor(textarea_element_id, slug){
         this.slug = slug
         this.editor = new Quill(textarea_element_id, {
-            modules: { 
+            modules: {
                 toolbar: [
                     ['bold', 'italic'],
                     ['link', 'blockquote', 'code-block', 'image'],
@@ -23,17 +23,17 @@ class PostEditor{
         this.onLoadMakeVisible();
         this.onTitleInputScroll();
         this.moveTexteditorToQuill();
-        
+
     };
     getCookie(name) {
         if (!document.cookie) {
           return null;
         }
-    
+
         const xsrfCookies = document.cookie.split(';')
           .map(c => c.trim())
           .filter(c => c.startsWith(name + '='));
-    
+
         if (xsrfCookies.length === 0) {
           return null;
         }
@@ -61,7 +61,7 @@ class PostEditor{
         fd.append('title', titleVal);
         fd.append('content', contentVal);
         const csrfToken = this.getCookie('csrftoken');
-        fd.append('csrfmiddlewaretoken', csrfToken);  
+        fd.append('csrfmiddlewaretoken', csrfToken);
         const xhr = new XMLHttpRequest();
         xhr.open('POST', window.location.href, true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
@@ -85,4 +85,3 @@ class PostEditor{
         return this.editor.getText().trim().length === 0 && this.editor.container.firstChild.innerHTML.includes("img") === false;
     }
 };
-

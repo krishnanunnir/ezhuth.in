@@ -76,7 +76,7 @@
 
 .like-number{
     display:inline;
-    vertical-align : middle; 
+    vertical-align : middle;
     color: grey;
 }
 .heart{
@@ -93,7 +93,7 @@
 
 .comment-number{
     display:inline;
-    vertical-align : middle; 
+    vertical-align : middle;
     color: grey;
 }
 .comment-icon{
@@ -110,10 +110,10 @@
     margin: auto;
     max-width: 90%;
     margin-top: 5px;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
 }
 
-@media screen and (min-width: 1300px) { 
+@media screen and (min-width: 1300px) {
     #errors-post{
         max-width: 50%;
     }

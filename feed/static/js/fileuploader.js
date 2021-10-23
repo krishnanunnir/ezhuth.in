@@ -48,7 +48,7 @@ class FileUploader{
     const fd = new FormData();
     fd.append('image', file);
     const csrfToken = this.getCookie('csrftoken');
-    fd.append('csrfmiddlewaretoken', csrfToken);  
+    fd.append('csrfmiddlewaretoken', csrfToken);
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/uploadfile/', true);

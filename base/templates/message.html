@@ -1,12 +1,10 @@
 
 {% if messages %}
     {% for message in messages %}
-    <div class="notification is-{{ message.tags }} is-light errors-post">
-        <span>
-            {{ message }}
-        </span>
-    </div>
+        <div class="notification is-{{ message.tags }} is-light errors-post">
+            <span>
+                {{ message }}
+            </span>
+        </div>
     {% endfor %}
 {% endif %}
-
-

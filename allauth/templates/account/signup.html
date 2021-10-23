@@ -4,29 +4,29 @@
 
 {% block title %}{% trans "Signup" %}{% endblock %}
 {% block headers %}
-  <link rel='stylesheet' href="{% static 'css/auth.css' %}">
+    <link rel='stylesheet' href="{% static 'css/auth.css' %}">
 {% endblock %}
 
 {% block content %}
-<div id="auth">
-<div id="form-signup">
-    <div id="errors">
-      {% include "formerrors.html" %}
-      {% include "message.html" %}
+    <div id="auth">
+        <div id="form-signup">
+            <div id="errors">
+                {% include "formerrors.html" %}
+                {% include "message.html" %}
+            </div>
+
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                {{ form.first_name }}
+                {{ form.last_name }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button id="action" type="submit">{% trans "Create New Account" %} &raquo;</button>
+            </form>
+        </div>
     </div>
-    
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.first_name }}
-  {{ form.last_name }}
-  {{ form.email }}
-  {{ form.password1 }}
-  {{ form.password2 }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button id="action" type="submit">{% trans "Create New Account" %} &raquo;</button>
-</form>
-</div>
-</div>
 {% endblock %}

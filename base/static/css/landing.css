@@ -21,7 +21,7 @@
     padding-left: 0.5em;
     text-shadow: rgb(194 110 110) 0.11rem 0.06rem 0rem;
 }
-@media screen and (min-width: 1300px) { 
+@media screen and (min-width: 1300px) {
     #main-box{
         width: 60%;
     }
