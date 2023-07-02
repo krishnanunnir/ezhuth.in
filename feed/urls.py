@@ -8,7 +8,7 @@ from . import converters
 
 app_name = "feed"
 urlpatterns = [
-    path("", views.landing, name="view_landing"),
+    path("home/", views.landing, name="view_landing"),
     path("read/", views.view_all, name="view_all"),
     path("feed/", views.view_feed, name="view_feed"),
     path("add/", views.add_post, name="add_post"),
@@ -21,7 +21,7 @@ urlpatterns = [
     path("delete/<slug:post_slug>", views.delete_post, name="delete_post"),
     path("preview/<slug:post_slug>", views.preview_post, name="preview_post"),
     path("uploadfile/", views.handle_image, name="handle_image"),
-    path("writer/", views.write, name="write"),
+    path("", views.write, name="write"),
 ]
 
 if settings.DEBUG:
