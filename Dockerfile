@@ -2,7 +2,7 @@
 FROM python:3.8.3-alpine
 
 # set work directory
-WORKDIR /knodev
+WORKDIR /app
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -45,4 +45,4 @@ RUN pip install -r base.txt
 # copy project
 COPY . .
 
-ENTRYPOINT ["/knodev/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]

@@ -4,9 +4,9 @@ services:
     web:
         build: .
         command: python3 manage.py runserver --settings=knode.settings 0.0.0.0:8000
-        container_name: knodev
+        container_name: app
         volumes:
-            - .:/knodev
+            - .:/app
         ports:
             - "8000:8000"
         depends_on:

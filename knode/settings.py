@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
+import dj_database_url
 
 SECRET_KEY = os.getenv(
     "SECRET_KEY", "tt4wkdfrmpuiz6m@gcs647i5&tzkb9qzt+rhmb%5#seg%hog57"
@@ -24,14 +25,7 @@ BASE_DIR = os.path.join(
 # Define these values for your local setting by importing from this setting
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DATABASE_NAME", "knode"),
-        "USER": os.getenv("DATABASE_USER", "postgres"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD", ""),
-        "HOST": os.getenv("DATABASE_HOST", "localhost"),
-        "PORT": os.getenv("DATABASE_PORT", "5432"),
-    }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
 }
 # Application definition
 
