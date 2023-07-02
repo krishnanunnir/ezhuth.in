@@ -1,3 +1,3 @@
-web: gunicorn core.wsgi:application
+web: gunicorn knode.wsgi:application
 
-release: python manage.py migrate && python manage.py collectstatic
+release: python manage.py migrate --no-input && python manage.py collectstatic --no-input
